@@ -1,0 +1,944 @@
+/**************************************************
+  THS (TOUHOU SCORE SYSTEM): POWER AND SCORE ITEMS
+ **************************************************/
+
+// NB. If you see something like "We should have an empty line here for some reason",
+// then it means we really should. I don't know why, but without it following lines
+// became skipped without any clear meaning, at least in Zandronum 3.0. Just bugs.
+
+// Score items are decaying in time,
+// so they challenge player to pick them up as quick as possible:
+
+// 1000 points until  100 ticks
+// 500 points  until  300 ticks
+// 250 points  until  600 ticks
+// 100 points  until 1000 ticks
+// 50 points   until 1500 ticks
+// 10 points   until 2100 ticks
+// Vanishes    after 2100 ticks
+
+// Power items use a multiplier for their score value:
+// Small power item = x0.7
+// Big power item   = x1.5
+
+// We have to disable FLOATBOB, because dropped items can't spawn substitute correctly while bobbing.
+// (After all, such items aren't bobbing in Touhou, are they?)
+
+/****** GLOBAL STATS ITEMS ******/
+
+ACTOR GlobalStatKills   : Inventory { Inventory.MaxAmount 100000 }
+ACTOR GlobalStatItems   : Inventory { Inventory.MaxAmount 100000 }
+ACTOR GlobalStatSecrets : Inventory { Inventory.MaxAmount 100000 }
+ACTOR GlobalStatExtra   : Inventory { Inventory.MaxAmount 1 }
+ACTOR GlobalStatSStage  : Inventory { Inventory.MaxAmount 1 }
+ACTOR GlobalEpisode2    : Inventory { Inventory.MaxAmount 1 }
+ACTOR GlobalEpisode3    : Inventory { Inventory.MaxAmount 1 }
+
+/****** SCORE ITEM ******/
+
+ACTOR GenericScoreItem : ScoreItem
+{
+	+INVENTORY.ALWAYSPICKUP
+	-COUNTITEM
+	Radius 32
+	Height 32
+	Inventory.PickupSound "power/pickup"
+}
+
+ACTOR ScoreItemEx : GenericScoreItem
+{
+	Inventory.Amount 1000
+	States
+	{
+		Vanish:
+			TNT1 A 0 // We should have an empty line here for some reason
+			Stop
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldWeNotUseScoring"), "Vanish")
+			POIN A 100
+			POIN A 0 A_SpawnItemEx("ScoreItem400",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+	}
+}
+
+ACTOR ScoreItem400 : GenericScoreItem
+{
+	Inventory.Amount 500
+	States
+	{
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 200
+			POIN A 0 A_SpawnItemEx("ScoreItem250",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+	}
+}
+
+ACTOR ScoreItem250 : GenericScoreItem
+{
+	Inventory.Amount 250
+	States
+	{
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 300
+			POIN A 0 A_SpawnItemEx("ScoreItem100",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+	}
+}
+
+ACTOR ScoreItem100 : GenericScoreItem
+{
+	Inventory.Amount 100
+	States
+	{
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 400
+			POIN A 0 A_SpawnItemEx("ScoreItem50",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+	}
+}
+
+ACTOR ScoreItem50 : GenericScoreItem
+{
+	Inventory.Amount 50
+	States
+	{
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 500
+			POIN A 0 A_SpawnItemEx("ScoreItem10",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+	}
+}
+
+ACTOR ScoreItem10 : GenericScoreItem
+{
+	Inventory.Amount 10
+	States
+	{
+		Spawn:
+			POIN A 0 // We should have an empty line here for some reason
+			POIN A 600
+			POIN AAAAAAAAAA 3 A_FadeOut
+			Stop
+	}
+}
+
+/****** SMALL POWER ITEM ******/
+
+ACTOR GenericPowerItem : CustomInventory
+{
+	+INVENTORY.ALWAYSPICKUP
+	-COUNTITEM
+	Radius 64
+	Height 64
+	Inventory.PickupMessage "Power +1"
+	Inventory.PickupSound "power/pickup"
+}
+
+ACTOR PowerCubeEx : GenericPowerItem replaces PowerCube
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 100
+			POW1 A 0 A_SpawnItemEx("PowerCube400",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",700)
+			Stop
+	}
+}
+
+ACTOR PowerCube400 : GenericPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 200
+			POW1 A 0 A_SpawnItemEx("PowerCube250",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",280)
+			Stop
+	}
+}
+
+ACTOR PowerCube250 : GenericPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 300
+			POW1 A 0 A_SpawnItemEx("PowerCube100",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",175)
+			Stop
+	}
+}
+
+ACTOR PowerCube100 : GenericPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 400
+			POW1 A 0 A_SpawnItemEx("PowerCube50",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",70)
+			Stop
+	}
+}
+
+ACTOR PowerCube50 : GenericPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 500
+			POW1 A 0 A_SpawnItemEx("PowerCube10",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",35)
+			Stop
+	}
+}
+
+ACTOR PowerCube10 : GenericPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 600
+			POW1 AAAAAAAAAA 3 A_FadeOut
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",1)
+			POW1 A 0 A_GiveInventory("ScoreItem",7)
+			Stop
+	}
+}
+
+/****** BIG POWER ITEM ******/
+
+ACTOR GenericBigPowerItem : GenericPowerItem
+{
+	Radius 32
+	Height 32
+	Inventory.PickupMessage "Power +100"
+	Inventory.PickupSound "power/pickup2"
+}
+
+ACTOR PowerBigEx : GenericBigPowerItem replaces PowerBig
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 100
+			POW1 A 0 A_SpawnItemEx("PowerBig400",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",1500)
+			Stop
+	}
+}
+
+ACTOR PowerBig400 : GenericBigPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 200
+			POW1 A 0 A_SpawnItemEx("PowerBig250",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",600)
+			Stop
+	}
+}
+
+ACTOR PowerBig250 : GenericBigPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 300
+			POW1 A 0 A_SpawnItemEx("PowerBig100",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",375)
+			Stop
+	}
+}
+
+ACTOR PowerBig100 : GenericBigPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 400
+			POW1 A 0 A_SpawnItemEx("PowerBig50",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",150)
+			Stop
+	}
+}
+
+ACTOR PowerBig50 : GenericBigPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 500
+			POW1 A 0 A_SpawnItemEx("PowerBig10",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL)
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",75)
+			Stop
+	}
+}
+
+ACTOR PowerBig10 : GenericBigPowerItem
+{
+	States
+	{
+		Spawn:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 600
+			POW1 AAAAAAAAAA 3 A_FadeOut
+			Stop
+		Pickup:
+			POW1 A 0 // We should have an empty line here for some reason
+			POW1 A 0 A_GiveInventory("Power",100)
+			POW1 A 0 A_GiveInventory("ScoreItem",15)
+			Stop
+	}
+}
+
+/****** COMPOUND SCORE + POWER DROPS ******/
+
+// This is what fairies drop. It spawns 50% score item, or 50% power/ammo one.
+// I don't know why, but score items disperse with about 20 less radius than power (but mas does not matter); it is fixed here.
+ACTOR PowerOrScorePickup : PowerPickup replaces PowerPickup
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldWeNotUseScoring"), "Super::Spawn")
+			TNT1 A 0 A_JumpIf(random(1,100) > 50,"ScoreSpawn")
+			Goto Super::Spawn
+		ScoreSpawn:
+			TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_SpawnItemEx("ScoreItemEx",0,0,0,frandom(0,2),frandom(0,2),frandom(2,4),frandom(0,360),0,0)
+			Stop
+	}
+}
+// This is what bosses drop. It does the same (but with a bit different parameters).
+ACTOR PowerOrScorePickup2 : PowerPickup2 replaces PowerPickup2
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldWeNotUseScoring"), "Super::Spawn")
+			TNT1 A 0 A_JumpIf(random(1,100) > 50,"ScoreSpawn")
+			Goto Super::Spawn
+		ScoreSpawn:
+			TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_SpawnItemEx("ScoreItemEx",0,0,0,frandom(0,6),frandom(0,6),frandom(3,12),frandom(0,360),0,0)
+			Stop
+	}
+}
+
+// These "actors" are dropped while spell card battles on levels 13-20 and 30-31.
+
+ACTOR LittleSpellCardBonus // 20 of power/point items
+{
+	States
+	{
+		Spawn:
+		 	TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldBossesNotDropPowerups"), "StopNoItems")
+			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PowerPickup2",0,0,0,frandom(0,6),frandom(0,6),frandom(3,12),frandom(0,360),0,0)
+			Stop
+		StopNoItems:
+			TNT1 A 0 // We should have an empty line here for some reason
+			Stop
+	}
+}
+
+ACTOR MediumSpellCardBonus
+{
+	States
+	{
+		Spawn:
+		 	TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 AAA 0 A_SpawnItem("LittleSpellCardBonus") // 3 x Little bonus
+			Stop
+	}
+}
+
+ACTOR BigSpellCardBonus
+{
+	States
+	{
+		Spawn:
+		 	TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 AA 0 A_SpawnItem("MediumSpellCardBonus") // 6 x Little bonus
+			Stop
+	}
+}
+
+/****** EXTEND ITEM ******/
+
+// Yes, you may place EXTEND items on map or drop them from bosses.
+ACTOR Extend : Inventory
+{
+	+FLOATBOB
+	Inventory.Amount 1
+	Inventory.MaxAmount 100
+	Inventory.PickupMessage "Extend!"
+	Inventory.PickupSound "misc/p_pkup"
+	States
+	{
+		Spawn:
+			E1UP A 1 Bright
+			Loop
+	}
+}
+
+// Well, EXTENDs works only with these two items. They don't work on Health Bonus,
+// as Health Bonus is DOOM-related item, but Mega/Soulspheres are available on Touhou levels.
+ACTOR SoulsphereExtended : Soulsphere replaces Soulsphere
+{
+	Inventory.MaxAmount 10000
+}
+
+ACTOR MegasphereHealthExtended : MegasphereHealth
+{
+	Inventory.MaxAmount 10000
+}
+
+ACTOR MegasphereExtended : Megasphere replaces Megasphere
+{
+	States
+	{
+		Pickup:
+			TNT1 A 0 // We should have an empty line here for some reason
+			TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1)
+			TNT1 A 0 A_GiveInventory("MegasphereHealthExtended", 1)
+			Stop
+	}
+}
+
+/************************************
+  ENABLING ITEM DROP ON LEVELS >= 13 
+ ************************************/
+
+// Enabling fairies on higher stages drop power/points as on lower stages
+
+ACTOR Fairy21Pwr : Fairy21 replaces Fairy21
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy22Pwr : Fairy22 replaces Fairy22
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy23APwr : Fairy23A replaces Fairy23A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy23BPwr : Fairy23B replaces Fairy23B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy24Pwr : Fairy24 replaces Fairy24
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy25Pwr : Fairy25 replaces Fairy25
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEEEEEEEEEEEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy26APwr : Fairy26A replaces Fairy26A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy26BPwr : Fairy26B replaces Fairy26B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy26CPwr : Fairy26C replaces Fairy26C
+{
+	States
+	{
+		Death:
+			FAR7 E 3
+			FAR7 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR7 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy27APwr : Fairy27A replaces Fairy27A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy27BPwr : Fairy27B replaces Fairy27B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR Fairy28Pwr : Fairy28 replaces Fairy28
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy6Pwr : ExFairy6 replaces ExFairy6
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy7Pwr : ExFairy7 replaces ExFairy7
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy8Pwr : ExFairy8 replaces ExFairy8
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy9Pwr : ExFairy9 replaces ExFairy9
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy10Pwr : ExFairy10 replaces ExFairy10
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR ExFairy11Pwr : ExFairy11 replaces ExFairy11
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+// Note: Phantasm Fairy 2 will not drop anything, as she has too low health.
+
+ACTOR PhantasmFairy1APwr : PhantasmFairy1A replaces PhantasmFairy1A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy1CPwr : PhantasmFairy1C replaces PhantasmFairy1C
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy1BPwr : PhantasmFairy1B replaces PhantasmFairy1B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy1DPwr : PhantasmFairy1D replaces PhantasmFairy1D
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy3APwr : PhantasmFairy3A replaces PhantasmFairy3A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 EE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy3BPwr : PhantasmFairy3B replaces PhantasmFairy3B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 EE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy4APwr : PhantasmFairy4A replaces PhantasmFairy4A
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy4BPwr : PhantasmFairy4B replaces PhantasmFairy4B
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy5APwr : PhantasmFairy5A replaces PhantasmFairy5A
+{
+	States
+	{
+		Death:
+			FAR4 E 3
+			FAR4 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR4 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy5BPwr : PhantasmFairy5B replaces PhantasmFairy5B
+{
+	States
+	{
+		Death:
+			FAR5 E 3
+			FAR5 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR5 E 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy6APwr : PhantasmFairy6A replaces PhantasmFairy6A
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR PhantasmFairy6BPwr : PhantasmFairy6B replaces PhantasmFairy6B
+{
+	States
+	{
+		Death:
+			FAR6 E 3
+			FAR6 E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			FAR6 EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+// Yes, you may farm score on Alice's dolls!
+// Nice to get about an extend or two before fighting Marisa and then Reimu or even Yukari.
+
+ACTOR AliceSpreadDollHB : AliceSpreadDoll replaces AliceSpreadDoll
+{
+	States
+	{
+		Death:
+			DOLL A 0 // We should have an empty line here for some reason
+			DOLL E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			DOLL EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR AliceRingDollHB : AliceRingDoll replaces AliceRingDoll
+{
+	States
+	{
+		Death:
+			DOLL A 0 // We should have an empty line here for some reason
+			DOLL E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			DOLL EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}
+
+ACTOR AliceBeamDollHB : AliceBeamDoll replaces AliceBeamDoll
+{
+	States
+	{
+		Death:
+			DOLL A 0 // We should have an empty line here for some reason
+			DOLL E 0 A_JumpIf(ACS_NamedExecuteWithResult("THS_ShouldFairyNotSpawnItems"), "DeathNoItems")
+			DOLL EEEEEE 0 A_SpawnItemEx("PowerPickup",0,0,0,frandom(0,1),frandom(0,1),frandom(2,4),frandom(0,360),0,192)
+			Goto Super::Death+3
+		DeathNoItems:
+			Goto Super::Death+3
+	}
+}

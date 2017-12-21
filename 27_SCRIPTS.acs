@@ -1,0 +1,254 @@
+#include "zcommon.acs"
+
+int SkipCutscene = 0;
+
+// Y may be negative to count final score (with nice sound at end).
+script "FancyMessage" (int Value, int Id, int Y) // Y is fixed though.
+{
+	int  count;
+	int  color = CR_WHITE;
+	str  endsound = "power/pickup2";
+	bool finalsound = false;
+	if (Y < 0)
+	{
+		Y = -Y;
+		color = CR_YELLOW;
+		endsound = "player/extend";
+		finalsound = true;
+	}
+
+	SetHudSize(600,420,true);
+    SetFont("BIGFONT");
+
+	if (Value < 50)
+	{
+		for (count = 0; count < Value; count++)
+		{
+			HudMessage(i:count; HUDMSG_PLAIN, Id, color, 500.2, 1.0 * Y, 0.0);
+			PlaySound(0,"power/pickup",CHAN_WEAPON);
+			if (SkipCutscene > 1) break;
+			Delay(3);
+		}
+	}
+	else
+	{
+		for (count = 0; count < 50; count++)
+		{
+			HudMessage(i:Value*count/50; HUDMSG_PLAIN, Id, color, 500.2, 1.0 * Y, 0.0);
+			PlaySound(0,"power/pickup",CHAN_WEAPON);
+			if (SkipCutscene > 1) break;
+			Delay(3);
+		}
+	}
+	HudMessage(i:Value; HUDMSG_PLAIN, Id, color, 500.2, 1.0 * Y, 0.0);
+	if (SkipCutscene <= 1 || finalsound) PlaySound(0,EndSound,CHAN_ITEM);
+	if (SkipCutscene <= 1) Delay(10);
+}
+
+script 1 ENTER
+{
+	int Episode = 1;
+	if (CheckInventory("GlobalEpisode2")) Episode = 2;
+	if (CheckInventory("GlobalEpisode3")) Episode = 3;
+
+	int Score   = GetActorProperty(0,APROP_Score);
+	int Kills   = CheckInventory("GlobalStatKills");
+	int Items   = CheckInventory("GlobalStatItems");
+	int Secrets = CheckInventory("GlobalStatSecrets");
+	int Extra   = CheckInventory("GlobalStatExtra");
+	int SStage  = CheckInventory("GlobalStatSStage");
+	int Power   = CheckInventory("Power");
+
+	// It is not easy to determine how many spell cards did player take.
+	// Btw, if there was some messing with skill levels during play, then it will not work at all.
+	int Spellcards;
+	switch (Episode)
+	{
+		case 1:
+			Score = 0; Power = 0; // Just in case player cheated
+			switch(GameSkill())
+			{
+				case 0:
+					Spellcards = 14;
+					break;
+				case 1:
+					Spellcards = 22;
+					break;
+				case 2:
+					Spellcards = 25;
+					break;
+				default: // Lunatic/Ultra
+					Spellcards = 26;
+					break;
+			}
+			if (Extra) Spellcards += 13;
+			break;
+		case 2:
+			Spellcards = 21;
+			if (GameSkill() > 1) Spellcards += 1;
+			if (Extra) Spellcards += 13;
+			break;
+		case 3:
+			Spellcards = 16;
+			if (GameSkill() > 1) Spellcards += 3;
+			if (Extra)  Spellcards += 12;
+			if (SStage) Spellcards += 5;
+			break;
+	}
+	
+	HudMessage(s:" "; HUDMSG_PLAIN, 92712, CR_WHITE, 0.0, 0.0, 0.0); // Remove CVAR message.
+	// I found no way to remove autosave message, but...
+	// ...But player may note than that he/she can SAVE SCORE TABLE FOR BRAGGING, HELL YEAH!
+	// Yes, it is intended: you may save it as a normal savegame.
+	
+	SetHudSize(64,64,true);
+	SetFont("ALLBLAKF");
+	// I found no easier way to hide everything on screen including status bar, not even with messing with SBARINFO.
+	HudMessage(s:"AAAA"; HUDMSG_PLAIN | HUDMSG_LAYER_OVERHUD | HUDMSG_NOWRAP, 7001, CR_WHITE,  32.4, 32.4, 0.0);
+
+	if (!GetCVar("touhou_use_scoring")) // Immediately exit if we don't use scoring, don't draw anything else
+	{
+		Exit_Normal(0);
+		Terminate;
+	}
+
+	SetMusic("SHINKIRO"); // Yep, Hopeless Masquerade opening looks like best fit for score screen,
+	                      // as for me. You may or may not consider the same. But if you are reading
+						  // this, you know how to edit WAD files and what to do with ACS scripts,
+						  // so you may substitute this by anything you want.
+	
+	// We have no FADEIN, so we will do FADEOUT from black to a nice picture.
+	HudMessage(s:"A"; HUDMSG_FADEOUT | HUDMSG_LAYER_OVERHUD, 6999, CR_WHITE, 32.4, 32.4, 0.0, 1.0, 0.0);
+	
+	// Draw a picture (background was stolen from google search results, blame Marisa, not me)
+	SetHudSize(1200,840,true);
+	SetFont("GENSOKYO");
+	HudMessage(s:"A"; HUDMSG_PLAIN | HUDMSG_LAYER_OVERHUD, 7000, CR_WHITE, 600.4, 420.4, 3600.0, 1.0, 0.0);
+    
+	SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
+    SetMusic("SHINKIRO", 0);
+	SetHudSize(600,420,true);
+    SetFont("BIGFONT");
+    Delay(70);
+	SkipCutscene++; // Don't false activate if player pressed "Use" on level enter
+    HudMessage(s:"ALL CLEAR!";       HUDMSG_PLAIN, 6001, CR_RED,    300.4,  30.0, 0.0);
+
+    HudMessage(s:"SCORE EARNED";     HUDMSG_PLAIN, 6002, CR_WHITE,  100.1,  60.0, 0.0);
+	if (Score > 0)
+		ACS_NamedExecuteWait("FancyMessage",0,
+		             Score,                        6003,                    60       );
+	else
+		HudMessage(s:"N/A";          HUDMSG_PLAIN, 6003, CR_WHITE,  500.2,  60.0, 0.0);
+
+    HudMessage(s:"ALL CLEAR";        HUDMSG_PLAIN, 6004, CR_WHITE,  100.1,  80.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6005, CR_WHITE,  400.2,  80.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+                 Episode*100000,                   6006,                    80       );
+	Score += Episode*100000;
+
+    HudMessage(s:"EXTRA STAGE";      HUDMSG_PLAIN, 6007, CR_WHITE,  100.1, 100.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6008, CR_WHITE,  400.2, 100.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+                 Extra*100000,                     6009,                   100       );
+	Score += Extra*100000;
+
+    HudMessage(s:"POWER";            HUDMSG_PLAIN, 6010, CR_WHITE,  100.1, 120.0, 0.0);
+	if (Power > 0)
+	{
+		HudMessage(i:Power;          HUDMSG_PLAIN, 6011, CR_WHITE,  310.2, 120.0, 0.0);
+		HudMessage(s:"x";            HUDMSG_PLAIN, 6012, CR_WHITE,  330.2, 120.0, 0.0);
+		HudMessage(s:"100";          HUDMSG_PLAIN, 6013, CR_WHITE,  380.2, 120.0, 0.0);
+		HudMessage(s:"=";            HUDMSG_PLAIN, 6014, CR_WHITE,  400.2, 120.0, 0.0);
+		ACS_NamedExecuteWait("FancyMessage",0,
+		             Power*100,                    6015,                   120       );
+	}
+	else
+		HudMessage(s:"N/A";          HUDMSG_PLAIN, 6016, CR_WHITE,  500.2, 120.0, 0.0);
+	Score += Power*100;
+
+    HudMessage(s:"TOTAL KILLS";      HUDMSG_PLAIN, 6021, CR_WHITE,  100.1, 140.0, 0.0);
+	HudMessage(i:Kills;              HUDMSG_PLAIN, 6022, CR_WHITE,  310.2, 140.0, 0.0);
+    HudMessage(s:"x";                HUDMSG_PLAIN, 6023, CR_WHITE,  330.2, 140.0, 0.0);
+    HudMessage(s:"100";              HUDMSG_PLAIN, 6024, CR_WHITE,  380.2, 140.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6025, CR_WHITE,  400.2, 140.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+	             Kills*100,                        6026,                   140       );
+	Score += Kills*100;
+
+    HudMessage(s:"SPELL CARDS";      HUDMSG_PLAIN, 6031, CR_WHITE,  100.1, 160.0, 0.0);
+	HudMessage(i:Spellcards;         HUDMSG_PLAIN, 6032, CR_WHITE,  310.2, 160.0, 0.0);
+    HudMessage(s:"x";                HUDMSG_PLAIN, 6033, CR_WHITE,  330.2, 160.0, 0.0);
+    HudMessage(s:"1000";             HUDMSG_PLAIN, 6034, CR_WHITE,  380.2, 160.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6035, CR_WHITE,  400.2, 160.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+	             Spellcards*1000,                  6036,                   160       );
+	Score += Spellcards*1000;
+
+    HudMessage(s:"TOTAL ITEMS";      HUDMSG_PLAIN, 6041, CR_WHITE,  100.1, 180.0, 0.0);
+	HudMessage(i:Items;              HUDMSG_PLAIN, 6042, CR_WHITE,  310.2, 180.0, 0.0);
+    HudMessage(s:"x";                HUDMSG_PLAIN, 6043, CR_WHITE,  330.2, 180.0, 0.0);
+    HudMessage(s:"1000";             HUDMSG_PLAIN, 6044, CR_WHITE,  380.2, 180.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6045, CR_WHITE,  400.2, 180.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+	             Items*1000,                       6046,                   180       );
+	Score += Items*1000;
+
+    HudMessage(s:"TOTAL SECRETS";    HUDMSG_PLAIN, 6051, CR_WHITE,  100.1, 200.0, 0.0);
+	HudMessage(i:Secrets;            HUDMSG_PLAIN, 6052, CR_WHITE,  310.2, 200.0, 0.0);
+    HudMessage(s:"x";                HUDMSG_PLAIN, 6053, CR_WHITE,  330.2, 200.0, 0.0);
+    HudMessage(s:"500";              HUDMSG_PLAIN, 6054, CR_WHITE,  380.2, 200.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6055, CR_WHITE,  400.2, 200.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+	             Secrets*500,                      6056,                   200       );
+	Score += Secrets*500;
+
+	HudMessage(s:"x";                HUDMSG_PLAIN, 6062, CR_WHITE,  330.2, 220.0, 0.0);
+    if (CheckInventory("UltraMode")) // Ultra must be checked before Lunatic
+	{
+		HudMessage(s:"ULTRA RANK";   HUDMSG_PLAIN, 6061, CR_RED,    100.1, 220.0, 0.0);
+		HudMessage(s:"2.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+		Score *= 5;
+		Score /= 2; // Screw integer arithmetic
+	}
+	else if (CheckInventory("LunaticMode"))
+	{
+		HudMessage(s:"LUNATIC RANK"; HUDMSG_PLAIN, 6061, CR_RED,    100.1, 220.0, 0.0);
+		HudMessage(s:"2.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+		Score *= 2;
+	}
+	else if (CheckInventory("HardMode"))
+	{
+		HudMessage(s:"HARD RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
+		HudMessage(s:"1.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+		Score *= 3;
+		Score /= 2; // Screw integer arithmetic
+	}
+	else if (CheckInventory("NormalMode"))
+	{
+		HudMessage(s:"NORMAL RANK";  HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
+		HudMessage(s:"1.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+		Score *= 1;
+	}
+	else // Easy Mode
+	{
+		HudMessage(s:"EASY RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
+		HudMessage(s:"0.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+		Score /= 2;
+	}
+	
+	HudMessage(s:"TOTAL";            HUDMSG_PLAIN, 6071, CR_YELLOW, 100.1, 260.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6072, CR_YELLOW, 400.2, 260.0, 0.0);
+	ACS_NamedExecuteWait("FancyMessage",0,
+                 Score,                            6073,                  -260       );
+	SkipCutscene++; // Ready to exit from here
+}
+
+script 900 (void)
+{
+	if (SkipCutscene == 0)      // Script blocked
+		Terminate;
+	else if (SkipCutscene == 1) // Proceed to full stats
+		SkipCutscene++;
+	else                        // Exit
+		Exit_Normal(0);
+}

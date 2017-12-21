@@ -1,0 +1,1104 @@
+/*****************************************
+  DECORATE ENTRY FOR THIRD EPISODE BOSSES
+ *****************************************/
+ 
+// NB. If you see something like "We should have an empty line here for some reason",
+// then it means we really should. I don't know why, but without it following lines
+// became skipped without any clear meaning, at least in Zandronum 3.0. Just bugs.
+
+// Note: one frame in boss's death state is designed to separate call of 
+// BHI_BossStopAttack from BHI_BossStartAttack of next spell/nonspell. Otherwise
+// they may conflict. It is not required after last spell, of course.
+
+/**** SANAE ****/
+
+ACTOR SanaeHB : Sanae replaces Sanae
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,15,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),false)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeGreyThaumaturgyHB : SanaeGreyThaumaturgy replaces SanaeGreyThaumaturgy
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6001)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3322),true)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA F 0 A_SpawnItem("LittleSpellCardBonus")
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeNS2HB : SanaeNS2 replaces SanaeNS2
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6002)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3322),false)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeDayTheSeaSplitHB : SanaeDayTheSeaSplit replaces SanaeDayTheSeaSplit
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6003)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2211),true)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA F 0 A_SpawnItem("LittleSpellCardBonus")
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeNS3HB : SanaeNS3 replaces SanaeNS3
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6004)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2211),false)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeStarRitualHB : SanaeStarRitual replaces SanaeStarRitual
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6005)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,1,true)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA F 0 A_SpawnItem("LittleSpellCardBonus")
+			SANA L 1
+			goto Super::Death
+	}
+}
+ACTOR SanaeDivineWindHB : SanaeDivineWind replaces SanaeDivineWind
+{
+	Tag "Sanae Kochiya"
+	States
+	{
+		See:
+			SANA F 0 Thing_ChangeTID(0,6006)
+			SANA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
+			goto Super::See
+		Death:
+			SANA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			SANA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			SANA F 0 A_SpawnItem("MediumSpellCardBonus")
+			goto Super::Death
+	}
+}
+
+/**** ALICE ****/
+
+ACTOR AliceHB : Alice replaces Alice
+{
+	Tag "Alice Margatroid"
+	States
+	{
+		See:
+			ALIC F 0 ACS_NamedExecute("BHI_BossStartAttack",0,14,2,false)
+			goto Super::See
+		Death:
+			ALIC F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			ALIC Q 1
+			goto Super::Death
+	}
+}
+ACTOR AliceSuicideSquadHB : AliceSuicideSquad replaces AliceSuicideSquad
+{
+	Tag "Alice Margatroid"
+	States
+	{
+		See:
+			ALIC F 0 Thing_ChangeTID(0,6007)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,1,true)
+			goto Super::See
+		Death:
+			ALIC F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			ALIC F 0 A_SpawnItem("LittleSpellCardBonus")
+			ALIC Q 1
+			goto Super::Death
+	}
+}
+ACTOR AliceNS2HB : AliceNS2 replaces AliceNS2
+{
+	Tag "Alice Margatroid"
+	States
+	{
+		See:
+			ALIC F 0 Thing_ChangeTID(0,6008)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,1,false)
+			goto Super::See
+		Death:
+			ALIC F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			ALIC Q 1
+			goto Super::Death
+	}
+}
+ACTOR AliceSoullessFolkDanceHB : AliceSoullessFolkDance replaces AliceSoullessFolkDance
+{
+	Tag "Alice Margatroid"
+	States
+	{
+		See:
+			ALIC F 0 Thing_ChangeTID(0,6009)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,0,true)
+			goto Super::See
+		Death:
+			ALIC F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			ALIC F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			ALIC F 0 A_SpawnItem("LittleSpellCardBonus") // What would you expect from midboss?
+			goto Super::Death
+	}
+}
+
+/**** MARISA ****/
+
+ACTOR MarisaHB : Marisa replaces Marisa
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",5544),false)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaOrreriesSunHB : MarisaOrreriesSun replaces MarisaOrreriesSun
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 Thing_ChangeTID(0,6001)
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),true)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI F 0 A_SpawnItem("LittleSpellCardBonus")
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaNS2HB : MarisaNS2 replaces MarisaNS2
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 Thing_ChangeTID(0,6002)
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),false)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaMilkyWayHB : MarisaMilkyWay replaces MarisaMilkyWay
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 Thing_ChangeTID(0,6003)
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3322),true)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI F 0 A_SpawnItem("LittleSpellCardBonus")
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaNS3HB : MarisaNS3 replaces MarisaNS3
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 Thing_ChangeTID(0,6004)
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3322),false)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaMasterSparkHB : MarisaMasterSpark replaces MarisaMasterSpark
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See: // We start a waiter script here
+			MARI F 0 ACS_NamedExecute("BHI_StartMarisa",0)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI F 0 A_SpawnItem("LittleSpellCardBonus")
+			MARI K 1
+			goto Super::Death
+	}
+}
+ACTOR MarisaBlazingStarHB : MarisaBlazingStar replaces MarisaBlazingStar
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See: // Well, it's survival spell card
+			MARI F 0 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1)
+			goto Super::See
+		Death:
+		XDeath:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI F 0 A_SpawnItem("LittleSpellCardBonus")
+			MAR2 X 1 // Note another death sprite
+			goto Super::Death
+	}
+}
+ACTOR MarisaBFS9000HB : MarisaBFS9000 replaces MarisaBFS9000
+{
+	Tag "Marisa Kirisame"
+	States
+	{
+		See:
+			MARI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,0,true)
+			goto Super::See
+		Death:
+			MARI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			MARI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			MARI F 0 A_SpawnItem("MediumSpellCardBonus")
+			goto Super::Death
+	}
+}
+
+/**** REIMU ****/
+
+ACTOR ReimuHB : Reimu replaces Reimu
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,18,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",8877),false)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuDancingYinYangOrbsHB : ReimuDancingYinYangOrbs replaces ReimuDancingYinYangOrbs
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6001)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",7766),true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("LittleSpellCardBonus")
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuNS2HB : ReimuNS2 replaces ReimuNS2
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6002)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",7766),false)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuFantasySealSpreadHB : ReimuFantasySealSpread replaces ReimuFantasySealSpread
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6003)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",6655),true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("LittleSpellCardBonus")
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuNS3HB : ReimuNS3 replaces ReimuNS3
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6004)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",6655),false)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuEvilSealingCircleHB : ReimuEvilSealingCircle replaces ReimuEvilSealingCircle
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6005)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",5544),true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("LittleSpellCardBonus")
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuNS4HB : ReimuNS4 replaces ReimuNS4
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6006)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",5544),false)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuFantasySealConcentrateHB : ReimuFantasySealConcentrate replaces ReimuFantasySealConcentrate
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See: // We start a waiter script here
+			REIM F 0 ACS_NamedExecute("BHI_StartReimu",0)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("MediumSpellCardBonus") // Bonus arrival intensifies
+			REIM K 1
+			goto Super::Death
+		// On Easy, it may have been the last spell (there were some defunct jump to missing GotoFinal state).
+		// Well, but it did not work, and Reimu is TOO special to omit remainings of such tremendous battle even on Easy.
+		// So we need to go deeper!
+		GotoFinal: // Fixing missing label here. Continue battle, as if we were on Normal!
+			REIM K 0 ACS_Execute(59,0)
+			REIM K 0 ACS_Execute(603,0)
+			REIM K 0 A_GiveInventory("BulletDeathTrigger",1)
+			REIM K 0 A_NoBlocking
+			REIM K 0 A_PlaySound("touhou/nuefire")
+			REIM KKKKKKKKK 2 A_FadeOut(0.1)
+	}
+}
+           
+ACTOR ReimuDuplexBarrierHB : ReimuDuplexBarrier replaces ReimuDuplexBarrier
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,18,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3322),true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("LittleSpellCardBonus")
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuFantasySealBlinkHB : ReimuFantasySealBlink replaces ReimuFantasySealBlink
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 Thing_ChangeTID(0,6008)
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,2,true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM F 0 A_SpawnItem("MediumSpellCardBonus")
+			REIM K 1
+			goto Super::Death
+	}
+}
+ACTOR ReimuFlyingMysteriousShrineMaidenHB : ReimuFlyingMysteriousShrineMaiden replaces ReimuFlyingMysteriousShrineMaiden
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,18,1,true)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			REIM FF 0 A_SpawnItem("BigSpellCardBonus") // Very big bonus... But less than Koishi's one.
+			REIM K 1
+			goto Super::Death
+	}
+}
+// Reimu tries to engage Fantasy Heaven, but Yukari stops her.
+// If she was not in time, it may have been survival spell.
+ACTOR ReimuFantasyHeavenHB : ReimuFantasyHeaven replaces ReimuFantasyHeaven
+{
+	Tag "Reimu Hakurei"
+	States
+	{
+		See:
+			REIM F 0 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,0)
+			goto Super::See
+		Death:
+			REIM F 0 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
+			REIM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			goto Super::Death
+	}
+}
+
+/**** IKU ****/
+
+ACTOR IkuHB : Iku replaces Iku
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See: // We start a waiter script here
+			IKUU F 0 ACS_NamedExecute("BHI_StartIku",0)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU J 1
+			goto Super::Death
+	}
+}
+ACTOR IkuAbodeOfTheThunderGodHB : IkuAbodeOfTheThunderGod replaces IkuAbodeOfTheThunderGod
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See:
+			IKUU F 0 Thing_ChangeTID(0,6001)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU F 0 A_SpawnItem("LittleSpellCardBonus")
+			IKUU J 1
+			goto Super::Death
+	}
+}
+ACTOR IkuNS2HB : IkuNS2 replaces IkuNS2
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See:
+			IKUU F 0 Thing_ChangeTID(0,6002)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU J 1
+			goto Super::Death
+	}
+}
+ACTOR IkuGleamingEyesOfTheDragonHB : IkuGleamingEyesOfTheDragon replaces IkuGleamingEyesOfTheDragon
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See:
+			IKUU F 0 Thing_ChangeTID(0,6003)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU F 0 A_SpawnItem("LittleSpellCardBonus")
+			IKUU J 1
+			goto Super::Death
+	}
+}
+ACTOR IkuNS3HB : IkuNS3 replaces IkuNS3
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See:
+			IKUU F 0 Thing_ChangeTID(0,6004)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,false)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU J 1
+			goto Super::Death
+	}
+}
+ACTOR IkuThunderFromTheSeaOfEternalCloudsHB : IkuThunderFromTheSeaOfEternalClouds replaces IkuThunderFromTheSeaOfEternalClouds
+{
+	Tag "Iku Nagae"
+	States
+	{
+		See:
+			IKUU F 0 Thing_ChangeTID(0,6005)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+			goto Super::See
+		Death:
+			IKUU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			IKUU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			IKUU F 0 A_SpawnItem("MediumSpellCardBonus")
+			goto Super::Death
+	}
+}
+
+/**** TENSHI ****/
+
+ACTOR TenshiHB : Tenshi replaces Tenshi
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See: // We start a waiter script here
+			TENS F 0 ACS_NamedExecute("BHI_StartTenshi",0)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS N 1
+			goto Super::Death
+	}
+}
+ACTOR TenshiHeavensRockHB : TenshiHeavensRock replaces TenshiHeavensRock
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 Thing_ChangeTID(0,6001)
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,3,true)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS F 0 A_SpawnItem("LittleSpellCardBonus")
+			TENS N 1
+			goto Super::Death
+	}
+}
+ACTOR TenshiNS2HB : TenshiNS2 replaces TenshiNS2
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 Thing_ChangeTID(0,6002)
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,3,false)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS N 1
+			goto Super::Death
+	}
+}
+ACTOR TenshiThyViolenceNurturesUsHB : TenshiThyViolenceNurturesUs replaces TenshiThyViolenceNurturesUs
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 Thing_ChangeTID(0,6003)
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS F 0 A_SpawnItem("LittleSpellCardBonus")
+			TENS N 1
+			goto Super::Death
+	}
+}
+ACTOR TenshiNS3HB : TenshiNS3 replaces TenshiNS3
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 Thing_ChangeTID(0,6004)
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,2,false)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS N 1
+			goto Super::Death
+	}
+}
+ACTOR TenshiEarthCalmingStoneHB : TenshiEarthCalmingStone replaces TenshiEarthCalmingStone
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 Thing_ChangeTID(0,6005)
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,1,true)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS F 0 A_SpawnItem("LittleSpellCardBonus")
+			TENS L 1 // Another death frame
+			goto Super::Death
+	}
+}
+ACTOR TenshiScarletWeatherRhapsodyHB : TenshiScarletWeatherRhapsody replaces TenshiScarletWeatherRhapsody
+{
+	Tag "Tenshi Hinanawi"
+	States
+	{
+		See:
+			TENS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,16,0,true)
+			goto Super::See
+		Death:
+			TENS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			TENS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			TENS F 0 A_SpawnItem("BigSpellCardBonus")
+			goto Super::Death
+	}
+}
+
+/**** RAN ****/
+// How the hell should I fight her in that 2-D perspective !?!?!?
+// (Oh, I know. I should do it like in Touhou. Screw that I can't even finish any Touhou game).
+
+ACTOR RanYakumoHB : RanYakumo replaces RanYakumo
+{
+	Tag "Ran Yakumo"
+	States
+	{
+		See:
+			RANY F 0 ACS_NamedExecute("BHI_BossStartAttack",0,202,2,false)
+			RANY F 0 A_GiveToTarget("GlobalStatExtra")
+			goto Super::See
+		Death:
+			RANY F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			RANY F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			RANY C 1
+			// Fix the issue that Ran gets spell break at NONspell.
+			// UPD: Seems to be already fixed.
+			/* RANY C 0 A_GiveInventory("BulletDeathTrigger",1)
+			RANY C 0 A_NoBlocking
+			RANY C 0 A_PlaySound("touhou/nuefire")
+			RANY CCCCCCCCCC 2 A_FadeOut(0.1)
+			Stop */
+			goto Super::Death
+	}
+}
+ACTOR RanProtectionOfZenkiAndGokiHB : RanProtectionOfZenkiAndGoki replaces RanProtectionOfZenkiAndGoki
+{
+	Tag "Ran Yakumo"
+	States
+	{
+		See:
+			RANY F 0 Thing_ChangeTID(0,6016)
+			RANY F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6016,1,true)
+			goto Super::See
+		Death:
+			RANY F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			RANY F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			RANY F 0 A_SpawnItem("LittleSpellCardBonus")
+			RANY C 1
+			goto Super::Death
+	}
+}
+ACTOR RanPrincessTenkoHB : RanPrincessTenko replaces RanPrincessTenko
+{
+	Tag "Ran Yakumo"
+	States
+	{
+		See:
+			RANY F 0 Thing_ChangeTID(0,6017)
+			RANY F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6017,0,true)
+			goto Super::See
+		Death:
+			RANY F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			RANY F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			RANY F 0 A_SpawnItem("MediumSpellCardBonus")
+			goto Super::Death
+	}
+}
+
+/**** YUKARI ****/
+// I even frightened to edit something like this, let alone fight with SUCH OVERPOWERED Yukar--
+// ...[The author of this mod has been gapped out and is not available in this universe. Please contact him later.]
+
+ACTOR YukariHB : Yukari replaces Yukari
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,202,10,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariDreamsAndRealityHB : YukariDreamsAndReality replaces YukariDreamsAndReality
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6001)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS2HB : YukariNS2 replaces YukariNS2
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6002)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,9,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariMotionAndStillnessHB : YukariMotionAndStillness replaces YukariMotionAndStillness
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6003)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,8,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS3HB : YukariNS3 replaces YukariNS3
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6004)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,8,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariLightAndDarknessHB : YukariLightAndDarkness replaces YukariLightAndDarkness
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6005)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,7,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS4HB : YukariNS4 replaces YukariNS4
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6006)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,7,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariStraightAndCurveHB : YukariStraightAndCurve replaces YukariStraightAndCurve
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6007)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,6,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS5HB : YukariNS5 replaces YukariNS5
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6008)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,6,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariWaveAndParticleHB : YukariWaveAndParticle replaces YukariWaveAndParticle
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6009)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,5,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS6HB : YukariNS6 replaces YukariNS6
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6010)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,5,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariYakumoSpiritingAwayHB : YukariYakumoSpiritingAway replaces YukariYakumoSpiritingAway
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See: // We start a waiter script here
+			YKRI F 0 ACS_NamedExecute("BHI_StartYukari",0)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("MediumSpellCardBonus")
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS7HB : YukariNS7 replaces YukariNS7
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6012)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6012,4,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariDoubleDeathButterflyHB : YukariDoubleDeathButterfly replaces YukariDoubleDeathButterfly
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6013)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6013,3,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("BigSpellCardBonus") // Let's go mad!
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariNS8HB : YukariNS8 replaces YukariNS8
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI A 0 // I give up. I don't know why somiteimes nonspell BHI_BossStartAttack is not called, especially here.
+			YKRI F 0 Thing_ChangeTID(0,6014)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6014,3,false)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI K 1
+			goto Super::Death
+	}
+}
+ACTOR YukariRanYakumoHB : YukariRanYakumo replaces YukariRanYakumo
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 Thing_ChangeTID(0,6015)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6015,2,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI F 0 A_SpawnItem("BigSpellCardBonus")
+			YKRI K 1 // Here we go into a survival attack
+			YKRI F 0 ACS_NamedExecute("BHI_YukariStartSurvival",0)
+			goto Super::Death
+	}
+}
+ACTOR YukariLifeAndDeathHB : YukariLifeAndDeath replaces YukariLifeAndDeath
+{
+	Tag "Yukari Yakumo"
+	States
+	{
+		See:
+			YKRI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,225,0,true)
+			goto Super::See
+		Death:
+			YKRI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+			YKRI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+			YKRI FFFF 0 A_SpawnItem("BigSpellCardBonus")
+			goto Super::Death
+	}
+}

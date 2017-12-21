@@ -1,0 +1,19 @@
+// Give player extends at specific score levels
+// (it is reasonable that touhou_use_scoring should also be enabled),
+// and allow to raise maximum health with these items.
+server int touhou_use_extends          = 1;
+
+// Spawn score items and show score in HUD
+// (alternative HUD has to have hud_showscore enabled/disabled according to it).
+// Note: power item will still give score; but it doesn't matter if extends are off.
+server int touhou_use_scoring          = 1;
+
+// Spawn power (and score) items when killing fairies on level 13 and more.
+server int touhou_spawn_more_items     = 1;
+
+// Show boss health and spell card indicators while fighting.
+server int touhou_show_boss_bars       = 1;
+
+// Allow boss drop score and power items on levels >= 13.
+// Bosses on lower levels (e. g. Komachi) will drop power (and score) always.
+server int touhou_bosses_drop_powerups = 1;
