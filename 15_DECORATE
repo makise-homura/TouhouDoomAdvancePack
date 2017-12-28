@@ -30,25 +30,15 @@ ACTOR RumiaMidBossHB : RumiaMidBoss replaces RumiaMidBoss
 	}
 }
 
-// Note: midboss Rumia spent distinctive amount of time between See and Missile
-// states, so spell card declaration is a bit too late. She is shootable, though,
-// even before she declared her spell card. We fix this here.
 ACTOR RumiaMoonlightRayHB : RumiaMoonlightRay replaces RumiaMoonlightRay
 {
 	Tag "Rumia"
 	States
 	{
-		Melee:       // Here we have a fix for bug when Rumia is vulnerable
-		Missile:     // while declaring her midboss spell card.
-			RMIA I 0 // We should have an empty line here for some reason
-			RMIA I 0 A_UnSetInvulnerable
-			Goto Super::Missile
 		See:
 			RMIA F 0 Thing_ChangeTID(0,6005)
 			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
-			RMIA A 0 
-			RMIA F 2 A_Chase
-			Loop
+			goto Super::See
 		Death:
 			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
 			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
