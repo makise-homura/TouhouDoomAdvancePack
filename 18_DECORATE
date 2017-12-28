@@ -42,6 +42,7 @@ ACTOR GenericScoreItem : ScoreItem
 	-COUNTITEM
 	Radius 32
 	Height 32
+	Inventory.PickupMessage ""
 	Inventory.PickupSound "power/pickup"
 }
 
