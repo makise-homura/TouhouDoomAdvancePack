@@ -68,19 +68,17 @@ script 1 ENTER
 			Score = 0; Power = 0; // Just in case player cheated
 			switch(GameSkill())
 			{
-				case 0:
+				case 0: // Easy
 					Spellcards = 14;
 					break;
-				case 1:
-					Spellcards = 22;
+				case 1: // Normal
+					Spellcards = 21;
 					break;
-				case 2:
-					Spellcards = 25;
-					break;
-				default: // Lunatic/Ultra
-					Spellcards = 26;
+				default: // Hard/Lunatic/Ultra
+					Spellcards = 23;
 					break;
 			}
+			Spellcards += GameSkill(); // Patchouli has this addition to game skill
 			if (Extra) Spellcards += 13;
 			break;
 		case 2:
@@ -92,7 +90,7 @@ script 1 ENTER
 			Spellcards = 16;
 			if (GameSkill() > 1) Spellcards += 3;
 			if (Extra)  Spellcards += 12;
-			if (SStage) Spellcards += 5;
+			if (SStage) Spellcards += 7;
 			break;
 	}
 	
