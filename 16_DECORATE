@@ -919,7 +919,7 @@ ACTOR KoishiPraiseBenellusHB : KoishiPraiseBenellus replaces KoishiPraiseBenellu
 			KOIS FFFFFF 0 A_SpawnItem("BigSpellCardBonus") // Heh, capture this WHOLE BUNCH at last! 
 			// Survival attack will be started after a delay
 			KOIS F 0 ACS_NamedExecute("BHI_KoishiStartSurvival3",0)
-			KOIS O 1 // We left it here, bacause it's not last spell card (skeletons follow!)
+			KOIS O 1 // We left it here, because it's not last spell card (skeletons follow!)
 			goto Super::Death
 	}
 }
