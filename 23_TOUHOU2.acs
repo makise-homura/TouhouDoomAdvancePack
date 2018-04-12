@@ -42,23 +42,43 @@ Script "THS_Extend" (void)
 		PlaySound(0, "player/extend");
 }
 
-// This script gives player an extend on 100k, 200k, 300k, 500k and 1M points.
+// This script gives player an extend:
+// - on 100k, 200k, 300k, 500k, 700k and 1M points (if "rare" extends are disabled);
+// - on 200k, 400k, 600k, 1M, 1.4M and 2M points (if "rare" extends are enabled).
 Script "THS_AddExtends" ENTER
 {
 	int score = GetActorProperty(0, APROP_SCORE);
 
-	// Prevent giving extends at level start, when LastScore == 0
-	if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||
-	    (THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000) ||
-	    (THS_LastScore != 0 && THS_LastScore < 300000  && score >= 300000) ||
-	    (THS_LastScore != 0 && THS_LastScore < 500000  && score >= 500000) ||
-	    (THS_LastScore != 0 && THS_LastScore < 700000  && score >= 700000) ||
-	    (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) )
+	// "Rare" extends.
+	if (GetCVar("touhou_use_extends") == 1)
 	{
-		if (GetCVar("touhou_use_extends"))
+		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
+		if ((THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000)  ||
+		    (THS_LastScore != 0 && THS_LastScore < 400000  && score >= 400000)  ||
+		    (THS_LastScore != 0 && THS_LastScore < 600000  && score >= 600000)  ||
+		    (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 1400000 && score >= 1400000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 2000000 && score >= 2000000) )
+		{
 			ACS_NamedExecute("THS_Extend", 0);
+		}
 	}
 
+	// "Normal" extends.
+	if (GetCVar("touhou_use_extends") == 2)
+	{
+		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
+		if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 300000  && score >= 300000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 500000  && score >= 500000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 700000  && score >= 700000) ||
+		    (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) )
+		{
+			ACS_NamedExecute("THS_Extend", 0);
+		}
+	}
+	
 	THS_LastScore = score;
     Delay (1);
     Restart;
