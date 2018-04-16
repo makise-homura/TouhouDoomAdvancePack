@@ -1,8 +1,8 @@
 OptionValue "ExtendsValues"
 {
     0, "None"
-    1, "Rare"
-    2, "Often"
+    1, "Often"
+    2, "Rare"
 }
 
 OptionValue "DisableEnableValues"
