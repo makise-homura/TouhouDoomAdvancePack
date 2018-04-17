@@ -50,7 +50,7 @@ Script "THS_AddExtends" ENTER
 	int score = GetActorProperty(0, APROP_SCORE);
 
 	// "Rare" extends.
-	if (GetCVar("touhou_use_extends") == 1)
+	if (GetCVar("touhou_use_extends") == 2)
 	{
 		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
 		if ((THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000)  ||
@@ -65,7 +65,7 @@ Script "THS_AddExtends" ENTER
 	}
 
 	// "Normal" extends.
-	if (GetCVar("touhou_use_extends") == 2)
+	if (GetCVar("touhou_use_extends") == 1)
 	{
 		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
 		if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||

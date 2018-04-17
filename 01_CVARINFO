@@ -1,10 +1,10 @@
 // Give player extends at specific score levels
 // (it is reasonable that touhou_use_scoring should also be enabled),
 // and allow to raise maximum health with these items:
-// 2 gives them at 100k, 200k, 300k, 500k, 700k and 1000k points;
-// 1 gives them twice more rare at 200k, 400k, 600k, 1000k, 1400k and 2000k;
+// 1 gives them at 100k, 200k, 300k, 500k, 700k and 1000k points;
+// 2 gives them twice more rare at 200k, 400k, 600k, 1000k, 1400k and 2000k;
 // 0 removes extends completely.
-server int touhou_use_extends          = 2;
+server int touhou_use_extends          = 1;
 
 // Spawn score items and show score in HUD
 // (alternative HUD has to have hud_showscore enabled/disabled according to it).
