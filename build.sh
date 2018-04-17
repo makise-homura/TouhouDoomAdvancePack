@@ -6,6 +6,7 @@ MUSICURL="https://www.youtube.com/watch?v=Qys4Oi1-680"
 WAD="TouhouDoomAdvancePack.wad"
 
 ACCURL="https://github.com/rheit/acc"
+WTURL="https://github.com/makise-homura/wadtools"
 
 usage()
 {
@@ -27,11 +28,16 @@ error_exit()
 deliver_wadbuild()
 {
 	echo
-	echo "-- None found, but we will compile it now..."
+	echo "-- None found, but we will download and compile it now..."
 	[ -z "$CC" ] && CC=gcc
+	PWD=`pwd`
 	CC=`which $CC`
+	GIT=`which git`
+	[ -x "$GIT" ] || error_exit 3 "No git tool found. Clone git repository $WTURL to $PWD/wadtools manually."
 	[ -x "$CC" ] || error_exit 3 "No $CC compiler found. Specify CC=your_c_compiler or install gcc."
-	$CC wadbuild.c -o wadbuild || compile_error wadbuild
+	$GIT clone $WTURL || error_exit 1 "Unable to clone git repository $WTURL. Clone it to $PWD/wadtools manually."
+	cd wadtools && $CC wadbuild.c -o wadbuild || error_exit 1 "Unable to build wadbuild."
+	cd ..
 }
 
 deliver_acc()
@@ -54,7 +60,7 @@ deliver_music()
 	[ -x "$YDL" ] || error_exit 3 "No youtube-dl tool found. You may acquire it by executing \`sudo pip install youtube-dl'."
 	echo
 	echo "-- Downloading $MUSICFILE.wav from $MUSICURL..."
-	$YDL -x --audio-format=wav -o "$MUSICFILE.%(ext)s" $MUSICURL || error_exit "Unable to download $MUSICFILE.wav. Is youtube-dl malfunctioning? Try updating it with -U."
+	$YDL -x --audio-format=wav -o "$MUSICFILE.%(ext)s" $MUSICURL || error_exit 1 "Unable to download $MUSICFILE.wav. Is youtube-dl malfunctioning? Try updating it with -U."
 }
 
 clean_all()
@@ -100,7 +106,7 @@ echo "-- Compiling STATMAP/SCRIPTS..."
 
 echo
 echo "-- Compiling $WAD..."
-CMD="./wadbuild $WAD"
+CMD="./wadtools/wadbuild $WAD"
 for FILE in ??_*; do LUMP=`echo $FILE | sed 's/^[0-9][0-9]_//g;s/\..*//'`; CMD="$CMD $FILE $LUMP"; done
 
 echo
@@ -111,7 +117,3 @@ eval $CMD
 echo
 echo "*** $WAD has been built successfully. ***"
 exit 0
-
-
-# Get required resources
-
