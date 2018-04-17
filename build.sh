@@ -60,7 +60,7 @@ deliver_music()
 	[ -x "$YDL" ] || error_exit 3 "No youtube-dl tool found. You may acquire it by executing \`sudo pip install youtube-dl'."
 	echo
 	echo "-- Downloading $MUSICFILE.wav from $MUSICURL..."
-	$YDL -x --audio-format=wav -o "$MUSICFILE.%(ext)s" $MUSICURL || error_exit 1 "Unable to download $MUSICFILE.wav. Is youtube-dl malfunctioning? Try updating it with -U."
+	$YDL -x --audio-format=wav -o "$MUSICFILE.%(ext)s" $MUSICURL || error_exit 1 "Unable to download $MUSICFILE.wav. Is youtube-dl not functioning? Try updating it with -U."
 }
 
 clean_all()
@@ -90,7 +90,7 @@ echo "-- Checking for acc..."
 
 echo
 echo "-- Checking for wadbuild..."
-[ -x "./wadbuild" ] || deliver_wadbuild
+[ -x "./wadtools/wadbuild" ] || deliver_wadbuild
 
 echo
 echo "-- Checking for $MUSICFILE.wav..."
