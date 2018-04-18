@@ -4,10 +4,10 @@
 int HELPSTR2 = 
 "You may configure Touhou DOOM score/healthbar mod behavior using following CVARs:\n\
     touhou_use_scoring 0/1: Enable point items and score system.\n\
-	touhou_use_extends 0/1: Give life extends for earning some high score.\n\
-	touhou_spawn_more_items 0/1: Don't stop dropping power (and maybe points) from killed enemies once you reach MAP13.\n\
-	touhou_bosses_drop_powerups 0/1: Let do the same for bosses.\n\
-	touhou_show_boss_bars 0/1: Show boss health bar and number of her spell cards.";
+    touhou_use_extends 0/1: Give life extends for earning some high score.\n\
+    touhou_spawn_more_items 0/1: Don't stop dropping power (and maybe points) from killed enemies once you reach MAP13.\n\
+    touhou_bosses_drop_powerups 0/1: Let do the same for bosses.\n\
+    touhou_show_boss_bars 0/1: Show boss health bar and number of her spell cards.";
 
 Script "CVARInfo" OPEN
 {
@@ -25,21 +25,21 @@ int THS_LastScore = 0;
 // This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
 Script "THS_DrawScore" ENTER
 {
-	// Level 33 is mission end stub-level
-	if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && GetLevelInfo(LEVELINFO_LEVELNUM) != 33)
-	{
-		HudMessageBold(s:"Score: ", d:GetActorProperty(0,APROP_SCORE); HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-	}
+    // Level 33 is mission end stub-level
+    if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && GetLevelInfo(LEVELINFO_LEVELNUM) != 33)
+    {
+        HudMessageBold(s:"Score: ", d:GetActorProperty(0,APROP_SCORE); HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+    }
     Delay (1);
-    Restart;	
+    Restart;    
 }
 
 // This script does special effects (centered on-screen message and sound) if extend is awarded (not just picked up).
 Script "THS_Extend" (void)
 {
-		Print(s:"Extend!");
-		GiveInventory("Extend", 1);
-		PlaySound(0, "player/extend");
+    Print(s:"Extend!");
+    GiveInventory("Extend", 1);
+    PlaySound(0, "player/extend");
 }
 
 // This script gives player an extend:
@@ -47,39 +47,39 @@ Script "THS_Extend" (void)
 // - on 200k, 400k, 600k, 1M, 1.4M and 2M points (if "rare" extends are enabled).
 Script "THS_AddExtends" ENTER
 {
-	int score = GetActorProperty(0, APROP_SCORE);
+    int score = GetActorProperty(0, APROP_SCORE);
 
-	// "Rare" extends.
-	if (GetCVar("touhou_use_extends") == 2)
-	{
-		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
-		if ((THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000)  ||
-		    (THS_LastScore != 0 && THS_LastScore < 400000  && score >= 400000)  ||
-		    (THS_LastScore != 0 && THS_LastScore < 600000  && score >= 600000)  ||
-		    (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 1400000 && score >= 1400000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 2000000 && score >= 2000000) )
-		{
-			ACS_NamedExecute("THS_Extend", 0);
-		}
-	}
+    // "Rare" extends.
+    if (GetCVar("touhou_use_extends") == 2)
+    {
+        // Compare with 0 to prevent giving extends at level start, when LastScore == 0
+        if ((THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 400000  && score >= 400000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 600000  && score >= 600000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) ||
+            (THS_LastScore != 0 && THS_LastScore < 1400000 && score >= 1400000) ||
+            (THS_LastScore != 0 && THS_LastScore < 2000000 && score >= 2000000) )
+        {
+            ACS_NamedExecute("THS_Extend", 0);
+        }
+    }
 
-	// "Normal" extends.
-	if (GetCVar("touhou_use_extends") == 1)
-	{
-		// Compare with 0 to prevent giving extends at level start, when LastScore == 0
-		if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 300000  && score >= 300000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 500000  && score >= 500000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 700000  && score >= 700000) ||
-		    (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) )
-		{
-			ACS_NamedExecute("THS_Extend", 0);
-		}
-	}
-	
-	THS_LastScore = score;
+    // "Normal" extends.
+    if (GetCVar("touhou_use_extends") == 1)
+    {
+        // Compare with 0 to prevent giving extends at level start, when LastScore == 0
+        if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||
+            (THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000) ||
+            (THS_LastScore != 0 && THS_LastScore < 300000  && score >= 300000) ||
+            (THS_LastScore != 0 && THS_LastScore < 500000  && score >= 500000) ||
+            (THS_LastScore != 0 && THS_LastScore < 700000  && score >= 700000) ||
+            (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) )
+        {
+            ACS_NamedExecute("THS_Extend", 0);
+        }
+    }
+    
+    THS_LastScore = score;
     Delay (1);
     Restart;
 }
@@ -87,13 +87,13 @@ Script "THS_AddExtends" ENTER
 // This script removes excess health according to number of EXTENDs given to player
 Script "THS_WatchExtend" ENTER
 {
-	int health = GetActorProperty(0, APROP_HEALTH);
-	int maxhealth = 200;
-	if (GetCVar("touhou_use_extends"))
-	{
-		maxhealth += CheckInventory("Extend") * 100;
-	}
-	if (health > maxhealth) SetActorProperty(0, APROP_HEALTH, maxhealth);
+    int health = GetActorProperty(0, APROP_HEALTH);
+    int maxhealth = 200;
+    if (GetCVar("touhou_use_extends"))
+    {
+        maxhealth += CheckInventory("Extend") * 100;
+    }
+    if (health > maxhealth) SetActorProperty(0, APROP_HEALTH, maxhealth);
     Delay (1);
     Restart;
 }
@@ -102,17 +102,17 @@ Script "THS_WatchExtend" ENTER
 // They are needed because some old Zandronums and ZDooms do not have GetCVar in DECORATE.
 Script "THS_ShouldFairyNotSpawnItems" (void)
 {
-	SetResultValue(GetCVar("touhou_spawn_more_items") < 1);
+    SetResultValue(GetCVar("touhou_spawn_more_items") < 1);
 }
 
 Script "THS_ShouldWeNotUseScoring" (void)
 {
-	SetResultValue(GetCVar("touhou_use_scoring") < 1);
+    SetResultValue(GetCVar("touhou_use_scoring") < 1);
 }
 
 Script "THS_ShouldBossesNotDropPowerups" (void)
 {
-	SetResultValue(GetCVar("touhou_bosses_drop_powerups") < 1);
+    SetResultValue(GetCVar("touhou_bosses_drop_powerups") < 1);
 }
 
 // This script will save stats for final "All clear" statistics.
@@ -120,23 +120,23 @@ Script "THS_ShouldBossesNotDropPowerups" (void)
 // we warped onto statistics map.
 Script "THS_SaveStats" UNLOADING
 {
-	GiveInventory("GlobalStatKills",  GetLevelInfo(LEVELINFO_KILLED_MONSTERS));
-	GiveInventory("GlobalStatItems",  GetLevelInfo(LEVELINFO_FOUND_ITEMS));
-	GiveInventory("GlobalStatSecrets",GetLevelInfo(LEVELINFO_FOUND_SECRETS));
+    GiveInventory("GlobalStatKills",  GetLevelInfo(LEVELINFO_KILLED_MONSTERS));
+    GiveInventory("GlobalStatItems",  GetLevelInfo(LEVELINFO_FOUND_ITEMS));
+    GiveInventory("GlobalStatSecrets",GetLevelInfo(LEVELINFO_FOUND_SECRETS));
 
-	int MapNum = GetLevelInfo(LEVELINFO_LEVELNUM);
-	if (MapNum >= 17)      GiveInventory("GlobalEpisode3", 1);
-	else if (MapNum >= 10) GiveInventory("GlobalEpisode2", 1);
-	// Otherwise episode 1
+    int MapNum = GetLevelInfo(LEVELINFO_LEVELNUM);
+    if (MapNum >= 17)      GiveInventory("GlobalEpisode3", 1);
+    else if (MapNum >= 10) GiveInventory("GlobalEpisode2", 1);
+    // Otherwise episode 1
 }
 
 // This script will determine if we entered secret level.
 Script "THS_CheckSecretLevel" ENTER
 {
-	if (GetLevelInfo(LEVELINFO_LEVELNUM) == 31)
-	{
-		GiveInventory("GlobalStatSStage", 1);
-	}
+    if (GetLevelInfo(LEVELINFO_LEVELNUM) == 31)
+    {
+        GiveInventory("GlobalStatSStage", 1);
+    }
 }
 
 /*****************************
@@ -158,98 +158,98 @@ str  BHI_BossName       = "No Boss";
 // This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
 Script "THS_DrawSpellCardBonus" ENTER
 {
-	if(BHI_BossIsAlive)
-	{
-		// Note: message has "\nS" at end; it is used to prevent overlap with current score value.
-		// First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
-		if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && BHI_BossIsSpellNow)
-		{
-			if (BHI_IsSurvival)
-			{
-				HudMessageBold(s:"Bonus: 100000\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-			}
-			else
-			{
-				int bonus = 100000 * (1050 - (Timer() - BHI_SpellStartAt)) / 1050; // points
-				if (bonus < 10)
-					HudMessageBold(s:"Bonus: Failed\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-				else
-					HudMessageBold(s:"Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-			}
-		}
-	}
+    if(BHI_BossIsAlive)
+    {
+        // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
+        // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+        if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && BHI_BossIsSpellNow)
+        {
+            if (BHI_IsSurvival)
+            {
+                HudMessageBold(s:"Bonus: 100000\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            }
+            else
+            {
+                int bonus = 100000 * (1050 - (Timer() - BHI_SpellStartAt)) / 1050; // points
+                if (bonus < 10)
+                    HudMessageBold(s:"Bonus: Failed\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                else
+                    HudMessageBold(s:"Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            }
+        }
+    }
     Delay (1);
-    Restart;	
+    Restart;    
 }
 
 // This script is to be called when boss starts any attack, i.e. in the same place where script 602 is called, or in See state.
 Script "BHI_BossStartAttack" (int BHI_BossThingId, int BHI_SpellCardsRemaining, int BHI_IsSpellCardNow)
 {
-	// Initialize parameters
-	BHI_BossName       = GetActorProperty (BHI_BossThingId, APROP_NAMETAG);
+    // Initialize parameters
+    BHI_BossName       = GetActorProperty (BHI_BossThingId, APROP_NAMETAG);
     BHI_BossMaxHealth  = GetActorProperty (BHI_BossThingId, APROP_SPAWNHEALTH);
-	BHI_BossSpellCards = BHI_SpellCardsRemaining;
-	BHI_BossIsSpellNow = BHI_IsSpellCardNow;
-	BHI_BossIsAlive    = true;
-	BHI_IsSurvival     = false;
-	BHI_SpellStartAt   = Timer();
+    BHI_BossSpellCards = BHI_SpellCardsRemaining;
+    BHI_BossIsSpellNow = BHI_IsSpellCardNow;
+    BHI_BossIsAlive    = true;
+    BHI_IsSurvival     = false;
+    BHI_SpellStartAt   = Timer();
 
-	// Constantly update health
-	while(true)
-	{
-		BHI_BossHealth = GetActorProperty (BHI_BossThingId, APROP_HEALTH);
-		Delay (1);
-	}
+    // Constantly update health
+    while(true)
+    {
+        BHI_BossHealth = GetActorProperty (BHI_BossThingId, APROP_HEALTH);
+        Delay (1);
+    }
 }
 
 // This script is to be called when boss starts survival spell card; boss thing may be inexistent now.
 Script "BHI_BossStartSurvivalAttack" (int BHI_SpellCardsRemaining)
 {
-	// BHI_BossName will be reused from previous spell cards
-	BHI_BossMaxHealth  = 100;
-	BHI_BossSpellCards = BHI_SpellCardsRemaining;
-	BHI_BossIsSpellNow = true;
-	BHI_BossIsAlive    = true;
-	BHI_IsSurvival     = true;
-	BHI_BossHealth     = 100;
+    // BHI_BossName will be reused from previous spell cards
+    BHI_BossMaxHealth  = 100;
+    BHI_BossSpellCards = BHI_SpellCardsRemaining;
+    BHI_BossIsSpellNow = true;
+    BHI_BossIsAlive    = true;
+    BHI_IsSurvival     = true;
+    BHI_BossHealth     = 100;
 
-	while(true) // For some reason we should keep this script running until termination
-	{
-		Delay (1);
-	}
+    while(true) // For some reason we should keep this script running until termination
+    {
+        Delay (1);
+    }
 }
 
 // This script is to be called when boss stops any attack, i.e. in her Death state.
 Script "BHI_BossStopAttack" (void)
 {
-	// Note: message has "\nS" at end; it is used to prevent overlap with current score value.
-	// First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
-	if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && BHI_BossIsSpellNow)
-	{
-		if (BHI_IsSurvival) // Survival spell: constant bonus, no depletion.
-		{
-			HudMessageBold(s:"Get Spell Card Bonus: 100000\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-			SetActivatorToTarget(0); // I spent nearly hours before found out that this is required!
-			GiveInventory("GenericScoreItem",100000);
-		}
-		else
-		{
-			int bonus = Timer() - BHI_SpellStartAt; // time spell card lasts
-			if (bonus > 1050) // You have to capture spell card in 30 seconds, or you fail the bonus.
-			{
-				HudMessageBold(s:"Bonus Failed!\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-			}
-			else
-			{
-				bonus = 100000 * (1050 - bonus) / 1050; // points given after spell card capture
-				if (bonus < 10) bonus = 10; // suppress zero and negative bonus, if it appears somehow
-				HudMessageBold(s:"Get Spell Card Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
-				SetActivatorToTarget(0);
-				GiveInventory("GenericScoreItem", bonus);
-			}
-		}
-	}
-	BHI_BossIsAlive = false;
+    // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
+    // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+    if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && BHI_BossIsSpellNow)
+    {
+        if (BHI_IsSurvival) // Survival spell: constant bonus, no depletion.
+        {
+            HudMessageBold(s:"Get Spell Card Bonus: 100000\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            SetActivatorToTarget(0); // I spent nearly hours before found out that this is required!
+            GiveInventory("GenericScoreItem",100000);
+        }
+        else
+        {
+            int bonus = Timer() - BHI_SpellStartAt; // time spell card lasts
+            if (bonus > 1050) // You have to capture spell card in 30 seconds, or you fail the bonus.
+            {
+                HudMessageBold(s:"Bonus Failed!\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            }
+            else
+            {
+                bonus = 100000 * (1050 - bonus) / 1050; // points given after spell card capture
+                if (bonus < 10) bonus = 10; // suppress zero and negative bonus, if it appears somehow
+                HudMessageBold(s:"Get Spell Card Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BHI_MSG_ID+1000, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                SetActivatorToTarget(0);
+                GiveInventory("GenericScoreItem", bonus);
+            }
+        }
+    }
+    BHI_BossIsAlive = false;
 }
 
 // Return a number according to skill level. If BHI_LHNE == 5678 (decimal),
@@ -259,21 +259,21 @@ Script "BHI_BossStopAttack" (void)
 // correspondingly (LHNE stands for four-digit "Lunatic/Hard/Normal/Easy").
 Script "BHI_SpellCardsBySkillLevel" (int BHI_LHNE)
 {
-	switch(GameSkill())
-	{
-		case 0:  // Easy
-			SetResultValue(BHI_LHNE % 10);
-			break;
-		case 1:  // Normal
-			SetResultValue((BHI_LHNE / 10) % 10);
-			break;
-		case 2:  // Hard
-			SetResultValue((BHI_LHNE / 100) % 10);
-			break;
-		default: // Lunatic and harder
-			SetResultValue(BHI_LHNE / 1000);
-			break;
-	}
+    switch(GameSkill())
+    {
+        case 0:  // Easy
+            SetResultValue(BHI_LHNE % 10);
+            break;
+        case 1:  // Normal
+            SetResultValue((BHI_LHNE / 10) % 10);
+            break;
+        case 2:  // Hard
+            SetResultValue((BHI_LHNE / 100) % 10);
+            break;
+        default: // Lunatic and harder
+            SetResultValue(BHI_LHNE / 1000);
+            break;
+    }
 }
 
 // For number of remaining spell cards of Patchouli, there is a bit different algorithm,
@@ -289,154 +289,154 @@ Script "BHI_PatchouliSpellCardEnter" (void) {BHI_PatchyLeft--;}
 // Original map do not steal. Started here, terminated at spawn of KoishiDekwSign.
 Script "BHI_KoishiWaitForSurvival1Start" OPEN
 {
-	if (GetLevelInfo(LEVELINFO_LEVELNUM) != 16) Terminate;
-	ScriptWait(54);
-	ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,5);
+    if (GetLevelInfo(LEVELINFO_LEVELNUM) != 16) Terminate;
+    ScriptWait(54);
+    ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,5);
 }
 // Candelabras. Started and terminated here.
 Script "BHI_KoishiStartSurvival2" (void)
 {
-	Delay(181); // Time to teleport to survival area
-	ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
-	Delay(75*35);
-	ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
-	ACS_NamedExecute("BHI_BossStopAttack",0);
-	Delay(1);
+    Delay(181); // Time to teleport to survival area
+    ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
+    Delay(75*35);
+    ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
+    ACS_NamedExecute("BHI_BossStopAttack",0);
+    Delay(1);
 }
 // Skeletons. Started here.
 Script "BHI_KoishiStartSurvival3" (void)
 {
-	Delay(356); // Time to spell card declaration
-	ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,0);
+    Delay(356); // Time to spell card declaration
+    ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,0);
 }
 
 // Komachi and Suika needs this
 Script "BHI_ResetSuikaAndKomachi" OPEN
 {
-	BHI_NewMaxHealth = 0;
+    BHI_NewMaxHealth = 0;
 }
 
 // Iku waiter script (called from corresponding See state)
 Script "BHI_StartIku" (void)
 {
-	ScriptWait(4);
-	ACS_NamedExecute("BHI_BossStartAttack",0,10,3,false);
+    ScriptWait(4);
+    ACS_NamedExecute("BHI_BossStartAttack",0,10,3,false);
 }
 
 // Tenshi waiter script (called from corresponding See state)
 Script "BHI_StartTenshi" (void)
 {
-	ScriptWait(2);
-	ACS_NamedExecute("BHI_BossStartAttack",0,14,4,false);
+    ScriptWait(2);
+    ACS_NamedExecute("BHI_BossStartAttack",0,14,4,false);
 }
 
 // Marisa waiter script (called from corresponding See state)
 Script "BHI_StartMarisa" (void)
 {
-	ScriptWait(56);
-	ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2211),true);
+    ScriptWait(56);
+    ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2211),true);
 }
 
 // Reimu waiter script (called from corresponding See state)
 Script "BHI_StartReimu" (void)
 {
-	ScriptWait(58);
-	ACS_NamedExecute("BHI_BossStartAttack",0,18,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),true);
+    ScriptWait(58);
+    ACS_NamedExecute("BHI_BossStartAttack",0,18,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),true);
 }
 
 // Yukari waiter script (called from corresponding See state)
 Script "BHI_StartYukari" (void)
 {
-	ScriptWait(64);
-	ACS_NamedExecute("BHI_BossStartAttack",0,225,4,true);
+    ScriptWait(64);
+    ACS_NamedExecute("BHI_BossStartAttack",0,225,4,true);
 }
 
 // Yukari survival spell terminator
 Script "BHI_YukariStartSurvival" (void)
 {
-	ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
-	Delay(75*35);
-	ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
-	ACS_NamedExecute("BHI_BossStopAttack",0);
-	Delay(1);
+    ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
+    Delay(75*35);
+    ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
+    ACS_NamedExecute("BHI_BossStopAttack",0);
+    Delay(1);
 }
 
 // This is worker-script waiting for attack starts, and showing indicator then.
 Script "BHI_BossHealthIndicatorLoop" ENTER
 {
-	// BossHealth bit less than 100000 idicates Suika or Komachi in theirs 'midboss defeated' state.
-	if (BHI_BossIsAlive && GetCVar("touhou_show_boss_bars") && (BHI_BossHealth < 90000 || BHI_BossHealth > 100000))
-	{
-		int counter;
+    // BossHealth bit less than 100000 idicates Suika or Komachi in theirs 'midboss defeated' state.
+    if (BHI_BossIsAlive && GetCVar("touhou_show_boss_bars") && (BHI_BossHealth < 90000 || BHI_BossHealth > 100000))
+    {
+        int counter;
 
-		int MaxHealth  = BHI_BossMaxHealth;
-		int SpellCards = BHI_BossSpellCards;
-		int BossHealth = BHI_BossHealth;
-		
-		// Komachi/Suika midboss hack: they appear with 100000+x health, and teleport
-		// to their final boss positions when their health comes to 100000; and then they
-		// get their real health (== spawn health) before being activated.
-		if (BossHealth > 100000)
-		{
-			if (BHI_NewMaxHealth == 0)
-			{
-				BHI_NewMaxHealth = BossHealth - 100000; // Save intital value
-			}
-			MaxHealth   = BHI_NewMaxHealth;
-			SpellCards  = 0; // such midbosses have no spell cards
-		    BossHealth -= 100000;
-		}
-		else
-		{
-			BHI_NewMaxHealth = 0;
-		}
+        int MaxHealth  = BHI_BossMaxHealth;
+        int SpellCards = BHI_BossSpellCards;
+        int BossHealth = BHI_BossHealth;
+        
+        // Komachi/Suika midboss hack: they appear with 100000+x health, and teleport
+        // to their final boss positions when their health comes to 100000; and then they
+        // get their real health (== spawn health) before being activated.
+        if (BossHealth > 100000)
+        {
+            if (BHI_NewMaxHealth == 0)
+            {
+                BHI_NewMaxHealth = BossHealth - 100000; // Save intital value
+            }
+            MaxHealth   = BHI_NewMaxHealth;
+            SpellCards  = 0; // such midbosses have no spell cards
+            BossHealth -= 100000;
+        }
+        else
+        {
+            BHI_NewMaxHealth = 0;
+        }
 
-		if (MaxHealth < 1) MaxHealth = 1;
-		int hdisp = BossHealth * 100 / MaxHealth;
-		if (hdisp > 100) hdisp = 100;
-		if (hdisp < 0) hdisp = 0;
-		
-		// Note: digits after decimal point in HudMessage specify alignment, not actual position!
+        if (MaxHealth < 1) MaxHealth = 1;
+        int hdisp = BossHealth * 100 / MaxHealth;
+        if (hdisp > 100) hdisp = 100;
+        if (hdisp < 0) hdisp = 0;
+        
+        // Note: digits after decimal point in HudMessage specify alignment, not actual position!
 
-		// Write boss name (in red, if it is spell card attack now, and in gold, if it is survival)
-		int namecolor = CR_WHITE;
-		SetFont ("SMALLFONT");
-		SetHudSize (606, 400, FALSE); // Health bar is 606 x 15 (inner 600 x 9)
-		if(BHI_BossIsSpellNow) namecolor = CR_RED;
-		if(BHI_IsSurvival) namecolor = CR_GOLD;
-		HudMessage (s:BHI_BossName; HUDMSG_PLAIN, BHI_MSG_ID + 108, namecolor, 0.1, 14.0, 0.1, 1.0);
+        // Write boss name (in red, if it is spell card attack now, and in gold, if it is survival)
+        int namecolor = CR_WHITE;
+        SetFont ("SMALLFONT");
+        SetHudSize (606, 400, FALSE); // Health bar is 606 x 15 (inner 600 x 9)
+        if(BHI_BossIsSpellNow) namecolor = CR_RED;
+        if(BHI_IsSurvival) namecolor = CR_GOLD;
+        HudMessage (s:BHI_BossName; HUDMSG_PLAIN, BHI_MSG_ID + 108, namecolor, 0.1, 14.0, 0.1, 1.0);
 
-		// Write empty health bar
-		SetFont ("MONHPBAR");
-		HudMessage (s:"A"; HUDMSG_PLAIN, BHI_MSG_ID + 109, 0, 300.0, 27.0, 0.1, 1.0);
+        // Write empty health bar
+        SetFont ("MONHPBAR");
+        HudMessage (s:"A"; HUDMSG_PLAIN, BHI_MSG_ID + 109, 0, 300.0, 27.0, 0.1, 1.0);
 
-		// Write spell cards count
-		SetFont ("STAR");
-		for (counter = 0; counter < SpellCards; counter++)
-		{
-			HudMessage (s:"A"; HUDMSG_PLAIN, BHI_MSG_ID + 110 + counter, 0, 600.2 - counter * 20.0, 10.0, 0.1, 1.0);
-		}
-		
-		// Write health bar items (up to 100 of 6 x 9 blocks)
-		for (counter = 0; counter < hdisp; counter++)
-		{
-			SetFont ("FILLNORM"); // By default, the bar shows as a green bar.
+        // Write spell cards count
+        SetFont ("STAR");
+        for (counter = 0; counter < SpellCards; counter++)
+        {
+            HudMessage (s:"A"; HUDMSG_PLAIN, BHI_MSG_ID + 110 + counter, 0, 600.2 - counter * 20.0, 10.0, 0.1, 1.0);
+        }
+        
+        // Write health bar items (up to 100 of 6 x 9 blocks)
+        for (counter = 0; counter < hdisp; counter++)
+        {
+            SetFont ("FILLNORM"); // By default, the bar shows as a green bar.
 
-			if (hdisp < 75) // If the hp is at a caution level (75%) Display a yellow bar.
-				SetFont ("FILLCAUT");
+            if (hdisp < 75) // If the hp is at a caution level (75%) Display a yellow bar.
+                SetFont ("FILLCAUT");
 
-			if (hdisp < 50) // If the hp is at a danger level (50%) Display an orange bar.
-				SetFont ("FILLDANG");
+            if (hdisp < 50) // If the hp is at a danger level (50%) Display an orange bar.
+                SetFont ("FILLDANG");
 
-			if (hdisp < 25) // If the hp is at a critical level (25%) Display a red bar.
-				SetFont ("FILLCRIT");
+            if (hdisp < 25) // If the hp is at a critical level (25%) Display a red bar.
+                SetFont ("FILLCRIT");
 
-			if(BHI_IsSurvival) // If it is survival attack, display a violet bar.
-				SetFont ("FILLSURV");
+            if(BHI_IsSurvival) // If it is survival attack, display a violet bar.
+                SetFont ("FILLSURV");
 
-			HudMessage (s:"A"; HUDMSG_PLAIN | HUDMSG_ALPHA, BHI_MSG_ID + 1 + counter, 0, 3.0 + counter * 6.0, 27.0, 0.1, 0.5);
-		}
-	}
+            HudMessage (s:"A"; HUDMSG_PLAIN | HUDMSG_ALPHA, BHI_MSG_ID + 1 + counter, 0, 3.0 + counter * 6.0, 27.0, 0.1, 0.5);
+        }
+    }
     Delay (1);
     Restart;
 }

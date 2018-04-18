@@ -15,35 +15,35 @@
 
 ACTOR RumiaMidBossHB : RumiaMidBoss replaces RumiaMidBoss
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 Thing_ChangeTID(0,6004)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1100),false)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RMIA H 1
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 Thing_ChangeTID(0,6004)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1100),false)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RMIA H 1
+            goto Super::Death
+    }
 }
 
 ACTOR RumiaMoonlightRayHB : RumiaMoonlightRay replaces RumiaMoonlightRay
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 Thing_ChangeTID(0,6005)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 Thing_ChangeTID(0,6005)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** RUMIA BOSS ****/
@@ -51,206 +51,206 @@ ACTOR RumiaMoonlightRayHB : RumiaMoonlightRay replaces RumiaMoonlightRay
 
 ACTOR RumiaHB : Rumia replaces Rumia
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,1,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2221),false)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RMIA M 1
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,1,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2221),false)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RMIA M 1
+            goto Super::Death
+    }
 }
 
 ACTOR RumiaNightBirdHB : RumiaNightBird replaces RumiaNightBird
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 Thing_ChangeTID(0,6001)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RMIA M 1
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 Thing_ChangeTID(0,6001)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RMIA M 1
+            goto Super::Death
+    }
 }
 
 ACTOR RumiaNS2HB : RumiaNS2 replaces RumiaNS2
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 Thing_ChangeTID(0,6002)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RMIA M 1
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 Thing_ChangeTID(0,6002)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RMIA M 1
+            goto Super::Death
+    }
 }
 
 ACTOR RumiaDemarcationHB : RumiaDemarcation replaces RumiaDemarcation
 {
-	Tag "Rumia"
-	States
-	{
-		See:
-			RMIA F 0 Thing_ChangeTID(0,6003)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
-			goto Super::See
-		Death:
-			RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Rumia"
+    States
+    {
+        See:
+            RMIA F 0 Thing_ChangeTID(0,6003)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
+            goto Super::See
+        Death:
+            RMIA F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            RMIA F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** DAIYOUSEI ****/
 
 ACTOR DaiyouseiHB : Daiyousei replaces Daiyousei
 {
-	Tag "Daiyousei"
-	States
-	{
-		See:
-			DAIY F 0 Thing_ChangeTID(0,6005)
-			DAIY F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,false)
-			goto Super::See
-		Death:
-			DAIY F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			DAIY F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Daiyousei"
+    States
+    {
+        See:
+            DAIY F 0 Thing_ChangeTID(0,6005)
+            DAIY F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,false)
+            goto Super::See
+        Death:
+            DAIY F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            DAIY F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** CIRNO ****/
 
 ACTOR CirnoHB : Cirno replaces Cirno
 {
-	Tag "Cirno"
-	States
-	{
-		See:
-			CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,3,false)
-			goto Super::See
-		Death:
-			CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			CIRN V 1
-			goto Super::Death
-	}
+    Tag "Cirno"
+    States
+    {
+        See:
+            CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,3,false)
+            goto Super::See
+        Death:
+            CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            CIRN V 1
+            goto Super::Death
+    }
 }
 
 ACTOR CirnoIcicleFallHB : CirnoIcicleFall replaces CirnoIcicleFall
 {
-	Tag "Cirno"
-	States
-	{
-		See:
-			CIRN F 0 Thing_ChangeTID(0,6001)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
-			goto Super::See
-		Death:
-			CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			CIRN V 1
-			goto Super::Death
-	}
+    Tag "Cirno"
+    States
+    {
+        See:
+            CIRN F 0 Thing_ChangeTID(0,6001)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+            goto Super::See
+        Death:
+            CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            CIRN V 1
+            goto Super::Death
+    }
 }
 
 ACTOR CirnoNS2HB : CirnoNS2 replaces CirnoNS2
 {
-	Tag "Cirno"
-	States
-	{
-		See:
-			CIRN F 0 Thing_ChangeTID(0,6002)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
-			goto Super::See
-		Death:
-			CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			CIRN V 1
-			goto Super::Death
-	}
+    Tag "Cirno"
+    States
+    {
+        See:
+            CIRN F 0 Thing_ChangeTID(0,6002)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
+            goto Super::See
+        Death:
+            CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            CIRN V 1
+            goto Super::Death
+    }
 }
 
 ACTOR CirnoPerfectFreezeHB : CirnoPerfectFreeze replaces CirnoPerfectFreeze
 {
-	Tag "Cirno"
-	States
-	{
-		See:
-			CIRN F 0 Thing_ChangeTID(0,6003)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
-			goto Super::See
-		Death:
-			CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			CIRN V 1
-			goto Super::Death
-	}
+    Tag "Cirno"
+    States
+    {
+        See:
+            CIRN F 0 Thing_ChangeTID(0,6003)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+            goto Super::See
+        Death:
+            CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            CIRN V 1
+            goto Super::Death
+    }
 }
 
 ACTOR CirnoDiamondBlizzardHB : CirnoDiamondBlizzard replaces CirnoDiamondBlizzard
 {
-	Tag "Cirno"
-	States
-	{
-		See:
-			CIRN F 0 Thing_ChangeTID(0,6004)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
-			goto Super::See
-		Death:
-			CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Cirno"
+    States
+    {
+        See:
+            CIRN F 0 Thing_ChangeTID(0,6004)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
+            goto Super::See
+        Death:
+            CIRN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            CIRN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** MEILING MIDBOSS ****/
 
 ACTOR MeilingMidBossHB : MeilingMidBoss replaces MeilingMidBoss
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6007)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,1,false)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL S 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6007)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,1,false)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL S 1
+            goto Super::Death
+    }
 }
 
 ACTOR MeilingMidbossSpellcardHB : MeilingMidbossSpellcard replaces MeilingMidbossSpellcard
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6008)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,0,true)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6008)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,0,true)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** MEILING BOSS ****/
@@ -258,130 +258,130 @@ ACTOR MeilingMidbossSpellcardHB : MeilingMidbossSpellcard replaces MeilingMidbos
 
 ACTOR MeilingHB : Meiling replaces Meiling
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4432),false)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4432),false)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingRainbowWindChimeHB : MeilingRainbowWindChime replaces MeilingRainbowWindChime
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6001)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3321),true)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6001)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3321),true)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingNS2HB : MeilingNS2 replaces MeilingNS2
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6002)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3321),false)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6002)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",3321),false)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingFlowerDreamVineHB : MeilingFlowerDreamVine replaces MeilingFlowerDreamVine
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6003)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6003)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingNS3HB : MeilingNS3 replaces MeilingNS3
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6004)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2221),false)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6004)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2221),false)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingColorfulRainHB : MeilingColorfulRain replaces MeilingColorfulRain
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6005)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1110),true)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			MEIL K 1
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6005)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1110),true)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            MEIL K 1
+            goto Super::Death
+    }
 }
 ACTOR MeilingExtremeColorTyphoonHB : MeilingExtremeColorTyphoon replaces MeilingExtremeColorTyphoon
 {
-	Tag "Hong Meiling"
-	States
-	{
-		See:
-			MEIL F 0 Thing_ChangeTID(0,6006)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
-			goto Super::See
-		Death:
-			MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Hong Meiling"
+    States
+    {
+        See:
+            MEIL F 0 Thing_ChangeTID(0,6006)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
+            goto Super::See
+        Death:
+            MEIL F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            MEIL F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** KOAKUMA ****/
 
 ACTOR KoakumaHB : Koakuma replaces Koakuma
 {
-	Tag "Koakuma"
-	States
-	{
-		See:
-			KOAK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,2,0,false)
-			goto Super::See
-		Death:
-			KOAK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			KOAK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Koakuma"
+    States
+    {
+        See:
+            KOAK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,2,0,false)
+            goto Super::See
+        Death:
+            KOAK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOAK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** PATCHOULI ****/
@@ -395,609 +395,609 @@ ACTOR KoakumaHB : Koakuma replaces Koakuma
 
 ACTOR PatchouliHB : Patchouli replaces Patchouli
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		See:
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),false)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        See:
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),false)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliNS2HB : PatchouliNS2 replaces PatchouliNS2
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6001)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft"),false)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6001)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft"),false)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliAgniShineHB : PatchouliAgniShine replaces PatchouliAgniShine
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6002)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6002)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliEmeraldMegalithHB : PatchouliEmeraldMegalith replaces PatchouliEmeraldMegalith
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6003)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6003)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliForestBlazeHB : PatchouliForestBlaze replaces PatchouliForestBlaze
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6004)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6004)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliLavaCromlechHB : PatchouliLavaCromlech replaces PatchouliLavaCromlech
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6005)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6005)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliMercuryPoisonHB : PatchouliMercuryPoison replaces PatchouliMercuryPoison
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6006)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6006)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliMetalFatigueHB : PatchouliMetalFatigue replaces PatchouliMetalFatigue
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6007)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6007)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliPrincessUndineHB : PatchouliPrincessUndine replaces PatchouliPrincessUndine
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6008)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6008)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliRageTrilithonHB : PatchouliRageTrilithon replaces PatchouliRageTrilithon
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6009)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6009)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliSylphaeHornHB : PatchouliSylphaeHorn replaces PatchouliSylphaeHorn
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6010)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6010)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR PatchouliWaterElfHB : PatchouliWaterElf replaces PatchouliWaterElf
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		Spawn:
-			TNT1 A 0 // We should have an empty line here for some reason
-			TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
-			goto Super::Spawn
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6011)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6011,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We should have an empty line here for some reason
+            TNT1 A 0 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
+            goto Super::Spawn
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6011)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6011,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 
 /**** SAKUYA MIDBOSS ****/
 
 ACTOR SakuyaMidbossHB : SakuyaMidboss replaces SakuyaMidboss
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,30,1,false)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,30,1,false)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaMisdirectionHB : SakuyaMisdirection replaces SakuyaMisdirection
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6006)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6006)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** SAKUYA BOSS ****/
 
 ACTOR SakuyaHB : Sakuya replaces Sakuya
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,32,3,false)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,32,3,false)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaJackTheLudoBileHB : SakuyaJackTheLudoBile replaces SakuyaJackTheLudoBile
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6001)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6001)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaNS2HB : SakuyaNS2 replaces SakuyaNS2
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6002)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6002)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaTheWorldHB : SakuyaTheWorld replaces SakuyaTheWorld
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6003)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6003)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaNS3HB : SakuyaNS3 replaces SakuyaNS3
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6004)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,false)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6004)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,false)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaKillingDollHB : SakuyaKillingDoll replaces SakuyaKillingDoll
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6005)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6005)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** SAKUYA MIDBOSS 2 ****/
 
 ACTOR SakuyaMidboss2HB : SakuyaMidboss2 replaces SakuyaMidboss2
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,1,false)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			SAKU S 1
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,10,1,false)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SAKU S 1
+            goto Super::Death
+    }
 }
 ACTOR SakuyaEternalMeekHB : SakuyaEternalMeek replaces SakuyaEternalMeek
 {
-	Tag "Sakuya Izayoi"
-	States
-	{
-		See:
-			SAKU F 0 Thing_ChangeTID(0,6009)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,0,true)
-			goto Super::See
-		Death:
-			SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Sakuya Izayoi"
+    States
+    {
+        See:
+            SAKU F 0 Thing_ChangeTID(0,6009)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,0,true)
+            goto Super::See
+        Death:
+            SAKU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SAKU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** REMILIA ****/
 
 ACTOR RemiliaHB : Remilia replaces Remilia
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,21,5,false)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,21,5,false)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaSpearTheGungnirHB : RemiliaSpearTheGungnir replaces RemiliaSpearTheGungnir
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6001)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,4,true)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6001)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,4,true)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaNS2HB : RemiliaNS2 replaces RemiliaNS2
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6002)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,4,false)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6002)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,4,false)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaDraculaCradleHB : RemiliaDraculaCradle replaces RemiliaDraculaCradle
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6003)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,3,true)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6003)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,3,true)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaNS3HB : RemiliaNS3 replaces RemiliaNS3
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6004)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,3,false)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6004)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,3,false)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaVampireIllusionHB : RemiliaVampireIllusion replaces RemiliaVampireIllusion
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6005)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,2,true)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6005)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,2,true)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaNS4HB : RemiliaNS4 replaces RemiliaNS4
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6006)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,2,false)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6006)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,2,false)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaScarletMeisterHB : RemiliaScarletMeister replaces RemiliaScarletMeister
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6007)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,1,true)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			RDED A 1
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6007)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,1,true)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            RDED A 1
+            goto Super::Death
+    }
 }
 ACTOR RemiliaScarletGensokyoHB : RemiliaScarletGensokyo replaces RemiliaScarletGensokyo
 {
-	Tag "Remilia Scarlet"
-	States
-	{
-		See:
-			REMI F 0 Thing_ChangeTID(0,6008)
-			REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,0,true)
-			goto Super::See
-		Death:
-			REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Remilia Scarlet"
+    States
+    {
+        See:
+            REMI F 0 Thing_ChangeTID(0,6008)
+            REMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,0,true)
+            goto Super::See
+        Death:
+            REMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            REMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** EXTRA STAGE KOAKUMA ****/
 
 ACTOR ExKoakumaHB : ExKoakuma replaces ExKoakuma
 {
-	Tag "Koakuma"
-	States
-	{
-		See:
-			KOAK F 0 Thing_ChangeTID(0,6015)
-			KOAK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6015,0,false)
-			goto Super::See
-		Death:
-			KOAK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			KOAK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Koakuma"
+    States
+    {
+        See:
+            KOAK F 0 Thing_ChangeTID(0,6015)
+            KOAK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6015,0,false)
+            goto Super::See
+        Death:
+            KOAK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOAK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** EXTRA STAGE PATCHOULI ****/
 
 ACTOR ExPatchouliHB : ExPatchouli replaces ExPatchouli
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		See:
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,11,2,true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        See:
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,11,2,true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR ExPatchouliRoyalFlareHB : ExPatchouliRoyalFlare replaces ExPatchouliRoyalFlare
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6013)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6013,1,true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			PTCH A 1
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6013)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6013,1,true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            PTCH A 1
+            goto Super::Death
+    }
 }
 ACTOR ExPatchouliPhilosopherStoneHB : ExPatchouliPhilosopherStone replaces ExPatchouliPhilosopherStone
 {
-	Tag "Patchouli Knowledge"
-	States
-	{
-		See:
-			PTCH F 0 Thing_ChangeTID(0,6014)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6014,0,true)
-			goto Super::See
-		Death:
-			PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Patchouli Knowledge"
+    States
+    {
+        See:
+            PTCH F 0 Thing_ChangeTID(0,6014)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6014,0,true)
+            goto Super::See
+        Death:
+            PTCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            PTCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }
 
 /**** FLANDRE ****/
@@ -1008,271 +1008,271 @@ ACTOR ExPatchouliPhilosopherStoneHB : ExPatchouliPhilosopherStone replaces ExPat
 
 ACTOR FlandreHB : Flandre replaces Flandre
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 A_GiveToTarget("GlobalStatExtra")
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,10,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 A_GiveToTarget("GlobalStatExtra")
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,10,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreCranberryTrapHB : FlandreCranberryTrap replaces FlandreCranberryTrap
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See: 
-			FLAN F 0 Thing_ChangeTID(0,6001)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See: 
+            FLAN F 0 Thing_ChangeTID(0,6001)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS2HB : FlandreNS2 replaces FlandreNS2
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6002)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,9,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6002)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,9,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreLaevateinnHB : FlandreLaevateinn replaces FlandreLaevateinn
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6003)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,8,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6003)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,8,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS3HB : FlandreNS3 replaces FlandreNS3
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6004)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,8,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6004)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,8,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreFourOfAKindHB : FlandreFourOfAKind replaces FlandreFourOfAKind
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6005)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,7,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6005)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,7,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS4HB : FlandreNS4 replaces FlandreNS4
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6006)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,7,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6006)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,7,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreKagomeKagomeHB : FlandreKagomeKagome replaces FlandreKagomeKagome
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,6,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,6,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS5HB : FlandreNS5 replaces FlandreNS5
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6007)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,6,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6007)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,6,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreMazeOfLoveHB : FlandreMazeOfLove replaces FlandreMazeOfLove
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,5,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,5,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS6HB : FlandreNS6 replaces FlandreNS6
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6008)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,5,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6008)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,5,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreStarbowBreakHB : FlandreStarbowBreak replaces FlandreStarbowBreak
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6009)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,4,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6009)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,4,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS7HB : FlandreNS7 replaces FlandreNS7
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6010)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,4,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6010)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,4,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreCatadioptricHB : FlandreCatadioptric replaces FlandreCatadioptric
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6011)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6011,3,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6011)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6011,3,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreNS8HB : FlandreNS8 replaces FlandreNS8
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 Thing_ChangeTID(0,6012)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6012,3,false)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 Thing_ChangeTID(0,6012)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6012,3,false)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1
+            goto Super::Death
+    }
 }
 ACTOR FlandreCounterClockHB : FlandreCounterClock replaces FlandreCounterClock
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,2,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			FLAN K 1 // Here we go into a survival attack
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1)
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,20,2,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            FLAN K 1 // Here we go into a survival attack
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1)
+            goto Super::Death
+    }
 }
 ACTOR FlandreRipplesOf495YearsHB : FlandreRipplesOf495Years replaces FlandreRipplesOf495Years
 {
-	Tag "Flandre Scarlet"
-	States
-	{
-		See:
-			// As we are just out of survival attack, we have to terminate previous script
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,46,0,true)
-			goto Super::See
-		Death:
-			FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-			FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-			goto Super::Death
-	}
+    Tag "Flandre Scarlet"
+    States
+    {
+        See:
+            // As we are just out of survival attack, we have to terminate previous script
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,46,0,true)
+            goto Super::See
+        Death:
+            FLAN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            FLAN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            goto Super::Death
+    }
 }

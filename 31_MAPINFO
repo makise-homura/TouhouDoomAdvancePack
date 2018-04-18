@@ -4,40 +4,40 @@
 
 map map09 "Scarlet Devil Basement"
 {
-	next = "STATMAP"
-	secretnext = "STATMAP"
-	sky1 = sky2
-	music = BASEMENT
-	cluster = 1
-	nocrouch
+    next = "STATMAP"
+    secretnext = "STATMAP"
+    sky1 = sky2
+    music = BASEMENT
+    cluster = 1
+    nocrouch
 }
 
 map map16 "The Lovely Visitor From Hell"
 {
-	next = "STATMAP"
-	sky1 = sky1
-	music = NONE
-	cluster = 2
-	nocrouch
+    next = "STATMAP"
+    sky1 = sky1
+    music = NONE
+    cluster = 2
+    nocrouch
 }
 
 map map20 "The Border of Gensokyo"
 {
-	sky1 = sky1
-	sky2 = sky2, 0.1
-	music = NONE
-	cluster = 3
-	nocrouch
-	next = "STATMAP"
+    sky1 = sky1
+    sky2 = sky2, 0.1
+    music = NONE
+    cluster = 3
+    nocrouch
+    next = "STATMAP"
 }
 
 map STATMAP "Statistics"
 {
-	levelnum = 33
-	nointermission
-	noautosavehint
-	music = NONE
-	next = EndTitle
-	secretnext = EndTitle
+    levelnum = 33
+    nointermission
+    noautosavehint
+    music = NONE
+    next = EndTitle
+    secretnext = EndTitle
 }
 
