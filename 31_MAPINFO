@@ -40,4 +40,3 @@ map STATMAP "Statistics"
     next = EndTitle
     secretnext = EndTitle
 }
-
