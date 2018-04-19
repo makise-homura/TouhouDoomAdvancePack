@@ -290,6 +290,7 @@ Script "BHI_PatchouliSpellCardEnter" (void) {BHI_PatchyLeft--;}
 Script "BHI_KoishiWaitForSurvival1Start" OPEN
 {
     if (GetLevelInfo(LEVELINFO_LEVELNUM) != 16) Terminate;
+    // If cutscenes are skipped, ScriptWait would still execute because script contains delays.
     ScriptWait(54);
     ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,5);
 }
@@ -319,6 +320,7 @@ Script "BHI_ResetSuikaAndKomachi" OPEN
 // Iku waiter script (called from corresponding See state)
 Script "BHI_StartIku" (void)
 {
+    // If cutscenes are skipped, ScriptWait would still execute because script contains delays.
     ScriptWait(4);
     ACS_NamedExecute("BHI_BossStartAttack",0,10,3,false);
 }
@@ -326,6 +328,7 @@ Script "BHI_StartIku" (void)
 // Tenshi waiter script (called from corresponding See state)
 Script "BHI_StartTenshi" (void)
 {
+    // If cutscenes are skipped, ScriptWait would still execute, because script contains delays.
     ScriptWait(2);
     ACS_NamedExecute("BHI_BossStartAttack",0,14,4,false);
 }
@@ -333,21 +336,33 @@ Script "BHI_StartTenshi" (void)
 // Marisa waiter script (called from corresponding See state)
 Script "BHI_StartMarisa" (void)
 {
-    ScriptWait(56);
+    // If cutscenes are skipped, ScriptWait would not execute. So we immediately start.
+    if(!GetCVar("touhou_skipcutscenes"))
+    {
+        ScriptWait(56);
+    }
     ACS_NamedExecute("BHI_BossStartAttack",0,20,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",2211),true);
 }
 
 // Reimu waiter script (called from corresponding See state)
 Script "BHI_StartReimu" (void)
 {
-    ScriptWait(58);
+    // If cutscenes are skipped, ScriptWait would not execute. So we immediately start.
+    if(!GetCVar("touhou_skipcutscenes"))
+    {
+        ScriptWait(58);
+    }
     ACS_NamedExecute("BHI_BossStartAttack",0,18,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",4433),true);
 }
 
 // Yukari waiter script (called from corresponding See state)
 Script "BHI_StartYukari" (void)
 {
-    ScriptWait(64);
+    // If cutscenes are skipped, ScriptWait would not execute. So we immediately start.
+    if(!GetCVar("touhou_skipcutscenes"))
+    {
+        ScriptWait(64);
+    }
     ACS_NamedExecute("BHI_BossStartAttack",0,225,4,true);
 }
 
