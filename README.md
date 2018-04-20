@@ -8,7 +8,7 @@ This mod adds some interesting (as for me) features to Untitled's Touhou DOOM.
 You may get Untitled's Touhou DOOM here: [https://forum.zdoom.org/viewtopic.php?f=19&t=57817](https://forum.zdoom.org/viewtopic.php?f=19&t=57817)
 
 What has been done:
-- Each boss has her health bar and indicator of remaining spell cards. Color of health bar (green/yellow/orange/red) indicates amount of remaining health, or that it is survival spell (pale violet). Color of boss's name over it indicates type of attack: nonspell (white), spell card (red), survival spell (gold). It may be disabled by `touhou_show_boss_bars` CVAR.
+- Each boss has her own health bar and indicator of remaining spell cards. Color of health bar (green/yellow/orange/red) indicates amount of remaining health, or that it is survival spell (pale violet). Color of boss's name over it indicates type of attack: nonspell (white), spell card (red), survival spell (gold). It may be disabled by `touhou_show_boss_bars` CVAR.
 - Score system introduced; current value is shown in bottom left corner of screen along the HUD. It may be disabled by `touhou_use_scoring` CVAR.
 - Spell card bonus introduced: if player is able to capture spell card in less than 30 seconds, he/she is awarded by some amount of points (it begins from 100000 prior to spell card declaration and continuously drops until reached 0 at 30 seconds). Survival spell cards are always awarded by 100000 points. It requires bit more tweaking, but now it is like a demonstration.
 - Point items are dropped by fairies, dolls and bosses along with power items. Some bosses (notably extra stage ones) do very large drops.
@@ -34,14 +34,14 @@ Because DOOM is fun, and Touhou is fun too.
 
 And because Touhou DOOM is fun squared! (or maybe even cubed.)
 
-Well, at first I searched for any Touhou game I will be able to finish (spoiler: there's still no one).  
-But, as I played DOOM many times, I did wonder: is there anything about Touhou in DOOM?  
-And, after googling such thing, I found, to my very surprise, such thing: that was *Dusted's Touhou DOOM* ([http://lunaticred.proboards.com/thread/4956/touhou-doom-on-gensokyo-released](http://lunaticred.proboards.com/thread/4956/touhou-doom-on-gensokyo-released)).  
-It was really excellent and fun thing, but has some bugs and boring elements like monster-wave maps while you didn't get any Touhouish experience, but only put down countless DOOM monsters. So it was more like DOOM with Touhou elements.  
-Yes, it was totally cool, but at that time, I was not reaaly thinking about what to add to this mod to make it more Touhouish - as it looked like not very Touhouish at all.  
-But then, I eventually found *Untitled's Touhou DOOM*. In contrast with Dusted's version, it was not DOOM with some Touhou, but like Touhou on DOOM engine!  
-Yes, it added spell card battles, more consistent and interesting plot, power mechanics, more nice bosses and even extra stages. (And yes, even on easy modo, it was way more harder than generic DOOM even on UV.)  
-So, I thought: *__Y U NO MORE TOUHOU THERE?__*  
+Well, at first I searched for any Touhou game I will be able to finish (spoiler: there's still no one).
+But, as I played DOOM many times, I did wonder: is there anything about Touhou in DOOM?
+And, after googling such thing, I found, to my very surprise, such thing: that was *Dusted's Touhou DOOM* ([http://lunaticred.proboards.com/thread/4956/touhou-doom-on-gensokyo-released](http://lunaticred.proboards.com/thread/4956/touhou-doom-on-gensokyo-released)).
+It was really excellent and fun thing, but has some bugs and boring elements like monster-wave maps while you didn't get any Touhouish experience, but only put down countless DOOM monsters. So it was more like DOOM with Touhou elements.
+Yes, it was totally cool, but at that time, I was not reaaly thinking about what to add to this mod to make it more Touhouish - as it looked like not very Touhouish at all.
+But then, I eventually found *Untitled's Touhou DOOM*. In contrast with Dusted's version, it was not DOOM with some Touhou, but like Touhou on DOOM engine!
+Yes, it added spell card battles, more consistent and interesting plot, power mechanics, more nice bosses and even extra stages. (And yes, even on easy modo, it was way more harder than generic DOOM even on UV.)
+So, I thought: *__Y U NO MORE TOUHOU THERE?__*
 And then I started DECORATing and ACSing, and added some features that, as for me, should be in Touhou (even if it is made on DOOM engine), like health bars and point system, and now it is here!
 
 P.S. Great thanks to *Dusted* and *Untitled* for giving me a lot of fun playing theirs mods and eventually inspiring me for making this one.
@@ -51,11 +51,11 @@ P.S. Great thanks to *Dusted* and *Untitled* for giving me a lot of fun playing 
 ### Windows or manual build
 
 1. Download music for score table map.
-* By default it is "Shinkirou Orchestra" by U2 Akiyama (title screen theme from Hopeless Masquerade).  
-* You may find it here: [https://www.youtube.com/watch?v=Qys4Oi1-680](https://www.youtube.com/watch?v=Qys4Oi1-680)  
-* Use your preferred youtube music downloader or anything else.  
-* This music is not bundled here for licensing reasons.  
-* If you don't want to do this, just use your own music.  
+* By default it is "Shinkirou Orchestra" by U2 Akiyama (title screen theme from Hopeless Masquerade).
+* You may find it here: [https://www.youtube.com/watch?v=Qys4Oi1-680](https://www.youtube.com/watch?v=Qys4Oi1-680)
+* Use your preferred youtube music downloader or anything else.
+* This music is not bundled here for licensing reasons.
+* If you don't want to do this, just use your own music.
 * Resulting file should be in WAV format and named `30_SHINKIRO.wav`.
 
 2. Compile ACC scripts.
@@ -65,7 +65,7 @@ P.S. Great thanks to *Dusted* and *Untitled* for giving me a lot of fun playing 
 acc -i <include_dir> 23_TOUHOU2.acs 21_TOUHOU2.o
 acc -i <include_dir> 27_SCRIPTS.acs 26_BEHAVIOR.o
 ```
-* `<include_dir>` is a directory where files like `zcommon.acs`, `zdefs.acs`, `zspecial.acs`, `zwvars.acs` lay.  
+* `<include_dir>` is a directory where files like `zcommon.acs`, `zdefs.acs`, `zspecial.acs`, `zwvars.acs` lay.
 * Of course, you may use any other ACC compiler including compilers integrated to your WAD editor.
 
 3. Create a WAD file.
@@ -77,18 +77,18 @@ acc -i <include_dir> 27_SCRIPTS.acs 26_BEHAVIOR.o
 
 Just run `./build.sh`. It does everything automatically:
 * download and build acc compiler (if not built already);
-* build wadbuild utility (if not built already);
+* download wadtools and build wadbuild utility (if not built already);
 * download music (if not downloaded or created already);
 * compile acc scripts;
 * build PWAD (overwriting previous version).
 
 Requirements:
 * `youtube-dl` ([https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)); you may install it by just doing `sudo pip install youtube-dl` (only if music is to be downloaded).
-* `git` (to grab acc compiler from github).
-* `gcc` (to compile acc compiler and wad file build tool).
-* little-endian machine (or you have to rewrite `wadbuild.c` to correctly work on your architecture). If you don't know what it is, it's likely you have it.
+* `git` (to grab acc compiler and wadtools from github).
+* `gcc` (to compile acc and wadtools).
+* little-endian machine (or you have to rewrite wadtools to correctly work on your architecture). If you don't know what little-endian is, it's likely you have it.
 
-If you want to clean your working copy to the distribution level, you may run `./build.sh -c`. It will delete acc, wadbuild executable and music; only repository files will be left.
+If you want to clean your working copy to the distribution level, you may run `./build.sh -c`. It will delete acc, wadtools and music; only repository files will be left.
 
 Or, you may perform manual installation, if you want.
 
