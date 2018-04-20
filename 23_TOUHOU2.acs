@@ -1,7 +1,7 @@
 #library "TOUHOU2"
 #include "zcommon.acs"
 
-int HELPSTR2 = 
+int HELPSTR2 =
 "You may configure Touhou DOOM score/healthbar mod behavior using following CVARs:\n\
     touhou_use_scoring 0/1: Enable point items and score system.\n\
     touhou_use_extends 0/1: Give life extends for earning some high score.\n\
@@ -31,7 +31,7 @@ Script "THS_DrawScore" ENTER
         HudMessageBold(s:"Score: ", d:GetActorProperty(0,APROP_SCORE); HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
     }
     Delay (1);
-    Restart;    
+    Restart;
 }
 
 // This script does special effects (centered on-screen message and sound) if extend is awarded (not just picked up).
@@ -78,7 +78,7 @@ Script "THS_AddExtends" ENTER
             ACS_NamedExecute("THS_Extend", 0);
         }
     }
-    
+
     THS_LastScore = score;
     Delay (1);
     Restart;
@@ -179,7 +179,7 @@ Script "THS_DrawSpellCardBonus" ENTER
         }
     }
     Delay (1);
-    Restart;    
+    Restart;
 }
 
 // This script is to be called when boss starts any attack, i.e. in the same place where script 602 is called, or in See state.
@@ -372,7 +372,7 @@ Script "BHI_BossHealthIndicatorLoop" ENTER
         int MaxHealth  = BHI_BossMaxHealth;
         int SpellCards = BHI_BossSpellCards;
         int BossHealth = BHI_BossHealth;
-        
+
         // Komachi/Suika midboss hack: they appear with 100000+x health, and teleport
         // to their final boss positions when their health comes to 100000; and then they
         // get their real health (== spawn health) before being activated.
@@ -395,7 +395,7 @@ Script "BHI_BossHealthIndicatorLoop" ENTER
         int hdisp = BossHealth * 100 / MaxHealth;
         if (hdisp > 100) hdisp = 100;
         if (hdisp < 0) hdisp = 0;
-        
+
         // Note: digits after decimal point in HudMessage specify alignment, not actual position!
 
         // Write boss name (in red, if it is spell card attack now, and in gold, if it is survival)
@@ -416,7 +416,7 @@ Script "BHI_BossHealthIndicatorLoop" ENTER
         {
             HudMessage (s:"A"; HUDMSG_PLAIN, BHI_MSG_ID + 110 + counter, 0, 600.2 - counter * 20.0, 10.0, 0.1, 1.0);
         }
-        
+
         // Write health bar items (up to 100 of 6 x 9 blocks)
         for (counter = 0; counter < hdisp; counter++)
         {

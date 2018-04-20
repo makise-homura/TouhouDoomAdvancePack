@@ -1,7 +1,7 @@
 /******************************************
   DECORATE ENTRY FOR SECOND EPISODE BOSSES
  ******************************************/
- 
+
 // NB. If you see something like "We should have an empty line here for some reason",
 // then it means we really should. I don't know why, but without it following lines
 // became skipped without any clear meaning, at least in Zandronum 3.0. Just bugs.
@@ -18,11 +18,11 @@ ACTOR YoumuHB : Youmu replaces Youmu
     States
     {
         See:
-            YOUM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,13,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1100),false)
+            YOUM A 1 ACS_NamedExecute("BHI_BossStartAttack",0,13,ACS_NamedExecuteWithResult("BHI_SpellCardsBySkillLevel",1100),false)
             goto Super::See
         Death:
-            YOUM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YOUM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YOUM V 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YOUM V 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             YOUM V 1
             goto Super::Death
     }
@@ -33,12 +33,12 @@ ACTOR YoumuHellRealmSwordHB : YoumuHellRealmSword replaces YoumuHellRealmSword
     States
     {
         See:
-            YOUM F 0 Thing_ChangeTID(0,6004)
-            YOUM F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
+            YOUM A 1 Thing_ChangeTID(0,6004)
+            YOUM A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
             goto Super::See
         Death:
-            YOUM F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YOUM F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YOUM V 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YOUM V 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             goto Super::Death
     }
 }
@@ -51,11 +51,11 @@ ACTOR YuyukoHB : Yuyuko replaces Yuyuko
     States
     {
         See:
-            YUYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,4,2,false)
+            YUYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,4,2,false)
             goto Super::See
         Death:
-            YUYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YUYU K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YUYU K 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             YUYU K 1
             goto Super::Death
     }
@@ -66,12 +66,12 @@ ACTOR YuyukoEnigmaOfTheUnderworldHB : YuyukoEnigmaOfTheUnderworld replaces Yuyuk
     States
     {
         See:
-            YUYU F 0 Thing_ChangeTID(0,6001)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
+            YUYU A 1 Thing_ChangeTID(0,6001)
+            YUYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
             goto Super::See
         Death:
-            YUYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YUYU K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YUYU K 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             YUYU K 1
             goto Super::Death
     }
@@ -82,12 +82,12 @@ ACTOR YuyukoNS2HB : YuyukoNS2 replaces YuyukoNS2
     States
     {
         See:
-            YUYU F 0 Thing_ChangeTID(0,6002)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
+            YUYU A 1 Thing_ChangeTID(0,6002)
+            YUYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
             goto Super::See
         Death:
-            YUYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YUYU K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YUYU K 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             YUYU K 1
             goto Super::Death
     }
@@ -98,12 +98,12 @@ ACTOR YuyukoAsTheButterflyFliesHB : YuyukoAsTheButterflyFlies replaces YuyukoAsT
     States
     {
         See:
-            YUYU F 0 Thing_ChangeTID(0,6003)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
+            YUYU A 1 Thing_ChangeTID(0,6003)
+            YUYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
             goto Super::See
         Death:
-            YUYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            YUYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            YUYU K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            YUYU K 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             goto Super::Death
     }
 }
@@ -117,11 +117,11 @@ ACTOR KomachiHB : Komachi replaces Komachi
     {
         See:
             // BossHealthIndicatorLoop will deal with midboss state later.
-            KMCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,5,3,false)
+            KMCH A 0 ACS_NamedExecute("BHI_BossStartAttack",0,5,3,false)
             goto Super::See
         Death:
-            KMCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KMCH I 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KMCH I 0 ACS_NamedExecute("BHI_BossStopAttack",0)
             KMCH I 1
             goto Super::Death
     }
@@ -132,12 +132,12 @@ ACTOR KomachiAncientEarthboundSpiritsHB : KomachiAncientEarthboundSpirits replac
     States
     {
         See:
-            KMCH F 0 Thing_ChangeTID(0,6001)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+            KMCH A 0 Thing_ChangeTID(0,6001)
+            KMCH A 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
             goto Super::See
         Death:
-            KMCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KMCH I 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KMCH I 0 ACS_NamedExecute("BHI_BossStopAttack",0)
             KMCH I 1
             goto Super::Death
     }
@@ -148,12 +148,12 @@ ACTOR KomachiNS2HB : KomachiNS2 replaces KomachiNS2
     States
     {
         See:
-            KMCH F 0 Thing_ChangeTID(0,6002)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
+            KMCH A 1 Thing_ChangeTID(0,6002)
+            KMCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
             goto Super::See
         Death:
-            KMCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KMCH I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KMCH I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KMCH I 1
             goto Super::Death
     }
@@ -164,14 +164,14 @@ ACTOR KomachiScytheOfFinalJudgementHB : KomachiScytheOfFinalJudgement replaces K
     States
     {
         See:
-            KMCH F 0 Thing_ChangeTID(0,6003)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+            KMCH A 1 Thing_ChangeTID(0,6003)
+            KMCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
             goto Super::See
         Death:
-            KMCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KMCH I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KMCH I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             // This spell card does not drop bonus in original version. Well, we should fix it here.
-            KMCH F 0 A_SpawnItem("LittleSpellCardBonus")
+            KMCH I 1 A_SpawnItem("LittleSpellCardBonus")
             KMCH I 1
             goto Super::Death
     }
@@ -182,12 +182,12 @@ ACTOR KomachiHiganRetourHB : KomachiHiganRetour replaces KomachiHiganRetour
     States
     {
         See:
-            KMCH F 0 Thing_ChangeTID(0,6004)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
+            KMCH A 1 Thing_ChangeTID(0,6004)
+            KMCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,0,true)
             goto Super::See
         Death:
-            KMCH F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KMCH F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KMCH I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KMCH I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             goto Super::Death
     }
 }
@@ -201,11 +201,11 @@ ACTOR SuikaHB : Suika replaces Suika
     {
         See:
             // BossHealthIndicatorLoop will deal with midboss state later.
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,7,3,false)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,7,3,false)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SUI4 L 1
             goto Super::Death
     }
@@ -216,12 +216,12 @@ ACTOR SuikaMissingPowerHB : SuikaMissingPower replaces SuikaMissingPower
     States
     {
         See:
-            SUIK F 0 Thing_ChangeTID(0,6001)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+            SUIK A 1 Thing_ChangeTID(0,6001)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SUI4 L 1
             goto Super::Death
     }
@@ -232,12 +232,12 @@ ACTOR SuikaNS2HB : SuikaNS2 replaces SuikaNS2
     States
     {
         See:
-            SUIK F 0 Thing_ChangeTID(0,6002)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
+            SUIK A 1 Thing_ChangeTID(0,6002)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,2,false)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SUI4 L 1
             goto Super::Death
     }
@@ -248,12 +248,12 @@ ACTOR SuikaDeepFogLabyrinthHB : SuikaDeepFogLabyrinth replaces SuikaDeepFogLabyr
     States
     {
         See:
-            SUIK F 0 Thing_ChangeTID(0,6003)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+            SUIK A 1 Thing_ChangeTID(0,6003)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SUI4 L 1
             goto Super::Death
     }
@@ -264,12 +264,12 @@ ACTOR SuikaNS3HB : SuikaNS3 replaces SuikaNS3
     States
     {
         See:
-            SUIK F 0 Thing_ChangeTID(0,6004)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,false)
+            SUIK A 1 Thing_ChangeTID(0,6004)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,false)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SUI4 L 1
             goto Super::Death
     }
@@ -280,12 +280,12 @@ ACTOR SuikaPandemoniumHB : SuikaPandemonium replaces SuikaPandemonium
     States
     {
         See:
-            SUIK F 0 Thing_ChangeTID(0,6005)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+            SUIK A 1 Thing_ChangeTID(0,6005)
+            SUIK A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
             goto Super::See
         Death:
-            SUIK F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SUIK F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SUI4 L 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SUI4 L 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             goto Super::Death
     }
 }
@@ -298,11 +298,11 @@ ACTOR SatoriHB : Satori replaces Satori
     States
     {
         See:
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,24,4,false)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,24,4,false)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SATR G 1
             goto Super::Death
     }
@@ -313,13 +313,13 @@ ACTOR SatoriTerrifyingHypnotismHB : SatoriTerrifyingHypnotism replaces SatoriTer
     States
     {
         See:
-            SATR F 0 Thing_ChangeTID(0,6001)
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,3,true)
+            SATR A 1 Thing_ChangeTID(0,6001)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,3,true)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SATR F 0 A_SpawnItem("LittleSpellCardBonus")
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 A_SpawnItem("LittleSpellCardBonus")
             SATR G 1
             goto Super::Death
     }
@@ -330,12 +330,12 @@ ACTOR SatoriNS2HB : SatoriNS2 replaces SatoriNS2
     States
     {
         See:
-            SATR F 0 Thing_ChangeTID(0,6002)
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,3,false)
+            SATR A 1 Thing_ChangeTID(0,6002)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,3,false)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             SATR G 1
             goto Super::Death
     }
@@ -346,13 +346,13 @@ ACTOR SatoriRainbowWindChimeHB : SatoriRainbowWindChime replaces SatoriRainbowWi
     States
     {
         See:
-            SATR F 0 Thing_ChangeTID(0,6003)
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
+            SATR A 1 Thing_ChangeTID(0,6003)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SATR F 0 A_SpawnItem("LittleSpellCardBonus")
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 A_SpawnItem("LittleSpellCardBonus")
             SATR G 1
             goto Super::Death
     }
@@ -363,13 +363,13 @@ ACTOR SatoriTheWorldHB : SatoriTheWorld replaces SatoriTheWorld
     States
     {
         See:
-            SATR F 0 Thing_ChangeTID(0,6004)
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,true)
+            SATR A 1 Thing_ChangeTID(0,6004)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,1,true)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SATR F 0 A_SpawnItem("LittleSpellCardBonus")
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 A_SpawnItem("LittleSpellCardBonus")
             SATR G 1
             goto Super::Death
     }
@@ -380,13 +380,13 @@ ACTOR SatoriVampireIllusionHB : SatoriVampireIllusion replaces SatoriVampireIllu
     States
     {
         See:
-            SATR F 0 Thing_ChangeTID(0,6005)
-            SATR F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+            SATR A 1 Thing_ChangeTID(0,6005)
+            SATR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
             goto Super::See
         Death:
-            SATR F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SATR F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SATR F 0 A_SpawnItem("MediumSpellCardBonus")
+            SATR G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SATR G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SATR G 1 A_SpawnItem("MediumSpellCardBonus")
             goto Super::Death
     }
 }
@@ -399,11 +399,11 @@ ACTOR OrinHB : Orin replaces Orin
     States
     {
         See:
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,22,4,false)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,22,4,false)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             ORIN G 1
             goto Super::Death
     }
@@ -414,13 +414,13 @@ ACTOR OrinZombieFairyHB : OrinZombieFairy replaces OrinZombieFairy
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6001)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,3,true)
+            ORIN A 1 Thing_ChangeTID(0,6001)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,3,true)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            ORIN F 0 A_SpawnItem("LittleSpellCardBonus")
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 A_SpawnItem("LittleSpellCardBonus")
             ORIN G 1
             goto Super::Death
     }
@@ -431,12 +431,12 @@ ACTOR OrinNS2HB : OrinNS2 replaces OrinNS2
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6002)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,3,false)
+            ORIN A 1 Thing_ChangeTID(0,6002)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,3,false)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             ORIN G 1
             goto Super::Death
     }
@@ -447,13 +447,13 @@ ACTOR OrinBlazingWheelHB : OrinBlazingWheel replaces OrinBlazingWheel
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6003)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
+            ORIN A 1 Thing_ChangeTID(0,6003)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,2,true)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            ORIN F 0 A_SpawnItem("LittleSpellCardBonus")
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 A_SpawnItem("LittleSpellCardBonus")
             ORIN G 1
             goto Super::Death
     }
@@ -464,12 +464,12 @@ ACTOR OrinNS3HB : OrinNS3 replaces OrinNS3
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6004)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,2,false)
+            ORIN A 1 Thing_ChangeTID(0,6004)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,2,false)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             ORIN G 1
             goto Super::Death
     }
@@ -480,13 +480,13 @@ ACTOR OrinAtonementHB : OrinAtonement replaces OrinAtonement
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6005)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,1,true)
+            ORIN A 1 Thing_ChangeTID(0,6005)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,1,true)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            ORIN F 0 A_SpawnItem("LittleSpellCardBonus")
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 A_SpawnItem("LittleSpellCardBonus")
             ORIN G 1
             goto Super::Death
     }
@@ -497,13 +497,13 @@ ACTOR OrinSmallDemonsRevivalHB : OrinSmallDemonsRevival replaces OrinSmallDemons
     States
     {
         See:
-            ORIN F 0 Thing_ChangeTID(0,6006)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
+            ORIN A 1 Thing_ChangeTID(0,6006)
+            ORIN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
             goto Super::See
         Death:
-            ORIN F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            ORIN F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            ORIN F 0 A_SpawnItem("MediumSpellCardBonus")
+            ORIN G 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            ORIN G 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            ORIN G 1 A_SpawnItem("MediumSpellCardBonus")
             goto Super::Death
     }
 }
@@ -516,11 +516,11 @@ ACTOR UtsuhoHB : Utsuho replaces Utsuho
     States
     {
         See:
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,13,5,false)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,13,5,false)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             UNYU N 1
             goto Super::Death
     }
@@ -531,13 +531,13 @@ ACTOR UtsuhoNuclearFusionHB : UtsuhoNuclearFusion replaces UtsuhoNuclearFusion
     States
     {
         See:
-            UNYU F 0 Thing_ChangeTID(0,6001)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,4,true)
+            UNYU A 1 Thing_ChangeTID(0,6001)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,4,true)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            UNYU F 0 A_SpawnItem("LittleSpellCardBonus")
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 A_SpawnItem("LittleSpellCardBonus")
             UNYU N 1
             goto Super::Death
     }
@@ -548,12 +548,12 @@ ACTOR UtsuhoNS2HB : UtsuhoNS2 replaces UtsuhoNS2
     States
     {
         See:
-            UNYU F 0 Thing_ChangeTID(0,6002)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,4,false)
+            UNYU A 1 Thing_ChangeTID(0,6002)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,4,false)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             UNYU N 1
             goto Super::Death
     }
@@ -564,13 +564,13 @@ ACTOR UtsuhoMegaFlareHB : UtsuhoMegaFlare replaces UtsuhoMegaFlare
     States
     {
         See:
-            UNYU F 0 Thing_ChangeTID(0,6003)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,3,true)
+            UNYU A 1 Thing_ChangeTID(0,6003)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,3,true)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            UNYU F 0 A_SpawnItem("LittleSpellCardBonus")
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 A_SpawnItem("LittleSpellCardBonus")
             UNYU N 1
             goto Super::Death
     }
@@ -581,12 +581,12 @@ ACTOR UtsuhoNS3HB : UtsuhoNS3 replaces UtsuhoNS3
     States
     {
         See:
-            UNYU F 0 Thing_ChangeTID(0,6004)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,3,false)
+            UNYU A 1 Thing_ChangeTID(0,6004)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,3,false)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             UNYU N 1
             goto Super::Death
     }
@@ -597,12 +597,12 @@ ACTOR UtsuhoFixedStarHB : UtsuhoFixedStar replaces UtsuhoFixedStar
     States
     {
         See:
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,13,2,true)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,13,2,true)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            UNYU F 0 A_SpawnItem("LittleSpellCardBonus")
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 A_SpawnItem("LittleSpellCardBonus")
             UNYU N 1
             goto Super::Death
     }
@@ -613,12 +613,12 @@ ACTOR UtsuhoNS4HB : UtsuhoNS4 replaces UtsuhoNS4
     States
     {
         See:
-            UNYU F 0 Thing_ChangeTID(0,6005)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,2,false)
+            UNYU A 1 Thing_ChangeTID(0,6005)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,2,false)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             UNYU N 1
             goto Super::Death
     }
@@ -629,12 +629,12 @@ ACTOR UtsuhoHeavenAndHellMeltdownHB : UtsuhoHeavenAndHellMeltdown replaces Utsuh
     States
     {
         See:
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,13,1,true)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,13,1,true)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            UNYU F 0 A_SpawnItem("LittleSpellCardBonus")
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 A_SpawnItem("LittleSpellCardBonus")
             UNYU N 1
             goto Super::Death
     }
@@ -645,12 +645,12 @@ ACTOR UtsuhoSubterraneanSunHB : UtsuhoSubterraneanSun replaces UtsuhoSubterranea
     States
     {
         See:
-            UNYU F 0 ACS_NamedExecute("BHI_BossStartAttack",0,13,0,true)
+            UNYU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,13,0,true)
             goto Super::See
         Death:
-            UNYU F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            UNYU F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            UNYU F 0 A_SpawnItem("MediumSpellCardBonus")
+            UNYU N 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            UNYU N 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            UNYU N 1 A_SpawnItem("MediumSpellCardBonus")
             goto Super::Death
     }
 }
@@ -663,12 +663,12 @@ ACTOR AyaSarutahikosGuidanceHB : AyaSarutahikosGuidance replaces AyaSarutahikosG
     States
     {
         See:
-            SHMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,15,2,true)
+            SHMI A 1 ACS_NamedExecute("BHI_BossStartAttack",0,15,2,true)
             goto Super::See
         Death:
-            SHMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SHMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SHMI F 0 A_SpawnItem("LittleSpellCardBonus")
+            SHMI I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SHMI I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SHMI I 1 A_SpawnItem("LittleSpellCardBonus")
             SHMI I 1
             goto Super::Death
     }
@@ -679,13 +679,13 @@ ACTOR AyaYoukaiKillingFanHB : AyaYoukaiKillingFan replaces AyaYoukaiKillingFan
     States
     {
         See:
-            SHMI F 0 Thing_ChangeTID(0,6009)
-            SHMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6009,1,true)
+            SHMI A 1 Thing_ChangeTID(0,6009)
+            SHMI A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,1,true)
             goto Super::See
         Death:
-            SHMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SHMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SHMI F 0 A_SpawnItem("LittleSpellCardBonus")
+            SHMI I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SHMI I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SHMI I 1 A_SpawnItem("LittleSpellCardBonus")
             SHMI I 1
             goto Super::Death
     }
@@ -696,13 +696,13 @@ ACTOR AyaToriiHurricaneHB : AyaToriiHurricane replaces AyaToriiHurricane
     States
     {
         See:
-            SHMI F 0 Thing_ChangeTID(0,6010)
-            SHMI F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6010,0,true)
+            SHMI A 1 Thing_ChangeTID(0,6010)
+            SHMI A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6010,0,true)
             goto Super::See
         Death:
-            SHMI F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            SHMI F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            SHMI F 0 A_SpawnItem("MediumSpellCardBonus")
+            SHMI I 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            SHMI I 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            SHMI I 1 A_SpawnItem("MediumSpellCardBonus")
             goto Super::Death
     }
 }
@@ -720,12 +720,12 @@ ACTOR KoishiHB : Koishi replaces Koishi
     States
     {
         See:
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,21,10,false)
-            KOIS F 0 A_GiveToTarget("GlobalStatExtra")
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,21,10,false)
+            KOIS A 1 A_GiveToTarget("GlobalStatExtra")
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS O 1
             goto Super::Death
     }
@@ -736,13 +736,13 @@ ACTOR KoishiDanmakuParanoiaHB : KoishiDanmakuParanoia replaces KoishiDanmakuPara
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6001)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
+            KOIS A 1 Thing_ChangeTID(0,6001)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("MediumSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("MediumSpellCardBonus")
             KOIS O 1
             goto Super::Death
     }
@@ -753,12 +753,12 @@ ACTOR KoishiNS2HB : KoishiNS2 replaces KoishiNS2
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6002)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6002,9,false)
+            KOIS A 1 Thing_ChangeTID(0,6002)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,9,false)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS O 1
             goto Super::Death
     }
@@ -769,13 +769,13 @@ ACTOR KoishiReleaseOfTheIdSoftwareHB : KoishiReleaseOfTheIdSoftware replaces Koi
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6003)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6003,8,true)
+            KOIS A 1 Thing_ChangeTID(0,6003)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,8,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("MediumSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("MediumSpellCardBonus")
             KOIS O 1
             goto Super::Death
     }
@@ -786,12 +786,12 @@ ACTOR KoishiNS3HB : KoishiNS3 replaces KoishiNS3
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6004)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6004,8,false)
+            KOIS A 1 Thing_ChangeTID(0,6004)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,8,false)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS O 1
             goto Super::Death
     }
@@ -802,13 +802,13 @@ ACTOR KoishiEmbersOfLoveHB : KoishiEmbersOfLove replaces KoishiEmbersOfLove
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6005)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6005,7,true)
+            KOIS A 1 Thing_ChangeTID(0,6005)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,7,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("MediumSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("MediumSpellCardBonus")
             KOIS O 1
             goto Super::Death
     }
@@ -819,12 +819,12 @@ ACTOR KoishiNS4HB : KoishiNS4 replaces KoishiNS4
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6006)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6006,7,false)
+            KOIS A 1 Thing_ChangeTID(0,6006)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,7,false)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS O 1
             goto Super::Death
     }
@@ -835,13 +835,13 @@ ACTOR KoishiGeneticsOfTheSubconsciousHB : KoishiGeneticsOfTheSubconscious replac
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6007)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6007,6,true)
+            KOIS A 1 Thing_ChangeTID(0,6007)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6007,6,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("BigSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("BigSpellCardBonus")
             KOIS O 1
             goto Super::Death
     }
@@ -852,18 +852,18 @@ ACTOR KoishiDekwSignHB : KoishiDekwSign replaces KoishiDekwSign
     States
     {
         Spawn:
-            TNT1 A 0 // We should have an empty line here for some reason        
+            TNT1 A 1 // We should have an empty line here for some reason        
             // As we are just out of survival attack, we have to terminate previous script
             // It shall be done here, not on 'See' state (as script 55 has a significant delay)
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            TNT1 A 1 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
+            TNT1 A 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             goto Super::Spawn
         See:
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,26,4,true)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,26,4,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS O 1
             // We wouldn't spawn bonus here, because player get teleported out immediately
             goto Super::Death
@@ -875,12 +875,12 @@ ACTOR KoishiYhollSignHB : KoishiYhollSign replaces KoishiYhollSign
     States
     {
         See:
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,22,3,true)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,22,3,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("BigSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("BigSpellCardBonus")
             KOIS O 1
             goto Super::Death
     }
@@ -891,15 +891,15 @@ ACTOR KoishiUntitledSignHB : KoishiUntitledSign replaces KoishiUntitledSign
     States
     {
         See:
-            KOIS F 0 Thing_ChangeTID(0,6008)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,6008,2,true)
+            KOIS A 1 Thing_ChangeTID(0,6008)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6008,2,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
-            KOIS F 0 A_SpawnItem("BigSpellCardBonus")
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 A_SpawnItem("BigSpellCardBonus")
             // Survival attack will be started after a delay
-            KOIS F 0 ACS_NamedExecute("BHI_KoishiStartSurvival2",0)
+            KOIS O 1 ACS_NamedExecute("BHI_KoishiStartSurvival2",0)
             KOIS O 1
             goto Super::Death
     }
@@ -911,14 +911,14 @@ ACTOR KoishiPraiseBenellusHB : KoishiPraiseBenellus replaces KoishiPraiseBenellu
     {
         See:
             // Survival attack will be stopped at end of script 59
-            KOIS F 0 ACS_NamedExecute("BHI_BossStartAttack",0,32,0,true)
+            KOIS A 1 ACS_NamedExecute("BHI_BossStartAttack",0,32,0,true)
             goto Super::See
         Death:
-            KOIS F 0 ACS_NamedTerminate("BHI_BossStartAttack",0)
-            KOIS F 0 ACS_NamedExecute("BHI_BossStopAttack",0)
+            KOIS O 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
+            KOIS O 1 ACS_NamedExecute("BHI_BossStopAttack",0)
             KOIS FFFFFF 0 A_SpawnItem("BigSpellCardBonus") // Heh, capture this WHOLE BUNCH at last! 
             // Survival attack will be started after a delay
-            KOIS F 0 ACS_NamedExecute("BHI_KoishiStartSurvival3",0)
+            KOIS O 1 ACS_NamedExecute("BHI_KoishiStartSurvival3",0)
             KOIS O 1 // We left it here, because it's not last spell card (skeletons follow!)
             goto Super::Death
     }

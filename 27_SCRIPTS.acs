@@ -93,12 +93,12 @@ script 1 ENTER
             if (SStage) Spellcards += 7;
             break;
     }
-    
+
     HudMessage(s:" "; HUDMSG_PLAIN, 92712, CR_WHITE, 0.0, 0.0, 0.0); // Remove CVAR message.
     // I found no way to remove autosave message, but...
     // ...But player may note than that he/she can SAVE SCORE TABLE FOR BRAGGING, HELL YEAH!
     // Yes, it is intended: you may save it as a normal savegame.
-    
+
     SetHudSize(64,64,true);
     SetFont("ALLBLAKF");
     // I found no easier way to hide everything on screen including status bar, not even with messing with SBARINFO.
@@ -114,15 +114,15 @@ script 1 ENTER
                           // as for me. You may or may not consider the same. But if you are reading
                           // this, you know how to edit WAD files and what to do with ACS scripts,
                           // so you may substitute this by anything you want.
-    
+
     // We have no FADEIN, so we will do FADEOUT from black to a nice picture.
     HudMessage(s:"A"; HUDMSG_FADEOUT | HUDMSG_LAYER_OVERHUD, 6999, CR_WHITE, 32.4, 32.4, 0.0, 1.0, 0.0);
-    
+
     // Draw a picture (background was stolen from google search results, blame Marisa, not me)
     SetHudSize(1200,840,true);
     SetFont("GENSOKYO");
     HudMessage(s:"A"; HUDMSG_PLAIN | HUDMSG_LAYER_OVERHUD, 7000, CR_WHITE, 600.4, 420.4, 3600.0, 1.0, 0.0);
-    
+
     SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
     SetMusic("SHINKIRO", 0);
     SetHudSize(600,420,true);
@@ -233,7 +233,7 @@ script 1 ENTER
         HudMessage(s:"0.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
         Score /= 2;
     }
-    
+
     HudMessage(s:"TOTAL";            HUDMSG_PLAIN, 6071, CR_YELLOW, 100.1, 260.0, 0.0);
     HudMessage(s:"=";                HUDMSG_PLAIN, 6072, CR_YELLOW, 400.2, 260.0, 0.0);
     ACS_NamedExecuteWait("FancyMessage",0,

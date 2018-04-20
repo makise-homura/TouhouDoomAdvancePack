@@ -71,8 +71,8 @@ ACTOR RumiaNightBirdHB : RumiaNightBird replaces RumiaNightBird
     States
     {
         See:
-            RMIA A 1 Thing_ChangeTID(0,6001)
-            RMIA A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
+            RMIA F 1 Thing_ChangeTID(0,6001)
+            RMIA F 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,1,true)
             goto Super::See
         Death:
             RMIA M 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -88,8 +88,8 @@ ACTOR RumiaNS2HB : RumiaNS2 replaces RumiaNS2
     States
     {
         See:
-            RMIA A 1 Thing_ChangeTID(0,6002)
-            RMIA A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
+            RMIA F 1 Thing_ChangeTID(0,6002)
+            RMIA F 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,1,false)
             goto Super::See
         Death:
             RMIA M 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -105,8 +105,8 @@ ACTOR RumiaDemarcationHB : RumiaDemarcation replaces RumiaDemarcation
     States
     {
         See:
-            RMIA A 1 Thing_ChangeTID(0,6003)
-            RMIA A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
+            RMIA F 1 Thing_ChangeTID(0,6003)
+            RMIA F 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,0,true)
             goto Super::See
         Death:
             RMIA M 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -434,8 +434,8 @@ ACTOR PatchouliAgniShineHB : PatchouliAgniShine replaces PatchouliAgniShine
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6002)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6002)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6002,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -454,8 +454,8 @@ ACTOR PatchouliEmeraldMegalithHB : PatchouliEmeraldMegalith replaces PatchouliEm
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6003)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6003)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -474,8 +474,8 @@ ACTOR PatchouliForestBlazeHB : PatchouliForestBlaze replaces PatchouliForestBlaz
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6004)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6004)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6004,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -494,8 +494,8 @@ ACTOR PatchouliLavaCromlechHB : PatchouliLavaCromlech replaces PatchouliLavaCrom
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6005)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6005)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -514,8 +514,8 @@ ACTOR PatchouliMercuryPoisonHB : PatchouliMercuryPoison replaces PatchouliMercur
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6006)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6006)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -534,8 +534,8 @@ ACTOR PatchouliMetalFatigueHB : PatchouliMetalFatigue replaces PatchouliMetalFat
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6007)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6007,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6007)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6007,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -554,8 +554,8 @@ ACTOR PatchouliPrincessUndineHB : PatchouliPrincessUndine replaces PatchouliPrin
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6008)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6008,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6008)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6008,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -574,8 +574,8 @@ ACTOR PatchouliRageTrilithonHB : PatchouliRageTrilithon replaces PatchouliRageTr
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6009)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6009)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -594,8 +594,8 @@ ACTOR PatchouliSylphaeHornHB : PatchouliSylphaeHorn replaces PatchouliSylphaeHor
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6010)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6010,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6010)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6010,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -614,8 +614,8 @@ ACTOR PatchouliWaterElfHB : PatchouliWaterElf replaces PatchouliWaterElf
             TNT1 A 1 ACS_NamedExecute("BHI_PatchouliSpellCardEnter",0)
             goto Super::Spawn
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6011)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6011,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
+            PTCH A 1 Thing_ChangeTID(0,6011)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6011,ACS_NamedExecuteWithResult("BHI_PatchouliSpellCardsLeft",0),true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -648,8 +648,8 @@ ACTOR SakuyaMisdirectionHB : SakuyaMisdirection replaces SakuyaMisdirection
     States
     {
         See:
-            SAKU B 1 Thing_ChangeTID(0,6006)
-            SAKU B 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
+            SAKU A 1 Thing_ChangeTID(0,6006)
+            SAKU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6006,0,true)
             goto Super::See
         Death:
             SAKU S 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -681,8 +681,8 @@ ACTOR SakuyaJackTheLudoBileHB : SakuyaJackTheLudoBile replaces SakuyaJackTheLudo
     States
     {
         See:
-            SAKU B 1 Thing_ChangeTID(0,6001)
-            SAKU B 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
+            SAKU A 1 Thing_ChangeTID(0,6001)
+            SAKU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,2,true)
             goto Super::See
         Death:
             SAKU S 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -713,8 +713,8 @@ ACTOR SakuyaTheWorldHB : SakuyaTheWorld replaces SakuyaTheWorld
     States
     {
         See:
-            SAKU B 1 Thing_ChangeTID(0,6003)
-            SAKU B 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
+            SAKU A 1 Thing_ChangeTID(0,6003)
+            SAKU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6003,1,true)
             goto Super::See
         Death:
             SAKU S 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -745,8 +745,8 @@ ACTOR SakuyaKillingDollHB : SakuyaKillingDoll replaces SakuyaKillingDoll
     States
     {
         See:
-            SAKU B 1 Thing_ChangeTID(0,6005)
-            SAKU B 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
+            SAKU A 1 Thing_ChangeTID(0,6005)
+            SAKU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6005,0,true)
             goto Super::See
         Death:
             SAKU S 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -778,8 +778,8 @@ ACTOR SakuyaEternalMeekHB : SakuyaEternalMeek replaces SakuyaEternalMeek
     States
     {
         See:
-            SAKU B 1 Thing_ChangeTID(0,6009)
-            SAKU B 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,0,true)
+            SAKU A 1 Thing_ChangeTID(0,6009)
+            SAKU A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,0,true)
             goto Super::See
         Death:
             SAKU S 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -959,7 +959,7 @@ ACTOR ExPatchouliHB : ExPatchouli replaces ExPatchouli
     States
     {
         See:
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,11,2,true)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,11,2,true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -974,8 +974,8 @@ ACTOR ExPatchouliRoyalFlareHB : ExPatchouliRoyalFlare replaces ExPatchouliRoyalF
     States
     {
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6013)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6013,1,true)
+            PTCH A 1 Thing_ChangeTID(0,6013)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6013,1,true)
             goto Super::See
         Death:
             PTCH A 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -990,8 +990,8 @@ ACTOR ExPatchouliPhilosopherStoneHB : ExPatchouliPhilosopherStone replaces ExPat
     States
     {
         See:
-            PTCH Q 1 Thing_ChangeTID(0,6014)
-            PTCH Q 1 ACS_NamedExecute("BHI_BossStartAttack",0,6014,0,true)
+            PTCH A 1 Thing_ChangeTID(0,6014)
+            PTCH A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6014,0,true)
             goto Super::See
         Death:
             PTCH P 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -1155,7 +1155,7 @@ ACTOR FlandreMazeOfLoveHB : FlandreMazeOfLove replaces FlandreMazeOfLove
     States
     {
         See:
-            FLOR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,20,5,true)
+            FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,20,5,true)
             goto Super::See
         Death:
             FLAN K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -1186,8 +1186,8 @@ ACTOR FlandreStarbowBreakHB : FlandreStarbowBreak replaces FlandreStarbowBreak
     States
     {
         See:
-            FLOR A 1 Thing_ChangeTID(0,6009)
-            FLOR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,4,true)
+            FLAN A 1 Thing_ChangeTID(0,6009)
+            FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6009,4,true)
             goto Super::See
         Death:
             FLAN K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -1218,8 +1218,8 @@ ACTOR FlandreCatadioptricHB : FlandreCatadioptric replaces FlandreCatadioptric
     States
     {
         See:
-            FLOR A 1 Thing_ChangeTID(0,6011)
-            FLOR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6011,3,true)
+            FLAN A 1 Thing_ChangeTID(0,6011)
+            FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6011,3,true)
             goto Super::See
         Death:
             FLAN K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -1250,7 +1250,7 @@ ACTOR FlandreCounterClockHB : FlandreCounterClock replaces FlandreCounterClock
     States
     {
         See:
-            FLOR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,20,2,true)
+            FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,20,2,true)
             goto Super::See
         Death:
             FLAN K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
@@ -1267,8 +1267,8 @@ ACTOR FlandreRipplesOf495YearsHB : FlandreRipplesOf495Years replaces FlandreRipp
     {
         See:
             // As we are just out of survival attack, we have to terminate previous script
-            FLOR A 1 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
-            FLOR A 1 ACS_NamedExecute("BHI_BossStartAttack",0,46,0,true)
+            FLAN A 1 ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0)
+            FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,46,0,true)
             goto Super::See
         Death:
             FLAN K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
