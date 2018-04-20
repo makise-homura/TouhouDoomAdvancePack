@@ -1027,7 +1027,7 @@ ACTOR FlandreCranberryTrapHB : FlandreCranberryTrap replaces FlandreCranberryTra
     Tag "Flandre Scarlet"
     States
     {
-        See: 
+        See:
             FLAN A 1 Thing_ChangeTID(0,6001)
             FLAN A 1 ACS_NamedExecute("BHI_BossStartAttack",0,6001,9,true)
             goto Super::See
