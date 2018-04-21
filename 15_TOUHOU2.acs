@@ -249,7 +249,7 @@ Script "THS_YukariStartSurvival" (void)
 {
     Delay(88); // Duration of 'Death' state of YukariRanYakumo
     ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0);
-    Delay(75*35);
+    Delay(76*35); // Actually, it's 76 seconds, not 75.
     ACS_NamedExecute("THS_GiveSpellCardBonus",0);
     Delay(1);
 }
