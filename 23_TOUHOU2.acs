@@ -371,7 +371,7 @@ Script "BHI_YukariStartSurvival" (void)
 {
     Delay(88); // Duration of 'Death' state of YukariRanYakumo
     ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
-    Delay(75*35);
+    Delay(76*35); // Actually, it's 76 seconds, not 75.
     ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
     ACS_NamedExecute("BHI_BossStopAttack",0);
     Delay(1);
