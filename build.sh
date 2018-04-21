@@ -67,7 +67,7 @@ clean_all()
 {
 	echo "Cleaning."
 	rm -rf acc
-	rm wadbuild
+	rm -rf wadtools
 	rm $MUSICFILE.wav
 	rm 13_TOUHOU2.o
 	rm 18_BEHAVIOR.o
