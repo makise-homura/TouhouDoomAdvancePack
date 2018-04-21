@@ -369,6 +369,7 @@ Script "BHI_StartYukari" (void)
 // Yukari survival spell terminator
 Script "BHI_YukariStartSurvival" (void)
 {
+    Delay(88); // Duration of 'Death' state of YukariRanYakumo
     ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1);
     Delay(75*35);
     ACS_NamedTerminate("BHI_BossStartSurvivalAttack",0);
