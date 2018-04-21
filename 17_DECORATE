@@ -301,7 +301,7 @@ ACTOR MarisaBlazingStarHB : MarisaBlazingStar replaces MarisaBlazingStar
         See: // Well, it's survival spell card
             // The only exception of 1-tick long guard frame - because of the fact we don't know which frame to use.
             // Hope it won't break anything.
-            MARI A 0 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1)
+            MARI A 1 ACS_NamedExecute("BHI_BossStartSurvivalAttack",0,1)
             goto Super::See
         Death:
         XDeath:
