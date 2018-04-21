@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MUSICFILE="30_SHINKIRO"
+MUSICFILE="22_SHINKIRO"
 MUSICURL="https://www.youtube.com/watch?v=Qys4Oi1-680"
 
 WAD="TouhouDoomAdvancePack.wad"
@@ -69,8 +69,8 @@ clean_all()
 	rm -rf acc
 	rm wadbuild
 	rm $MUSICFILE.wav
-	rm 21_TOUHOU2.o
-	rm 26_BEHAVIOR.o
+	rm 13_TOUHOU2.o
+	rm 18_BEHAVIOR.o
 	rm $WAD
 	echo "Clean complete."
 	exit 0
@@ -98,11 +98,11 @@ echo "-- Checking for $MUSICFILE.wav..."
 
 echo
 echo "-- Compiling TOUHOU2..."
-./acc/acc -i ./acc 23_TOUHOU2.acs 21_TOUHOU2.o || error_exit 1 "Unable to compile TOUHOU2."
+./acc/acc -i ./acc 15_TOUHOU2.acs 13_TOUHOU2.o || error_exit 1 "Unable to compile TOUHOU2."
 
 echo
 echo "-- Compiling STATMAP/SCRIPTS..."
-./acc/acc -i ./acc 27_SCRIPTS.acs 26_BEHAVIOR.o || error_exit 1 "Unable to compile STATMAP/SCRIPTS."
+./acc/acc -i ./acc 19_SCRIPTS.acs 18_BEHAVIOR.o || error_exit 1 "Unable to compile STATMAP/SCRIPTS."
 
 echo
 echo "-- Compiling $WAD..."

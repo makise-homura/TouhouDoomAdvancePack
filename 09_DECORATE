@@ -1,0 +1,525 @@
+/************************************
+  ENABLING ITEM DROP ON LEVELS >= 13
+ ************************************/
+
+// Enabling third episode bosses drop power/points as ones on lower stages of second episode do.
+// Also detecting Extra Stage entering by 'See' state of Ran.
+// HB stands for health bar, but as for now, remaining functionality is the only scoring one.
+
+/**** SANAE ****/
+
+ACTOR SanaeGreyThaumaturgyHB : SanaeGreyThaumaturgy replaces SanaeGreyThaumaturgy
+{
+    States
+    {
+        See:
+            SANA A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            SANA L 1 A_SpawnItem("LittleSpellCardBonus")
+            SANA L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR SanaeDayTheSeaSplitHB : SanaeDayTheSeaSplit replaces SanaeDayTheSeaSplit
+{
+    States
+    {
+        See:
+            SANA A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            SANA L 1 A_SpawnItem("LittleSpellCardBonus")
+            SANA L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR SanaeStarRitualHB : SanaeStarRitual replaces SanaeStarRitual
+{
+    States
+    {
+        See:
+            SANA A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            SANA L 1 A_SpawnItem("LittleSpellCardBonus")
+            SANA L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR SanaeDivineWindHB : SanaeDivineWind replaces SanaeDivineWind
+{
+    States
+    {
+        See:
+            SANA A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            SANA L 1 A_SpawnItem("MediumSpellCardBonus")
+            SANA L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** ALICE ****/
+
+ACTOR AliceSuicideSquadHB : AliceSuicideSquad replaces AliceSuicideSquad
+{
+    States
+    {
+        See:
+            ALIC A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            ALIC Q 1 A_SpawnItem("LittleSpellCardBonus")
+            ALIC Q 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR AliceSoullessFolkDanceHB : AliceSoullessFolkDance replaces AliceSoullessFolkDance
+{
+    States
+    {
+        See:
+            ALIC A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            ALIC Q 1 A_SpawnItem("LittleSpellCardBonus") // What would you expect from midboss?
+            ALIC Q 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** MARISA ****/
+
+ACTOR MarisaOrreriesSunHB : MarisaOrreriesSun replaces MarisaOrreriesSun
+{
+    States
+    {
+        See:
+            MARI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,65)
+            goto Super::See
+        Death:
+            MARI K 1 A_SpawnItem("LittleSpellCardBonus")
+            MARI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR MarisaMilkyWayHB : MarisaMilkyWay replaces MarisaMilkyWay
+{
+    States
+    {
+        See:
+            MARI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,55)
+            goto Super::See
+        Death:
+            MARI K 1 A_SpawnItem("LittleSpellCardBonus")
+            MARI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR MarisaMasterSparkHB : MarisaMasterSpark replaces MarisaMasterSpark
+{
+    States
+    {
+        See:
+            MARI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,65)
+            goto Super::See
+        Death:
+            MARI K 1 A_SpawnItem("LittleSpellCardBonus")
+            MARI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR MarisaBlazingStarHB : MarisaBlazingStar replaces MarisaBlazingStar
+{
+    States
+    {
+        See:
+            MARI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0) // Survival!
+            goto Super::See
+        Death:
+        XDeath: // Somehow this state is significant too.
+            MARI X 1 A_SpawnItem("LittleSpellCardBonus")
+            MARI X 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR MarisaBFS9000HB : MarisaBFS9000 replaces MarisaBFS9000
+{
+    States
+    {
+        See:
+            MARI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,80)
+            goto Super::See
+        Death:
+            MARI K 1 A_SpawnItem("MediumSpellCardBonus")
+            MARI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** REIMU ****/
+
+ACTOR ReimuDancingYinYangOrbsHB : ReimuDancingYinYangOrbs replaces ReimuDancingYinYangOrbs
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("LittleSpellCardBonus")
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuFantasySealSpreadHB : ReimuFantasySealSpread replaces ReimuFantasySealSpread
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("LittleSpellCardBonus")
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuEvilSealingCircleHB : ReimuEvilSealingCircle replaces ReimuEvilSealingCircle
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,70)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("LittleSpellCardBonus")
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuFantasySealConcentrateHB : ReimuFantasySealConcentrate replaces ReimuFantasySealConcentrate
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,80)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("MediumSpellCardBonus") // Bonus arrival intensifies
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuDuplexBarrierHB : ReimuDuplexBarrier replaces ReimuDuplexBarrier
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,90)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("LittleSpellCardBonus")
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuFantasySealBlinkHB : ReimuFantasySealBlink replaces ReimuFantasySealBlink
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,100)
+            goto Super::See
+        Death:
+            REIM K 1 A_SpawnItem("MediumSpellCardBonus")
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR ReimuFlyingMysteriousShrineMaidenHB : ReimuFlyingMysteriousShrineMaiden replaces ReimuFlyingMysteriousShrineMaiden
+{
+    States
+    {
+        See:
+            REIM A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,110)
+            goto Super::See
+        Death:
+            REIM KK 1 A_SpawnItem("BigSpellCardBonus") // Very big bonus... But less than Koishi's one.
+            REIM K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** IKU ****/
+
+ACTOR IkuAbodeOfTheThunderGodHB : IkuAbodeOfTheThunderGod replaces IkuAbodeOfTheThunderGod
+{
+    States
+    {
+        See:
+            IKUU A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            IKUU J 1 A_SpawnItem("LittleSpellCardBonus")
+            IKUU J 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR IkuGleamingEyesOfTheDragonHB : IkuGleamingEyesOfTheDragon replaces IkuGleamingEyesOfTheDragon
+{
+    States
+    {
+        See:
+            IKUU A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            IKUU J 1 A_SpawnItem("LittleSpellCardBonus")
+            IKUU J 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR IkuThunderFromTheSeaOfEternalCloudsHB : IkuThunderFromTheSeaOfEternalClouds replaces IkuThunderFromTheSeaOfEternalClouds
+{
+    States
+    {
+        See:
+            IKUU A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            IKUU J 1 A_SpawnItem("MediumSpellCardBonus")
+            IKUU J 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** TENSHI ****/
+
+ACTOR TenshiHeavensRockHB : TenshiHeavensRock replaces TenshiHeavensRock
+{
+    Tag "Tenshi Hinanawi"
+    States
+    {
+        See:
+            TENS A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            TENS N 1 A_SpawnItem("LittleSpellCardBonus")
+            TENS N 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR TenshiThyViolenceNurturesUsHB : TenshiThyViolenceNurturesUs replaces TenshiThyViolenceNurturesUs
+{
+    Tag "Tenshi Hinanawi"
+    States
+    {
+        See:
+            TENS A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,60)
+            goto Super::See
+        Death:
+            TENS N 1 A_SpawnItem("LittleSpellCardBonus")
+            TENS N 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR TenshiEarthCalmingStoneHB : TenshiEarthCalmingStone replaces TenshiEarthCalmingStone
+{
+    States
+    {
+        See:
+            TENS A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            TENS L 1 A_SpawnItem("LittleSpellCardBonus")
+            TENS L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR TenshiScarletWeatherRhapsodyHB : TenshiScarletWeatherRhapsody replaces TenshiScarletWeatherRhapsody
+{
+    States
+    {
+        See:
+            TENS A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,110)
+            goto Super::See
+        Death:
+            TENS L 1 A_SpawnItem("BigSpellCardBonus")
+            TENS L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** RAN ****/
+
+ACTOR RanYakumoHB : RanYakumo replaces RanYakumo
+{
+    Tag "Ran Yakumo"
+    States
+    {
+        See:
+            RANY A 1 A_GiveToTarget("GlobalStatExtra")
+            goto Super::See
+    }
+}
+ACTOR RanProtectionOfZenkiAndGokiHB : RanProtectionOfZenkiAndGoki replaces RanProtectionOfZenkiAndGoki
+{
+    States
+    {
+        See:
+            RANY A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            RANY C 1 A_SpawnItem("LittleSpellCardBonus")
+            RANY C 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR RanPrincessTenkoHB : RanPrincessTenko replaces RanPrincessTenko
+{
+    States
+    {
+        See:
+            RANY A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            // Keep G frame here to switch to DEFG sequence.
+            RANY G 1 A_SpawnItem("MediumSpellCardBonus")
+            RANY G 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+
+/**** YUKARI ****/
+// I even frightened to edit something like this, let alone fight with SUCH OVERPOWERED Yukar--
+// ...[The author of this mod has been gapped out and is not available in this universe. Please contact him later.]
+
+ACTOR YukariDreamsAndRealityHB : YukariDreamsAndReality replaces YukariDreamsAndReality
+{
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,50)
+            goto Super::See
+        Death:
+            YKRI K 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariMotionAndStillnessHB : YukariMotionAndStillness replaces YukariMotionAndStillness
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,55)
+            goto Super::See
+        Death:
+            YKRI K 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariLightAndDarknessHB : YukariLightAndDarkness replaces YukariLightAndDarkness
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,65)
+            goto Super::See
+        Death:
+            YKRI K 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariStraightAndCurveHB : YukariStraightAndCurve replaces YukariStraightAndCurve
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,55)
+            goto Super::See
+        Death:
+            YKRI K 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariWaveAndParticleHB : YukariWaveAndParticle replaces YukariWaveAndParticle
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,65)
+            goto Super::See
+        Death:
+            YKRI K 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariYakumoSpiritingAwayHB : YukariYakumoSpiritingAway replaces YukariYakumoSpiritingAway
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKR1 O 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,70)
+            goto Super::See
+        Death:
+            YKRI O 1 A_SpawnItem("MediumSpellCardBonus")
+            YKRI O 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariDoubleDeathButterflyHB : YukariDoubleDeathButterfly replaces YukariDoubleDeathButterfly
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,70)
+            goto Super::See
+        Death:
+            // Different death frame
+            YKRI L 1 A_SpawnItem("BigSpellCardBonus") // Let's go mad!
+            YKRI L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}
+ACTOR YukariRanYakumoHB : YukariRanYakumo replaces YukariRanYakumo
+{
+    Tag "Yukari Yakumo"
+    States
+    {
+        See:
+            YKRI A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,70)
+            goto Super::See
+        Death:
+            // L frame again
+            YKRI L 1 A_SpawnItem("BigSpellCardBonus")
+            YKRI L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            YKRI L 1 // Here we go into a survival attack
+            YKRI L 1 ACS_NamedExecute("THS_YukariStartSurvival",0) // Start survival
+    }
+}
+ACTOR YukariLifeAndDeathHB : YukariLifeAndDeath replaces YukariLifeAndDeath
+{
+    States
+    {
+        See:
+            YKR1 O 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,110)
+            goto Super::See
+        Death:
+            YKRI KKKK 1 A_SpawnItem("BigSpellCardBonus")
+            YKRI K 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
+            goto Super::Death
+    }
+}

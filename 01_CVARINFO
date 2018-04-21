@@ -14,9 +14,6 @@ server int touhou_use_scoring          = 1;
 // Spawn power (and score) items when killing fairies on level 13 and more.
 server int touhou_spawn_more_items     = 1;
 
-// Show boss health and spell card indicators while fighting.
-server int touhou_show_boss_bars       = 1;
-
 // Allow boss drop score and power items on levels >= 13.
 // Bosses on lower levels (e. g. Komachi) will drop power (and score) always.
 server int touhou_bosses_drop_powerups = 1;

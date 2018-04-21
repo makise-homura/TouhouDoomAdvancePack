@@ -34,6 +34,20 @@ ACTOR GlobalStatSStage  : Inventory { Inventory.MaxAmount 1 }
 ACTOR GlobalEpisode2    : Inventory { Inventory.MaxAmount 1 }
 ACTOR GlobalEpisode3    : Inventory { Inventory.MaxAmount 1 }
 
+// Detecting 1st episode Extra Stage entering by 'See' state of Flandre.
+// Other episodes' Extra Stages detection are in corresponding DECORATE files.
+// HB stands for health bar, but as for now, remaining functionality is the only scoring one.
+
+ACTOR FlandreHB : Flandre replaces Flandre
+{
+    States
+    {
+        See:
+            FLAN A 1 A_GiveToTarget("GlobalStatExtra")
+            goto Super::See
+    }
+}
+
 /****** SCORE ITEM ******/
 
 ACTOR GenericScoreItem : ScoreItem
@@ -472,7 +486,7 @@ ACTOR MegasphereExtended : Megasphere replaces Megasphere
 }
 
 /************************************
-  ENABLING ITEM DROP ON LEVELS >= 13 
+  ENABLING ITEM DROP ON LEVELS >= 13
  ************************************/
 
 // Enabling fairies on higher stages drop power/points as on lower stages

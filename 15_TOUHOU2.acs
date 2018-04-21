@@ -1,0 +1,251 @@
+#library "TOUHOU2"
+#include "zcommon.acs"
+
+int HELPSTR2 =
+"You may configure Touhou DOOM score/healthbar mod behavior using following CVARs:\n\
+    touhou_use_scoring 0/1: Enable point items and score system.\n\
+    touhou_use_extends 0/1: Give life extends for earning some high score.\n\
+    touhou_spawn_more_items 0/1: Don't stop dropping power (and maybe points) from killed enemies once you reach MAP13.\n\
+    touhou_bosses_drop_powerups 0/1: Let do the same for bosses.\n\
+    touhou_show_boss_bars 0/1: Show boss health bar and number of her spell cards.";
+
+Script "CVARInfo" OPEN
+{
+    HudMessage(s:HELPSTR2; HUDMSG_PLAIN|HUDMSG_LOG, 92712, CR_WHITE, 1.5, 0.2, 2.5);
+}
+
+/***************************
+  THS (TOUHOU SCORE SYSTEM)
+ ***************************/
+
+int THS_LastScore = 0;
+
+#define THS_MSG_ID 162999
+
+// This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
+Script "THS_DrawScore" ENTER
+{
+    // Level 33 is mission end stub-level
+    if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && GetLevelInfo(LEVELINFO_LEVELNUM) != 33)
+    {
+        HudMessageBold(s:"Score: ", d:GetActorProperty(0,APROP_SCORE); HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+    }
+    Delay (1);
+    Restart;
+}
+
+// This script does special effects (centered on-screen message and sound) if extend is awarded (not just picked up).
+Script "THS_Extend" (void)
+{
+    Print(s:"Extend!");
+    GiveInventory("Extend", 1);
+    PlaySound(0, "player/extend");
+}
+
+// This script gives player an extend:
+// - on 100k, 200k, 300k, 500k, 700k and 1M points (if "rare" extends are disabled);
+// - on 200k, 400k, 600k, 1M, 1.4M and 2M points (if "rare" extends are enabled).
+Script "THS_AddExtends" ENTER
+{
+    int score = GetActorProperty(0, APROP_SCORE);
+
+    // "Rare" extends.
+    if (GetCVar("touhou_use_extends") == 2)
+    {
+        // Compare with 0 to prevent giving extends at level start, when LastScore == 0
+        if ((THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 400000  && score >= 400000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 600000  && score >= 600000)  ||
+            (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) ||
+            (THS_LastScore != 0 && THS_LastScore < 1400000 && score >= 1400000) ||
+            (THS_LastScore != 0 && THS_LastScore < 2000000 && score >= 2000000) )
+        {
+            ACS_NamedExecute("THS_Extend", 0);
+        }
+    }
+
+    // "Normal" extends.
+    if (GetCVar("touhou_use_extends") == 1)
+    {
+        // Compare with 0 to prevent giving extends at level start, when LastScore == 0
+        if ((THS_LastScore != 0 && THS_LastScore < 100000  && score >= 100000) ||
+            (THS_LastScore != 0 && THS_LastScore < 200000  && score >= 200000) ||
+            (THS_LastScore != 0 && THS_LastScore < 300000  && score >= 300000) ||
+            (THS_LastScore != 0 && THS_LastScore < 500000  && score >= 500000) ||
+            (THS_LastScore != 0 && THS_LastScore < 700000  && score >= 700000) ||
+            (THS_LastScore != 0 && THS_LastScore < 1000000 && score >= 1000000) )
+        {
+            ACS_NamedExecute("THS_Extend", 0);
+        }
+    }
+
+    THS_LastScore = score;
+    Delay (1);
+    Restart;
+}
+
+// This script removes excess health according to number of EXTENDs given to player
+Script "THS_WatchExtend" ENTER
+{
+    int health = GetActorProperty(0, APROP_HEALTH);
+    int maxhealth = 200;
+    if (GetCVar("touhou_use_extends"))
+    {
+        maxhealth += CheckInventory("Extend") * 100;
+    }
+    if (health > maxhealth) SetActorProperty(0, APROP_HEALTH, maxhealth);
+    Delay (1);
+    Restart;
+}
+
+// This is wrapper scripts returning 1 if such CVar is not set, or 0 otherwise (if it is set).
+// They are needed because some old Zandronums and ZDooms do not have GetCVar in DECORATE.
+Script "THS_ShouldFairyNotSpawnItems" (void)
+{
+    SetResultValue(GetCVar("touhou_spawn_more_items") < 1);
+}
+
+Script "THS_ShouldWeNotUseScoring" (void)
+{
+    SetResultValue(GetCVar("touhou_use_scoring") < 1);
+}
+
+Script "THS_ShouldBossesNotDropPowerups" (void)
+{
+    SetResultValue(GetCVar("touhou_bosses_drop_powerups") < 1);
+}
+
+// This script will save stats for final "All clear" statistics.
+// Yes, we have to save episode, as we can't determine from which one
+// we warped onto statistics map.
+Script "THS_SaveStats" UNLOADING
+{
+    GiveInventory("GlobalStatKills",  GetLevelInfo(LEVELINFO_KILLED_MONSTERS));
+    GiveInventory("GlobalStatItems",  GetLevelInfo(LEVELINFO_FOUND_ITEMS));
+    GiveInventory("GlobalStatSecrets",GetLevelInfo(LEVELINFO_FOUND_SECRETS));
+
+    int MapNum = GetLevelInfo(LEVELINFO_LEVELNUM);
+    if (MapNum >= 17)      GiveInventory("GlobalEpisode3", 1);
+    else if (MapNum >= 10) GiveInventory("GlobalEpisode2", 1);
+    // Otherwise episode 1
+}
+
+// This script will determine if we entered secret level.
+Script "THS_CheckSecretLevel" ENTER
+{
+    if (GetLevelInfo(LEVELINFO_LEVELNUM) == 31)
+    {
+        GiveInventory("GlobalStatSStage", 1);
+    }
+}
+
+#define BONUS_MSG_ID 164000 // BHI_MSG_ID + 1000
+
+bool THS_Active      = false;
+int  THS_StartedAt   = 0;
+bool THS_IsSurvival  = false;
+int  THS_TimerLength = 0;
+
+#define BONUS_SIZE 100000
+
+Script "THS_StartSpellCardBonus" (int IsSurvival, int TimerLength)
+{
+    THS_Active       = true;
+    THS_StartedAt    = Timer();
+    THS_IsSurvival   = IsSurvival;
+    THS_TimerLength  = TimerLength; // Does not matter on survival attacks
+}
+
+// This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
+Script "THS_DrawSpellCardBonus" ENTER
+{
+    if(THS_Active)
+    {
+        // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
+        // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+        if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10)
+        {
+            if (THS_IsSurvival)
+            {
+                HudMessageBold(s:"Bonus: ", d:BONUS_SIZE, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            }
+            else
+            {
+                int duration = THS_TimerLength;
+                int bonus = BONUS_SIZE * (duration - (Timer() - THS_StartedAt)) / duration; // points
+                if (bonus < 10)
+                    HudMessageBold(s:"Bonus: Failed\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                else
+                    HudMessageBold(s:"Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+            }
+        }
+    }
+    Delay (1);
+    Restart;
+}
+
+Script "THS_GiveSpellCardBonus" (void)
+{
+    if (THS_Active) // Safety measure
+    {
+        // Finish spell card bonus counter
+        THS_Active = false;
+
+        // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
+        // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+        if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10)
+        {
+            if (THS_IsSurvival) // Survival spell: constant bonus, no depletion.
+            {
+                HudMessageBold(s:"Get Spell Card Bonus: ", d:BONUS_SIZE, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                SetActivatorToTarget(0); // I spent nearly hours before found out that this is required!
+                GiveInventory("GenericScoreItem", BONUS_SIZE);
+            }
+            else
+            {
+                int duration = THS_TimerLength;
+                int bonus = Timer() - THS_StartedAt; // time spell card lasts
+                if (bonus > THS_TimerLength) // You have to capture spell card in certain time, or you fail the bonus.
+                {
+                    HudMessageBold(s:"Bonus Failed!\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                }
+                else
+                {
+                    bonus = BONUS_SIZE * (duration - bonus) / duration; // points given after spell card capture
+                    if (bonus < 10) bonus = 10; // suppress zero and negative bonus, if it appears somehow
+                    HudMessageBold(s:"Get Spell Card Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                    SetActivatorToTarget(0);
+                    GiveInventory("GenericScoreItem", bonus);
+                }
+            }
+        }
+    }
+}
+
+// These scripts would catch conditions where to start/stop survival attacks of Yukari and Koishi (except skeletons).
+
+// Original map do not steal. Started here, terminated at spawn of KoishiDekwSign.
+Script "THS_KoishiWaitForSurvival1Start" OPEN
+{
+    if (GetLevelInfo(LEVELINFO_LEVELNUM) != 16) Terminate;
+    ScriptWait(54);
+    ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0);
+    Delay(1);
+}
+// Candelabras. Started and terminated here.
+Script "THS_KoishiStartSurvival2" (void)
+{
+    Delay(181); // Time to teleport to survival area
+    ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0);
+    Delay(75*35);
+    ACS_NamedExecute("THS_GiveSpellCardBonus",0);
+    Delay(1);
+}
+// Yukari's barrier of Humans and Youkai. Started and terminated here.
+Script "THS_YukariStartSurvival" (void)
+{
+    ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0);
+    Delay(75*35);
+    ACS_NamedExecute("THS_GiveSpellCardBonus",0);
+    Delay(1);
+}
