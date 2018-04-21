@@ -508,6 +508,7 @@ ACTOR YukariRanYakumoHB : YukariRanYakumo replaces YukariRanYakumo
             YKRI L 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0)
             YKRI L 1 // Here we go into a survival attack
             YKRI L 1 ACS_NamedExecute("THS_YukariStartSurvival",0) // Start survival
+            goto Super::Death
     }
 }
 ACTOR YukariLifeAndDeathHB : YukariLifeAndDeath replaces YukariLifeAndDeath
