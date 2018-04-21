@@ -148,12 +148,12 @@ int  THS_TimerLength = 0;
 
 #define BONUS_SIZE 100000
 
-Script "THS_StartSpellCardBonus" (int IsSurvival, int TimerLength)
+Script "THS_StartSpellCardBonus" (int IsSurvival, int TimerLength) // TimerLength should be in seconds
 {
     THS_Active       = true;
     THS_StartedAt    = Timer();
     THS_IsSurvival   = IsSurvival;
-    THS_TimerLength  = TimerLength; // Does not matter on survival attacks
+    THS_TimerLength  = TimerLength * 35; // Does not matter on survival attacks
 }
 
 // This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
