@@ -247,6 +247,7 @@ Script "THS_KoishiStartSurvival2" (void)
 // Yukari's barrier of Humans and Youkai. Started and terminated here.
 Script "THS_YukariStartSurvival" (void)
 {
+    Delay(88); // Duration of 'Death' state of YukariRanYakumo
     ACS_NamedExecute("THS_StartSpellCardBonus",0,1,0);
     Delay(75*35);
     ACS_NamedExecute("THS_GiveSpellCardBonus",0);
