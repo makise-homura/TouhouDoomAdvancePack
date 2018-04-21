@@ -150,7 +150,7 @@ int  THS_TimerLength = 0;
 
 Script "THS_StartSpellCardBonus" (int IsSurvival, int TimerLength) // TimerLength should be in seconds
 {
-    if (THS_Active) // Safety measure
+    if (!THS_Active) // Safety measure
     {
         THS_Active       = true;
         THS_StartedAt    = Timer();
