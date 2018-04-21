@@ -366,6 +366,7 @@ ACTOR KoishiHB : Koishi replaces Koishi
         See:
             KOIS A 1 A_GiveToTarget("GlobalStatExtra")
             goto Super::See
+    }
 }
 ACTOR KoishiDanmakuParanoiaHB : KoishiDanmakuParanoia replaces KoishiDanmakuParanoia
 {
