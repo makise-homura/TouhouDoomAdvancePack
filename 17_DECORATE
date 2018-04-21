@@ -1089,8 +1089,11 @@ ACTOR YukariLifeAndDeathHB : YukariLifeAndDeath replaces YukariLifeAndDeath
     States
     {
         See:
-            // Different frame
-            YKR1 O 1 ACS_NamedExecute("BHI_BossStartAttack",0,225,0,true)
+            // See TouhouMap20/SCRIPTS:1477-1482. There are 78 things with
+            // the same TID, so here we can't avoid using of Thing_ChangeTID.
+            // Note different frame
+            YKRI O 1 Thing_ChangeTID(0,6099)
+            YKR1 O 1 ACS_NamedExecute("BHI_BossStartAttack",0,6099,0,true)
             goto Super::See
         Death:
             YKRI K 1 ACS_NamedTerminate("BHI_BossStartAttack",0)
