@@ -425,11 +425,9 @@ ACTOR KoishiDekwSignHB : KoishiDekwSign replaces KoishiDekwSign
     Tag "Koishi Komeiji"
     States
     {
-        Spawn:
-            TNT1 A 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0) // Finalize original map
-            TNT1 A 1 // Safety gap
-            goto Super::Spawn
         See:
+            KOIS A 1 ACS_NamedExecute("THS_GiveSpellCardBonus",0) // Finalize original map
+            KOIS A 1 // Safety gap
             KOIS A 1 ACS_NamedExecute("THS_StartSpellCardBonus",0,0,80)
             goto Super::See
         Death:
