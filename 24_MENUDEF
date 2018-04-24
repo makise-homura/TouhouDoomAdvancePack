@@ -24,6 +24,8 @@ OptionMenu "TouhouDoomOptions"
     StaticText "General options", "808000"
     Option "Cutscenes", "touhou_skipcutscenes", "EnableDisableValues"
     Option "Game tips", "touhou_protips", "DisableEnableValues"
+    // We could have been using "!touhou_doomweapons" check in the following line, but MENUDEF doesn't allow that.
+    Option "Spell cards", "touhou_nospellcards", "EnableDisableValues"
     Option "Boss health bars", "touhou_bosslifebars", "DisableEnableValues"
     Option "Danmaku weapons [episode 2 and so]", "touhou_doomweapons", "EnableDisableValues"
     Option "Shmup movement with 2x damage", "touhou_cl_shmupmovement", "DisableEnableValues"
