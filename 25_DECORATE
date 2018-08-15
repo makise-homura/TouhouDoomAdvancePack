@@ -1,0 +1,141 @@
+ACTOR SystemCardBombNCI : SystemCardBomb replaces SystemCardBomb
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR SystemCardSpellAmplifierNCI : SystemCardSpellAmplifier replaces SystemCardSpellAmplifier
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR SystemCardLifeRegeneratorNCI : SystemCardLifeRegenerator replaces SystemCardLifeRegenerator
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+}
+
+ACTOR FantasySealNCI : FantasySeal replaces FantasySeal
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR EvilSealingCircleNCI : EvilSealingCircle replaces EvilSealingCircle
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR MasterSparkNCI : MasterSpark replaces MasterSpark
+{
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR StardustReverieNCI : StardustReverie replaces StardustReverie
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR PrivateSquareNCI : PrivateSquare replaces PrivateSquare
+{
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR GhastlyDreamNCI : GhastlyDream replaces GhastlyDream
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR RedTheNightlessCastleNCI : RedTheNightlessCastle replaces RedTheNightlessCastle
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR MapleLeafFanNCI : MapleLeafFan replaces MapleLeafFan
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR GrayThaumaturgyNCI : GrayThaumaturgy replaces GrayThaumaturgy
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR MegaFlareNCI : MegaFlare replaces MegaFlare
+{
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR ThunderFromTheSeaOfEternalCloudsNCI : ThunderFromTheSeaOfEternalClouds replaces ThunderFromTheSeaOfEternalClouds
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+  }
+}
+
+ACTOR StateOfFreedomFromWorldlyThoughtsNCI : StateOfFreedomFromWorldlyThoughts replaces StateOfFreedomFromWorldlyThoughts
+{
+  States
+  {
+  Bye:
+    TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
+    Goto Super::Bye
+}
