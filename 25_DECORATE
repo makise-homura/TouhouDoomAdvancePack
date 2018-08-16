@@ -1,3 +1,13 @@
+/****** SPELL CARD VANISH BUG FIX ******/
+
+// This DECORATE is fixing a bug that appeared in Touhou DOOM since
+// introduction of touhou_nospellcards CVAR, that makes reaching
+// 100% items impossible on levels with spell cards (they disappear,
+// but don't exclude theirselves from item count).
+
+// Affected versions of Touhou DOOM: 3.5B, 3.5C, 3.55, 3.6, 3.65, 3.66.
+
+
 ACTOR SystemCardBombNCI : SystemCardBomb replaces SystemCardBomb
 {
   States
@@ -25,6 +35,7 @@ ACTOR SystemCardLifeRegeneratorNCI : SystemCardLifeRegenerator replaces SystemCa
   Bye:
     TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
     Goto Super::Bye
+  }
 }
 
 ACTOR FantasySealNCI : FantasySeal replaces FantasySeal
@@ -49,6 +60,8 @@ ACTOR EvilSealingCircleNCI : EvilSealingCircle replaces EvilSealingCircle
 
 ACTOR MasterSparkNCI : MasterSpark replaces MasterSpark
 {
+  States
+  {
   Bye:
     TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
     Goto Super::Bye
@@ -67,6 +80,8 @@ ACTOR StardustReverieNCI : StardustReverie replaces StardustReverie
 
 ACTOR PrivateSquareNCI : PrivateSquare replaces PrivateSquare
 {
+  States
+  {
   Bye:
     TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
     Goto Super::Bye
@@ -115,6 +130,8 @@ ACTOR GrayThaumaturgyNCI : GrayThaumaturgy replaces GrayThaumaturgy
 
 ACTOR MegaFlareNCI : MegaFlare replaces MegaFlare
 {
+  States
+  {
   Bye:
     TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
     Goto Super::Bye
@@ -138,4 +155,5 @@ ACTOR StateOfFreedomFromWorldlyThoughtsNCI : StateOfFreedomFromWorldlyThoughts r
   Bye:
     TNT1 A 0 A_ChangeFlag("COUNTITEM", FALSE)
     Goto Super::Bye
+  }
 }
