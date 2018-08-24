@@ -57,7 +57,7 @@ deliver_music()
 	echo
 	echo "-- None found, but we will download it now..."
 	YDL=`which youtube-dl`
-	[ -x "$YDL" ] || error_exit 3 "No youtube-dl tool found. You may acquire it by executing \`sudo pip install youtube-dl'."
+	[ -x "$YDL" ] || error_exit 3 "No youtube-dl tool found. You may acquire it by executing \`pip install youtube-dl' as root."
 	echo
 	echo "-- Downloading $MUSICFILE.wav from $MUSICURL..."
 	$YDL -x --audio-format=wav -o "$MUSICFILE.%(ext)s" $MUSICURL || error_exit 1 "Unable to download $MUSICFILE.wav. Is youtube-dl not functioning? Try updating it with -U."
