@@ -25,10 +25,20 @@ int THS_LastScore = 0;
 // This script draws score on top of HUD (warning: works not nice with mini-HUD and alternative HUD, like BGM message does).
 Script "THS_DrawScore" ENTER
 {
+    int score = GetActorProperty(0,APROP_SCORE);
+    int graze = CheckInventory("GrazeItem");
+
     // Level 33 is mission end stub-level
     if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10 && GetLevelInfo(LEVELINFO_LEVELNUM) != 33)
     {
-        HudMessageBold(s:"Score: ", d:GetActorProperty(0,APROP_SCORE); HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+        if (GetCVar("touhou_use_grazing"))
+        {
+            HudMessageBold(s:"Score: ", d:score, s:"\nGraze: ", d:graze; HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+        }
+        else
+        {
+            HudMessageBold(s:"Score: ", d:score; HUDMSG_FADEOUT, THS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+        }
     }
     Delay (1);
     Restart;
@@ -164,22 +174,33 @@ Script "THS_DrawSpellCardBonus" ENTER
 {
     if(THS_Active)
     {
-        // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
+        // Note: message should have than "endl" at end; it is used to prevent overlap with current score and possibly graze value.
         // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+        // First letter on last line, G, if grazing is enabled, is a similar hack to fit first letter in "Graze:" line.
+        str endl;
+        if (GetCVar("touhou_use_grazing"))
+        {
+            endl = "\nS\nG";
+        }
+        else
+        {
+            endl = "\nS";
+        }
+
         if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10)
         {
             if (THS_IsSurvival)
             {
-                HudMessageBold(s:"Bonus: ", d:BONUS_SIZE, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                HudMessageBold(s:"Bonus: ", d:BONUS_SIZE, s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
             }
             else
             {
                 int duration = THS_TimerLength;
                 int bonus = BONUS_SIZE * (duration - (Timer() - THS_StartedAt)) / duration; // points
                 if (bonus < 10)
-                    HudMessageBold(s:"Bonus: Failed\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                    HudMessageBold(s:"Bonus: Failed", s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
                 else
-                    HudMessageBold(s:"Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                    HudMessageBold(s:"Bonus: ", d:bonus, s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
             }
         }
     }
@@ -252,4 +273,25 @@ Script "THS_YukariStartSurvival" (void)
     Delay(76*35); // Actually, it's 76 seconds, not 75.
     ACS_NamedExecute("THS_GiveSpellCardBonus",0);
     Delay(1);
+}
+
+/***************************
+  THS (TOUHOU GRAZE SYSTEM)
+ ***************************/
+
+// Supported only on:
+//     GZDoom 1.x from 1.9.0 and higher;
+//     GZDoom 2.x from 2.1.0 and higher;
+//     GZDoom 3.x and higher;
+//     ZDoom 2.8.0 and higher.
+//     No Zandronum support anymore until they add RGF_MISSILES to their code.
+
+Script "TGS_GiveGraze" ENTER
+{
+    if (GetCVar("touhou_use_scoring") || GetCVar("touhou_use_grazing"))
+    {
+        Spawn("GrazeGiver", GetActorX(0), GetActorY(0), GetActorZ(0), 0, 0);
+    }
+    Delay (1);
+    Restart;
 }

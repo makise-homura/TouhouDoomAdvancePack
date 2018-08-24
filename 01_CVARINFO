@@ -17,3 +17,9 @@ server int touhou_spawn_more_items     = 1;
 // Allow boss drop score and power items on levels >= 13.
 // Bosses on lower levels (e. g. Komachi) will drop power (and score) always.
 server int touhou_bosses_drop_powerups = 1;
+
+// Enable graze score count.
+// Works only on GZDoom 1.x >= 1.9.0, GZDoom 2.x >= 2.1.0, GZDoom >= 3.x,
+// ZDoom >= 2.8.0. Not supported on Zandronum at least of 3.0.
+// It does not matter if touhou_use_scoring = 0.
+server int touhou_use_grazing = 1;

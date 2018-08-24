@@ -58,6 +58,7 @@ script 1 ENTER
     int Extra   = CheckInventory("GlobalStatExtra");
     int SStage  = CheckInventory("GlobalStatSStage");
     int Power   = CheckInventory("Power");
+    int Graze   = CheckInventory("GrazeItem");
 
     // It is not easy to determine how many spell cards did player take.
     // Btw, if there was some messing with skill levels during play, then it will not work at all.
@@ -200,44 +201,59 @@ script 1 ENTER
                  Secrets*500,                      6056,                   200       );
     Score += Secrets*500;
 
-    HudMessage(s:"x";                HUDMSG_PLAIN, 6062, CR_WHITE,  330.2, 220.0, 0.0);
+    HudMessage(s:"GRAZE";            HUDMSG_PLAIN, 6110, CR_WHITE,  100.1, 220.0, 0.0);
+    // Note: Episode 1 isn't supposed to use score count and grazing.
+    if (GetCVar("touhou_use_grazing") && Episode != 1)
+    {
+        HudMessage(i:Power;          HUDMSG_PLAIN, 6111, CR_WHITE,  310.2, 220.0, 0.0);
+        HudMessage(s:"x";            HUDMSG_PLAIN, 6112, CR_WHITE,  330.2, 220.0, 0.0);
+        HudMessage(s:"1";            HUDMSG_PLAIN, 6113, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"=";            HUDMSG_PLAIN, 6114, CR_WHITE,  400.2, 220.0, 0.0);
+        ACS_NamedExecuteWait("FancyMessage",0,
+                     Graze*1,                      6115,                   220       );
+    }
+    else
+        HudMessage(s:"N/A";          HUDMSG_PLAIN, 6116, CR_WHITE,  500.2, 220.0, 0.0);
+    Score += Graze*1;
+
+    HudMessage(s:"x";                HUDMSG_PLAIN, 6062, CR_WHITE,  330.2, 240.0, 0.0);
     if (CheckInventory("UltraMode")) // Ultra must be checked before Lunatic
     {
-        HudMessage(s:"ULTRA RANK";   HUDMSG_PLAIN, 6061, CR_RED,    100.1, 220.0, 0.0);
-        HudMessage(s:"2.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"ULTRA RANK";   HUDMSG_PLAIN, 6061, CR_RED,    100.1, 240.0, 0.0);
+        HudMessage(s:"2.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 240.0, 0.0);
         Score *= 5;
         Score /= 2; // Screw integer arithmetic
     }
     else if (CheckInventory("LunaticMode"))
     {
-        HudMessage(s:"LUNATIC RANK"; HUDMSG_PLAIN, 6061, CR_RED,    100.1, 220.0, 0.0);
-        HudMessage(s:"2.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"LUNATIC RANK"; HUDMSG_PLAIN, 6061, CR_RED,    100.1, 240.0, 0.0);
+        HudMessage(s:"2.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 240.0, 0.0);
         Score *= 2;
     }
     else if (CheckInventory("HardMode"))
     {
-        HudMessage(s:"HARD RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
-        HudMessage(s:"1.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"HARD RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 240.0, 0.0);
+        HudMessage(s:"1.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 240.0, 0.0);
         Score *= 3;
         Score /= 2; // Screw integer arithmetic
     }
     else if (CheckInventory("NormalMode"))
     {
-        HudMessage(s:"NORMAL RANK";  HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
-        HudMessage(s:"1.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"NORMAL RANK";  HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 240.0, 0.0);
+        HudMessage(s:"1.0";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 240.0, 0.0);
         Score *= 1;
     }
     else // Easy Mode
     {
-        HudMessage(s:"EASY RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 220.0, 0.0);
-        HudMessage(s:"0.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"EASY RANK";    HUDMSG_PLAIN, 6061, CR_WHITE,  100.1, 240.0, 0.0);
+        HudMessage(s:"0.5";          HUDMSG_PLAIN, 6063, CR_WHITE,  380.2, 240.0, 0.0);
         Score /= 2;
     }
 
-    HudMessage(s:"TOTAL";            HUDMSG_PLAIN, 6071, CR_YELLOW, 100.1, 260.0, 0.0);
-    HudMessage(s:"=";                HUDMSG_PLAIN, 6072, CR_YELLOW, 400.2, 260.0, 0.0);
+    HudMessage(s:"TOTAL";            HUDMSG_PLAIN, 6071, CR_YELLOW, 100.1, 280.0, 0.0);
+    HudMessage(s:"=";                HUDMSG_PLAIN, 6072, CR_YELLOW, 400.2, 280.0, 0.0);
     ACS_NamedExecuteWait("FancyMessage",0,
-                 Score,                            6073,                  -260       );
+                 Score,                            6073,                  -280       );
     SkipCutscene++; // Ready to exit from here
 }
 

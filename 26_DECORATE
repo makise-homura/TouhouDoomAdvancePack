@@ -1,0 +1,37 @@
+/***************************
+  THS (TOUHOU GRAZE SYSTEM)
+ ***************************/
+
+// Supported only on:
+//     GZDoom 1.x from 1.9.0 and higher;
+//     GZDoom 2.x from 2.1.0 and higher;
+//     GZDoom 3.x and higher;
+//     ZDoom 2.8.0 and higher.
+//     No Zandronum support anymore until they add RGF_MISSILES to their code.
+
+// Given to every missile in certain distance to find a correct number
+// of missiles grazed by player in this tic.
+Actor GrazeDetector : Inventory
+{
+}
+
+// Given to player in amount equals to Detector items being successfully given.
+Actor GrazeItem : Inventory
+{
+    // Should we limit available graze amount?
+    // If yes, uncomment this (it's an approximation of resulting graze value
+    // if player grazes one projectile at every moment through 10 hours.)
+    // Inventory.MaxAmount 12600000
+}
+
+// Spawned in the position of player every game tic.
+// Gives some graze items and then disappears.
+ACTOR "GrazeGiver"
+{
+    States
+    {
+        See:
+            TNT1 A 1 A_RadiusGive("GrazeItem", 0.0, RGF_GIVESELF, A_RadiusGive("GrazeDetector", 128, RGF_MISSILES))
+            Stop
+    }
+}
