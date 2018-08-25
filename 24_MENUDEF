@@ -49,7 +49,7 @@ OptionMenu "OptionsMenu"
 {
     Title       "OPTIONS"
     Submenu     "Touhou DOOM Options",             "TouhouDoomOptions"
-    Submenu     "Multuplayer Options [Zandronum]", "ZA_MultiplayerOptions" // Zandronum only
+    Submenu     "Multiplayer Options [Zandronum]", "ZA_MultiplayerOptions" // Zandronum only
     StaticText  ""
     Submenu     "Customize Controls",              "CustomizeControls"
     Submenu     "Mouse options",                   "MouseOptions"
@@ -67,6 +67,6 @@ OptionMenu "OptionsMenu"
     Submenu     "Set video mode",                  "VideoModeMenu"
     StaticText  ""
     SafeCommand "Reset to defaults",               "reset2defaults"
-    SafeCommand	"Reset to last saved",             "reset2saved"
+    SafeCommand "Reset to last saved",             "reset2saved"
     Command     "Go to console",                   "menuconsole"
 }
