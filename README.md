@@ -1,6 +1,7 @@
 # Touhou DOOM Advance Pack
 
 Extensions and bugfixes pack for **Untitled's Touhou DOOM** mod.
+Requires Touhou DOOM version 3.5C or higher, and GZDoom 2.2.0 or higher.
 
 This mod adds some interesting (as for me) features to Untitled's Touhou DOOM.
 (Yes, *I heard you like Touhou and DOOM, so I made a Touhou mod to Touhou mod so you can play even more Touhouish DOOM while playing Touhouish DOOM!*)
@@ -17,14 +18,14 @@ What has been done:
 - Fancy endgame ("ALL CLEAR!") stats screen (and numbers are not static, but counting from 0 to actual value like in DOOM intermission screen!) has been made.
 - *EXTEND* bonus introduced. It may be placed on map, or given as drop from a boss. Contrary to Touhou-like extend mechanic, they do not add a life; but, they "extend" player's possible life scale. Each extend raises maximum health level achievable with megaspheres and soulspheres (but not health bonuses, as they aren't used in Touhou-themed stages) by 100; so single extend gives maximum health 300, next one - 400, and so on.
 - Player receives an *EXTEND* when score reaches some predefined levels. It may be disabled by `touhou_use_extends` CVAR. This needs balancing, maybe.
+- Grazing. I wasn't able to find a suitable way to implement grazing without raising engine version requirements (or else I have to fix every single projectile class in game, which is insane), so it's the main reason for breaking backward compatibility.
 
 What is missing now, but possibly is a subject to be added when I figure out how to implement it in reasonable way and consider it needed:
-- Grazing. I just can't find a suitable way to implement grazing other than fix every single projectile class in game. It looks a bit insane.
 - Auto-collect. I suppose when boss or midboss battle begins, player must auto-collect all power and score items remaining on map; I still don't know how to do this in nice-looking matter (Well, draft idea is to use `ThingCount`, then despawn every point/power item, and add resulting value to score; but it's not even nearly pretty as mechanic of auto-collect in Touhou).
 - High score. I don't think ACS allow me to modify files on disk, but for now you still may save your score table as a typical savegame (yes, it is possible!) and show this to your friends lol.
 - Enemy marker. It turned out much harder than I thought of it; that's because ACS/DECORATE don't know anything about player screen. As for now, I surely can't find the way to do something like what I want to see there.
 
-Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH).
+Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH), [Options menu](https://drive.google.com/open?id=1XayZUJYZyaaklP4cFbo9vGxxJgCko2K7).
 
 ## Why is this exist?
 
@@ -40,7 +41,7 @@ Yes, it was totally cool, but at that time, I was not reaaly thinking about what
 But then, I eventually found *Untitled's Touhou DOOM*. In contrast with Dusted's version, it was not DOOM with some Touhou, but like Touhou on DOOM engine!
 Yes, it added spell card battles, more consistent and interesting plot, power mechanics, more nice bosses and even extra stages. (And yes, even on easy modo, it was way more harder than generic DOOM even on UV.)
 So, I thought: *__Y U NO MORE TOUHOU THERE?__*
-And then I started DECORATing and ACSing, and added some features that, as for me, should be in Touhou (even if it is made on DOOM engine), like health bars and point system, and now it is here!
+And then I started DECORATing and ACSing, and added some features that, as for me, should be in Touhou (even if it is made on DOOM engine), like health bars and point/graze system, and now it is here!
 After that, health bar code has been included into original Touhou DOOM, and thus removed from this addon.
 
 P.S. Great thanks to *Dusted* and *Untitled* for giving me a lot of fun playing theirs mods and eventually inspiring me for making this one.
@@ -82,7 +83,7 @@ Just run `./build.sh`. It does everything automatically:
 * build PWAD (overwriting previous version).
 
 Requirements:
-* `youtube-dl` ([https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)); you may install it by just doing `sudo pip install youtube-dl` (only if music is to be downloaded).
+* `youtube-dl` ([https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)); you may install it by just doing `pip install youtube-dl` as root (only if music is to be downloaded).
 * `git` (to grab acc compiler and wadtools from github).
 * `gcc` (to compile acc and wadtools).
 * little-endian machine (or you have to rewrite wadtools to correctly work on your architecture). If you don't know what little-endian is, it's likely you have it.
@@ -93,9 +94,9 @@ Or, you may perform manual installation, if you want.
 
 ## How to use
 
-* Get any modern source port like **Zandronum**, **ZDoom**, **GZDoom**. WAD file was tested on Zandronum 3.0 (https://zdoom.org/wiki/Zandronum), but should be suitable for any not-so-old ZDoom/GZDoom.
+* Get any modern **GZDoom** source port (minimum requirement is 2.2.0).
 * Get DOOM2.WAD from DOOM II game. Possibly FreeDOOM's one can be suitable; it was not tested though.
 * Get Untitled's Touhou Doom PK3 here: [https://forum.zdoom.org/viewtopic.php?f=19&t=57817](https://forum.zdoom.org/viewtopic.php?f=19&t=57817)
 * *(optional)* Get any launcher like ZDL ([https://zdoom.org/wiki/ZDL](https://zdoom.org/wiki/ZDL)) or use another one - whatever you like.
-* Run ZDoom/GZDoom/Zandronum with `DOOM2.WAD` as IWAD, `TouhouDoom.pk3` (or however this file is named) as *first* PWAD in list, and `TouhouDoomAdvancePack.wad` as *second* PWAD in list. Order does strictly matter.
+* Run GZDoom with `DOOM2.WAD` as IWAD, `TouhouDoom.pk3` (or however this file is named) as *first* PWAD in list, and `TouhouDoomAdvancePack.wad` as *second* PWAD in list. Order does strictly matter.
 * Enjoy your "advanced" Touhou DOOM!
