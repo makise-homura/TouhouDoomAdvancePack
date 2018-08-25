@@ -215,13 +215,22 @@ Script "THS_GiveSpellCardBonus" (void)
         // Finish spell card bonus counter
         THS_Active = false;
 
-        // Note: message has "\nS" at end; it is used to prevent overlap with current score value.
-        // First letter on next line, S, is a hack to prevent textbox cutting off and is designed to fit first letter in "Score:" line.
+        // The same thing with endl as in THS_DrawSpellCardBonus().
+        str endl;
+        if (GetCVar("touhou_use_grazing"))
+        {
+            endl = "\nS\nG";
+        }
+        else
+        {
+            endl = "\nS";
+        }
+
         if (GetCVar("touhou_use_scoring") && GetLevelInfo(LEVELINFO_LEVELNUM) >= 10)
         {
             if (THS_IsSurvival) // Survival spell: constant bonus, no depletion.
             {
-                HudMessageBold(s:"Get Spell Card Bonus: ", d:BONUS_SIZE, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                HudMessageBold(s:"Get Spell Card Bonus: ", d:BONUS_SIZE, s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
                 SetActivatorToTarget(0); // I spent nearly hours before found out that this is required!
                 GiveInventory("GenericScoreItem", BONUS_SIZE);
             }
@@ -231,13 +240,13 @@ Script "THS_GiveSpellCardBonus" (void)
                 int bonus = Timer() - THS_StartedAt; // time spell card lasts
                 if (bonus > THS_TimerLength) // You have to capture spell card in certain time, or you fail the bonus.
                 {
-                    HudMessageBold(s:"Bonus Failed!\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                    HudMessageBold(s:"Bonus Failed!", s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
                 }
                 else
                 {
                     bonus = BONUS_SIZE * (duration - bonus) / duration; // points given after spell card capture
                     if (bonus < 10) bonus = 10; // suppress zero and negative bonus, if it appears somehow
-                    HudMessageBold(s:"Get Spell Card Bonus: ", d:bonus, s:"\nS"; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
+                    HudMessageBold(s:"Get Spell Card Bonus: ", d:bonus, s:endl; HUDMSG_FADEOUT, BONUS_MSG_ID, CR_GOLD, 0.0, 1.0, 1.0, 1.0);
                     SetActivatorToTarget(0);
                     GiveInventory("GenericScoreItem", bonus);
                 }
