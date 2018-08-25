@@ -1,6 +1,7 @@
 # Touhou DOOM Advance Pack
 
 Extensions and bugfixes pack for **Untitled's Touhou DOOM** mod.
+Requires Touhou DOOM version 3.5C or higher.
 
 This mod adds some interesting (as for me) features to Untitled's Touhou DOOM.
 (Yes, *I heard you like Touhou and DOOM, so I made a Touhou mod to Touhou mod so you can play even more Touhouish DOOM while playing Touhouish DOOM!*)
@@ -19,12 +20,14 @@ What has been done:
 - Player receives an *EXTEND* when score reaches some predefined levels. It may be disabled by `touhou_use_extends` CVAR. This needs balancing, maybe.
 
 What is missing now, but possibly is a subject to be added when I figure out how to implement it in reasonable way and consider it needed:
-- Grazing. I just can't find a suitable way to implement grazing other than fix every single projectile class in game. It looks a bit insane.
 - Auto-collect. I suppose when boss or midboss battle begins, player must auto-collect all power and score items remaining on map; I still don't know how to do this in nice-looking matter (Well, draft idea is to use `ThingCount`, then despawn every point/power item, and add resulting value to score; but it's not even nearly pretty as mechanic of auto-collect in Touhou).
 - High score. I don't think ACS allow me to modify files on disk, but for now you still may save your score table as a typical savegame (yes, it is possible!) and show this to your friends lol.
 - Enemy marker. It turned out much harder than I thought of it; that's because ACS/DECORATE don't know anything about player screen. As for now, I surely can't find the way to do something like what I want to see there.
 
-Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH).
+What is missing in this project branch, but implemented in another branch:
+- Grazing. I see no way to implement grazing other than fix every single projectile class in game (which is insane), or raise the game engine version requirements. So new branch for modern GZDoom is introduced; you may try it, if you have GZDoom 2.2.0 or newer.
+
+Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH), [Options menu](https://drive.google.com/open?id=1XayZUJYZyaaklP4cFbo9vGxxJgCko2K7).
 
 ## Why is this exist?
 
@@ -82,7 +85,7 @@ Just run `./build.sh`. It does everything automatically:
 * build PWAD (overwriting previous version).
 
 Requirements:
-* `youtube-dl` ([https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)); you may install it by just doing `sudo pip install youtube-dl` (only if music is to be downloaded).
+* `youtube-dl` ([https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)); you may install it by just doing `pip install youtube-dl` as root (only if music is to be downloaded).
 * `git` (to grab acc compiler and wadtools from github).
 * `gcc` (to compile acc and wadtools).
 * little-endian machine (or you have to rewrite wadtools to correctly work on your architecture). If you don't know what little-endian is, it's likely you have it.
