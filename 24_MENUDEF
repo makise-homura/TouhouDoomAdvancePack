@@ -33,7 +33,7 @@ OptionMenu "TouhouDoomOptions"
     StaticText "Advance Pack options", "808000"
     Option "Score [episode 2 and so]", "touhou_use_scoring", "DisableEnableValues"
     Option "Give extends at specified score levels", "touhou_use_extends", "ExtendsValues", "touhou_use_scoring"
-    Option "Enable graze [modern source ports only]", "touhou_use_grazing", "DisableEnableValues", "touhou_use_scoring"
+    Option "Enable graze", "touhou_use_grazing", "DisableEnableValues", "touhou_use_scoring"
     Option "Level 13+ regular enemies drops", "touhou_spawn_more_items", "DisableEnableValues"
     Option "Level 13+ bosses drops", "touhou_bosses_drop_powerups", "DisableEnableValues"
 }
@@ -50,7 +50,8 @@ OptionMenu "OptionsMenu"
 {
     Title       "OPTIONS"
     Submenu     "Touhou DOOM Options",             "TouhouDoomOptions"
-    Submenu     "Multuplayer Options [Zandronum]", "ZA_MultiplayerOptions" // Zandronum only
+    // Due to introduction of graze system, Zandronum is no more supported.
+    // Submenu  "Multiplayer Options [Zandronum]", "ZA_MultiplayerOptions" // Zandronum only
     StaticText  ""
     Submenu     "Customize Controls",              "CustomizeControls"
     Submenu     "Mouse options",                   "MouseOptions"
@@ -62,12 +63,12 @@ OptionMenu "OptionsMenu"
     Submenu     "Automap Options",                 "AutomapOptions"
     Submenu     "HUD Options",                     "HUDOptions"
     Submenu     "Miscellaneous Options",           "MiscOptions"
-    Submenu     "Network Options [ZDoom/GZDoom]",  "NetworkOptions"        // ZDoom/GZDoom only
+    Submenu     "Network Options",                 "NetworkOptions"        // ZDoom/GZDoom only
     Submenu     "Sound Options",                   "SoundOptions"
     Submenu     "Display Options",                 "VideoOptions"
     Submenu     "Set video mode",                  "VideoModeMenu"
     StaticText  ""
     SafeCommand "Reset to defaults",               "reset2defaults"
-    SafeCommand	"Reset to last saved",             "reset2saved"
+    SafeCommand "Reset to last saved",             "reset2saved"
     Command     "Go to console",                   "menuconsole"
 }

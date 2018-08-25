@@ -279,19 +279,43 @@ Script "THS_YukariStartSurvival" (void)
   THS (TOUHOU GRAZE SYSTEM)
  ***************************/
 
-// Supported only on:
-//     GZDoom 1.x from 1.9.0 and higher;
-//     GZDoom 2.x from 2.1.0 and higher;
-//     GZDoom 3.x and higher;
-//     ZDoom 2.8.0 and higher.
-//     No Zandronum support anymore until they add RGF_MISSILES to their code.
+// Supported only on GZDoom 2.2.0 and higher.
+// No Zandronum/ZDoom support since they have no return for A_RadiusGive.
 
 Script "TGS_GiveGraze" ENTER
 {
     if (GetCVar("touhou_use_scoring") || GetCVar("touhou_use_grazing"))
     {
-        Spawn("GrazeGiver", GetActorX(0), GetActorY(0), GetActorZ(0), 0, 0);
+        SpawnForced("GrazeGiver", GetActorX(0), GetActorY(0), GetActorZ(0));
     }
     Delay (1);
     Restart;
+}
+
+// Player projectiles should not be grazable. This script determines that.
+// By the way, Cyberdemon rockets aren't grazable too, but the only place where
+// you would encounter them is Episode 1, where grazing is not enabled at all.
+Script "TGS_IsGrazeAllowed" (void)
+{
+    str class = GetActorClass(0);
+    if (class == "Rocket")              { SetResultValue(0); Terminate; }
+    if (class == "HGAmulet")            { SetResultValue(0); Terminate; }
+    if (class == "HGAmulet2")           { SetResultValue(0); Terminate; }
+    if (class == "HGAmulet4")           { SetResultValue(0); Terminate; }
+    if (class == "HGHomingAmulet")      { SetResultValue(0); Terminate; }
+    if (class == "HGPersuasionNeedle")  { SetResultValue(0); Terminate; }
+    if (class == "HGHakureiAmulet")     { SetResultValue(0); Terminate; }
+    if (class == "HakkeroShot")         { SetResultValue(0); Terminate; }
+    if (class == "HakkeroShot2")        { SetResultValue(0); Terminate; }
+    if (class == "HakkeroShot3")        { SetResultValue(0); Terminate; }
+    if (class == "HakkeroShot4")        { SetResultValue(0); Terminate; }
+    if (class == "HakkeroMagicMissile") { SetResultValue(0); Terminate; }
+    if (class == "HakkeroFire")         { SetResultValue(0); Terminate; }
+    if (class == "Rocket")              { SetResultValue(0); Terminate; }
+    if (class == "PlasmaBall")          { SetResultValue(0); Terminate; }
+    if (class == "PlasmaBall1")         { SetResultValue(0); Terminate; }
+    if (class == "PlasmaBall2")         { SetResultValue(0); Terminate; }
+    if (class == "BFGBall")             { SetResultValue(0); Terminate; }
+    SetResultValue(1);
+    Terminate;
 }

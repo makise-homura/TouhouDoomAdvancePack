@@ -205,16 +205,16 @@ script 1 ENTER
     // Note: Episode 1 isn't supposed to use score count and grazing.
     if (GetCVar("touhou_use_grazing") && Episode != 1)
     {
-        HudMessage(i:Power;          HUDMSG_PLAIN, 6111, CR_WHITE,  310.2, 220.0, 0.0);
+        HudMessage(i:Graze;          HUDMSG_PLAIN, 6111, CR_WHITE,  310.2, 220.0, 0.0);
         HudMessage(s:"x";            HUDMSG_PLAIN, 6112, CR_WHITE,  330.2, 220.0, 0.0);
-        HudMessage(s:"1";            HUDMSG_PLAIN, 6113, CR_WHITE,  380.2, 220.0, 0.0);
+        HudMessage(s:"10";           HUDMSG_PLAIN, 6113, CR_WHITE,  380.2, 220.0, 0.0);
         HudMessage(s:"=";            HUDMSG_PLAIN, 6114, CR_WHITE,  400.2, 220.0, 0.0);
         ACS_NamedExecuteWait("FancyMessage",0,
-                     Graze*1,                      6115,                   220       );
+                     Graze*10,                     6115,                   220       );
     }
     else
         HudMessage(s:"N/A";          HUDMSG_PLAIN, 6116, CR_WHITE,  500.2, 220.0, 0.0);
-    Score += Graze*1;
+    Score += Graze*10;
 
     HudMessage(s:"x";                HUDMSG_PLAIN, 6062, CR_WHITE,  330.2, 240.0, 0.0);
     if (CheckInventory("UltraMode")) // Ultra must be checked before Lunatic

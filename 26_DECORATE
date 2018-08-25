@@ -2,36 +2,40 @@
   THS (TOUHOU GRAZE SYSTEM)
  ***************************/
 
-// Supported only on:
-//     GZDoom 1.x from 1.9.0 and higher;
-//     GZDoom 2.x from 2.1.0 and higher;
-//     GZDoom 3.x and higher;
-//     ZDoom 2.8.0 and higher.
-//     No Zandronum support anymore until they add RGF_MISSILES to their code.
+// Supported only on GZDoom 2.2.0 and higher.
+// No Zandronum/ZDoom support since they have no return for A_RadiusGive.
 
 // Given to every missile in certain distance to find a correct number
 // of missiles grazed by player in this tic.
-Actor GrazeDetector : Inventory
-{
-}
-
-// Given to player in amount equals to Detector items being successfully given.
-Actor GrazeItem : Inventory
-{
-    // Should we limit available graze amount?
-    // If yes, uncomment this (it's an approximation of resulting graze value
-    // if player grazes one projectile at every moment through 10 hours.)
-    // Inventory.MaxAmount 12600000
-}
-
-// Spawned in the position of player every game tic.
-// Gives some graze items and then disappears.
-ACTOR "GrazeGiver"
+Actor GrazeDetector : CustomInventory
 {
     States
     {
-        See:
-            TNT1 A 1 A_RadiusGive("GrazeItem", 0.0, RGF_GIVESELF, A_RadiusGive("GrazeDetector", 128, RGF_MISSILES))
+        Pickup:
+            TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TGS_IsGrazeAllowed"),"PickupSuccess")
+            Fail
+        PickupSuccess:
+            TNT1 A 0 A_Die // Somehow empty string here (like "TNT1 A 0") doesn't work.
+            Stop
+    }
+}
+
+// Given to player in amount equals to Detector items being successfully given.
+Actor GrazeItem : Inventory { Inventory.MaxAmount 1000000000 }
+
+// Spawned in the position of player every game tic.
+// Gives some graze items and then disappears.
+ACTOR GrazeGiver
+{
+    -SOLID
+    States
+    {
+        Spawn:
+            TNT1 A 0 // We do a double call to A_RadiusGive(), because more modern way with user var may be unsupported.
+            TNT1 A 0 A_JumpIf(A_RadiusGive("GrazeDetector", 64.0, RGF_MISSILES) > 0, "GiveGraze")
+            Stop
+        GiveGraze:
+            TNT1 A 0 A_RadiusGive("GrazeItem", 64.0, RGF_PLAYERS, A_RadiusGive("GrazeDetector", 64.0, RGF_MISSILES))
             Stop
     }
 }
