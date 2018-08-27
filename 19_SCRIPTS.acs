@@ -211,10 +211,10 @@ script 1 ENTER
         HudMessage(s:"=";            HUDMSG_PLAIN, 6114, CR_WHITE,  400.2, 220.0, 0.0);
         ACS_NamedExecuteWait("FancyMessage",0,
                      Graze*10,                     6115,                   220       );
+        Score += Graze*10;
     }
     else
         HudMessage(s:"N/A";          HUDMSG_PLAIN, 6116, CR_WHITE,  500.2, 220.0, 0.0);
-    Score += Graze*10;
 
     HudMessage(s:"x";                HUDMSG_PLAIN, 6062, CR_WHITE,  330.2, 240.0, 0.0);
     if (CheckInventory("UltraMode")) // Ultra must be checked before Lunatic
