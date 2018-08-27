@@ -25,7 +25,7 @@ What is missing now, but possibly is a subject to be added when I figure out how
 - High score. I don't think ACS allow me to modify files on disk, but for now you still may save your score table as a typical savegame (yes, it is possible!) and show this to your friends lol.
 - Enemy marker. It turned out much harder than I thought of it; that's because ACS/DECORATE don't know anything about player screen. As for now, I surely can't find the way to do something like what I want to see there.
 
-Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH), [Options menu](https://drive.google.com/open?id=1XayZUJYZyaaklP4cFbo9vGxxJgCko2K7).
+Screenshots: [Power and score items](https://drive.google.com/open?id=1v9Xkc_X893Lv318BJrjhdM7cRQaTkHRa), [Score screen](https://drive.google.com/open?id=1HZKHGbwO8FNbOd4gL5RFNUhOOe2CieZU), [Options menu](https://drive.google.com/open?id=1felNW_xyk8DSBp7-LvE65vVh2jTolD00), [Spell card battle](https://drive.google.com/open?id=1R-lOVboG9SHD_veOdF1OiYpKxNR1nZ00), [Spell card bonus](https://drive.google.com/open?id=1HDM3FoFrkwX_CUOPsH1Q8TKg7hLhZhvu).
 
 ## Why is this exist?
 
