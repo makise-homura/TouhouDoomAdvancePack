@@ -32,10 +32,10 @@ ACTOR GrazeGiver
     {
         Spawn:
             TNT1 A 0 // We do a double call to A_RadiusGive(), because more modern way with user var may be unsupported.
-            TNT1 A 0 A_JumpIf(A_RadiusGive("GrazeDetector", 64.0, RGF_MISSILES) > 0, "GiveGraze")
+            TNT1 A 0 A_JumpIf(A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES) > 0, "GiveGraze")
             Stop
         GiveGraze:
-            TNT1 A 0 A_RadiusGive("GrazeItem", 64.0, RGF_PLAYERS, A_RadiusGive("GrazeDetector", 64.0, RGF_MISSILES))
+            TNT1 A 0 A_RadiusGive("GrazeItem", 100.0, RGF_PLAYERS, A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES))
             Stop
     }
 }
