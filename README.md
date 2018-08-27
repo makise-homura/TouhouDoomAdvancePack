@@ -9,15 +9,16 @@ This mod adds some interesting (as for me) features to Untitled's Touhou DOOM.
 You may get Untitled's Touhou DOOM here: [https://forum.zdoom.org/viewtopic.php?f=19&t=57817](https://forum.zdoom.org/viewtopic.php?f=19&t=57817)
 
 What has been done:
-- Score system introduced; current value is shown in bottom left corner of screen along the HUD. It may be disabled by `touhou_use_scoring` CVAR.
-- Spell card bonus introduced: if player is able to capture spell card in a given time, he/she is awarded by some amount of points (it begins from 100000 prior to spell card declaration and continuously drops until reached 0 at certain time). Survival spell cards are always awarded by 100000 points.
+- Touhou DOOM and Advance pack options are now controllable under the special options menu: Touhou DOOM Options. No more messing with CVARs!
+- Score system introduced; current value is shown in bottom left corner of screen along the HUD. It may be disabled from Touhou DOOM Options menu; disabling it automatically disables EXTENDs.
+- Spell card bonus introduced: if player is able to capture spell card in a given time, he/she is awarded by some amount of points (it begins from 100000 prior to spell card declaration and continuously drops until reached 0 at 10 seconds before spell card timeout). Survival spell cards are always awarded by 100000 points if captured.
 - Point items are dropped by fairies, dolls and bosses along with power items. Some bosses (notably extra stage ones) do very large drops.
-- Power (and point, if scoring enabled) items are dropped by enemies on levels >= 13. It may be disabled by `touhou_spawn_more_items` and `touhou_bosses_drop_powerups` CVARs.
+- Power (and point, if scoring enabled) items are dropped by enemies on levels >= 13. It may be disabled from Touhou DOOM Options menu.
 - Power items also increase score on pickup (but less than single point item); so they are still subject to pick up even if you have 400 power.
 - Power and point items are depleting with time, so it's better to pick them up as quick as possible (that kinda emulates behavior of point items which gave you more value if they have no time to fall lower on screen).
 - Fancy endgame ("ALL CLEAR!") stats screen (and numbers are not static, but counting from 0 to actual value like in DOOM intermission screen!) has been made.
 - *EXTEND* bonus introduced. It may be placed on map, or given as drop from a boss. Contrary to Touhou-like extend mechanic, they do not add a life; but, they "extend" player's possible life scale. Each extend raises maximum health level achievable with megaspheres and soulspheres (but not health bonuses, as they aren't used in Touhou-themed stages) by 100; so single extend gives maximum health 300, next one - 400, and so on.
-- Player receives an *EXTEND* when score reaches some predefined levels. It may be disabled by `touhou_use_extends` CVAR. This needs balancing, maybe.
+- Player receives an *EXTEND* when score reaches some predefined levels. It may be configured or disabled from Touhou DOOM Options menu. This needs balancing, maybe.
 
 What is missing now, but possibly is a subject to be added when I figure out how to implement it in reasonable way and consider it needed:
 - Auto-collect. I suppose when boss or midboss battle begins, player must auto-collect all power and score items remaining on map; I still don't know how to do this in nice-looking matter (Well, draft idea is to use `ThingCount`, then despawn every point/power item, and add resulting value to score; but it's not even nearly pretty as mechanic of auto-collect in Touhou).
