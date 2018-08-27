@@ -18,7 +18,7 @@ What has been done:
 - Fancy endgame ("ALL CLEAR!") stats screen (and numbers are not static, but counting from 0 to actual value like in DOOM intermission screen!) has been made.
 - *EXTEND* bonus introduced. It may be placed on map, or given as drop from a boss. Contrary to Touhou-like extend mechanic, they do not add a life; but, they "extend" player's possible life scale. Each extend raises maximum health level achievable with megaspheres and soulspheres (but not health bonuses, as they aren't used in Touhou-themed stages) by 100; so single extend gives maximum health 300, next one - 400, and so on.
 - Player receives an *EXTEND* when score reaches some predefined levels. It may be disabled by `touhou_use_extends` CVAR. This needs balancing, maybe.
-- Grazing. I wasn't able to find a suitable way to implement grazing without raising engine version requirements (or else I have to fix every single projectile class in game, which is insane), so it's the main reason for breaking backward compatibility.
+- Player now can graze enemy projectiles, being near them (100 map points or less); at the end of the game it is counted into total score value. It may be disabled by `touhou_use_grazing` CVAR.
 
 What is missing now, but possibly is a subject to be added when I figure out how to implement it in reasonable way and consider it needed:
 - Auto-collect. I suppose when boss or midboss battle begins, player must auto-collect all power and score items remaining on map; I still don't know how to do this in nice-looking matter (Well, draft idea is to use `ThingCount`, then despawn every point/power item, and add resulting value to score; but it's not even nearly pretty as mechanic of auto-collect in Touhou).
