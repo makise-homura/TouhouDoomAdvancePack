@@ -32,7 +32,7 @@ OptionMenu "TouhouDoomOptions"
     StaticText ""
     StaticText "Advance Pack options", "808000"
     Option "Score [episode 2 and so]", "touhou_use_scoring", "DisableEnableValues"
-    Option "Give extends at specified score levels", "touhou_use_extends", "ExtendsValues", "touhou_use_scoring"
+    Option "Give extends at certain score levels", "touhou_use_extends", "ExtendsValues", "touhou_use_scoring"
     Option "Level 13+ regular enemies drops", "touhou_spawn_more_items", "DisableEnableValues"
     Option "Level 13+ bosses drops", "touhou_bosses_drop_powerups", "DisableEnableValues"
 }
