@@ -27,7 +27,7 @@ What is missing now, but possibly is a subject to be added when I figure out how
 What is missing in this project branch, but implemented in another branch:
 - Grazing. I see no way to implement grazing other than fix every single projectile class in game (which is insane), or raise the game engine version requirements. So new branch for modern GZDoom is introduced; you may try it, if you have GZDoom 2.2.0 or newer.
 
-Screenshots: [Power and bonus items](https://drive.google.com/open?id=1XLNGhiPnrYkXFIuYhHlQmV8D332sB-5r), [Score screen](https://drive.google.com/open?id=19QdTSPlKm4ecvoTvpvTULunJzd61IbjH), [Options menu](https://drive.google.com/open?id=1XayZUJYZyaaklP4cFbo9vGxxJgCko2K7).
+Screenshots: [Power and score items](https://drive.google.com/open?id=1t0oKG4VK8thrnvjexZGkJDIonrBP515E), [Score screen](https://drive.google.com/open?id=17D6wz7PixpRubQbudOXg5dJv46zAYJ_Y), [Options menu](https://drive.google.com/open?id=1VoDOwFw9yFFCD8aTo1lcOwTTAWb7unmk), [Spell card battle](https://drive.google.com/open?id=1WVrXqoHgvE4kQFQOUfZ9l3l3OXbMHYRR), [Spell card bonus](https://drive.google.com/open?id=1XfGQElShV-jklgkT2wrVqylQ3Qr4S0Mz), [Spell card bonus failed](https://drive.google.com/open?id=121Rz5BcDspjsKrwEC0_fULe_Oqm-NSp4).
 
 ## Why is this exist?
 
