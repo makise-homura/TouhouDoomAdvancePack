@@ -1,7 +1,7 @@
 #!/bin/sh
 
 MUSICFILE="22_SHINKIRO"
-MUSICURL="https://www.youtube.com/watch?v=Qys4Oi1-680"
+MUSICURL="https://www.youtube.com/watch?v=JO4l3Tuy0mQ"
 
 WAD="TouhouDoomAdvancePack.wad"
 
