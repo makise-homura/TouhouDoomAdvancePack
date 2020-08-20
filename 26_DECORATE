@@ -32,10 +32,18 @@ ACTOR GrazeGiver
     {
         Spawn:
             TNT1 A 0 // We do a double call to A_RadiusGive(), because more modern way with user var may be unsupported.
-            TNT1 A 0 A_JumpIf(A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES) > 0, "GiveGraze")
+            TNT1 A 0 A_JumpIf(A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES|RGF_EXSPECIES|RGF_EITHER,1,"HakkeroFire","Player") > 0, "GiveGraze")
             Stop
         GiveGraze:
-            TNT1 A 0 A_RadiusGive("GrazeItem", 100.0, RGF_PLAYERS, A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES))
+            TNT1 A 0 A_RadiusGive("GrazeItem", 100.0, RGF_PLAYERS, A_RadiusGive("GrazeDetector", 100.0, RGF_MISSILES|RGF_EXSPECIES|RGF_EITHER,1,"HakkeroFire","Player"))
             Stop
     }
 }
+
+// These actors are harmless projectiles, but they are produced by HakkeroFire and give wrong graze count unless filtered out by species
+Actor Flame1ASpeciesAdded: Flame1A replaces Flame1A { Species "Player" }
+Actor Flame1BSpeciesAdded: Flame1B replaces Flame1B { Species "Player" }
+Actor Flame2ASpeciesAdded: Flame2A replaces Flame2A { Species "Player" }
+Actor Flame2BSpeciesAdded: Flame2B replaces Flame2B { Species "Player" }
+Actor Flame3ASpeciesAdded: Flame3A replaces Flame3A { Species "Player" }
+Actor Flame3BSpeciesAdded: Flame3B replaces Flame3B { Species "Player" }
