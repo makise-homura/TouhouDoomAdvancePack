@@ -46,10 +46,11 @@ deliver_acc()
 	echo "-- None found, but we will download and compile it now..."
 	PWD=`pwd`
 	GIT=`which git`
-	[ -x "$GIT" ] || error_exit 3 "No git tool found. Clone git repository $ACCURL to $PWD/acc manually."
-	$GIT clone $ACCURL || error_exit 1 "Unable to clone git repository $ACCURL. Clone it to $PWD/acc manually."
-	cd acc && make || error_exit 1 "Unable to build acc."
-	cd ..
+	[ -x "$GIT" ] || error_exit 3 "No git tool found. Clone git repository $ACCURL to $PWD/acc manually and build acc binary inside $PWD/acc/build directory."
+	rm -rf $PWD/acc
+	$GIT clone $ACCURL || error_exit 1 "Unable to clone git repository $ACCURL. Clone it to $PWD/acc manually and build acc binary inside $PWD/acc/build directory.."
+	cd acc && mkdir build && cd build && cmake .. && make || error_exit 1 "Unable to build acc. Build it yourself inside $PWD/acc/build directory."
+	cd ../..
 }
 
 deliver_music()
@@ -86,7 +87,7 @@ echo "*** Building $WAD. ***"
 
 echo
 echo "-- Checking for acc..."
-[ -x "./acc/acc" ] || deliver_acc
+[ -x "./acc/build/acc" ] || deliver_acc
 
 echo
 echo "-- Checking for wadbuild..."
@@ -98,11 +99,11 @@ echo "-- Checking for $MUSICFILE.wav..."
 
 echo
 echo "-- Compiling TOUHOU2..."
-./acc/acc -i ./acc 23_TOUHOU2.acs 21_TOUHOU2.o || error_exit 1 "Unable to compile TOUHOU2."
+./acc/build/acc -i ./acc 23_TOUHOU2.acs 21_TOUHOU2.o || error_exit 1 "Unable to compile TOUHOU2."
 
 echo
 echo "-- Compiling STATMAP/SCRIPTS..."
-./acc/acc -i ./acc 27_SCRIPTS.acs 26_BEHAVIOR.o || error_exit 1 "Unable to compile STATMAP/SCRIPTS."
+./acc/build/acc -i ./acc 27_SCRIPTS.acs 26_BEHAVIOR.o || error_exit 1 "Unable to compile STATMAP/SCRIPTS."
 
 echo
 echo "-- Compiling $WAD..."
