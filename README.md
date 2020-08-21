@@ -1,7 +1,7 @@
 # Touhou DOOM Advance Pack
 
 Extensions and bugfixes pack for **Untitled's Touhou DOOM** mod.
-Requires Touhou DOOM version 3.5C or higher, and GZDoom 2.2.0 or higher.
+Requires Touhou DOOM version 3.5C or higher, and GZDoom 2.4.0 or higher.
 
 This mod adds some interesting (as for me) features to Untitled's Touhou DOOM.
 (Yes, *I heard you like Touhou and DOOM, so I made a Touhou mod to Touhou mod so you can play even more Touhouish DOOM while playing Touhouish DOOM!*)
@@ -95,7 +95,7 @@ Or, you may perform manual installation, if you want.
 
 ## How to use
 
-* Get any modern **GZDoom** source port (minimum requirement is 2.2.0).
+* Get any modern **GZDoom** source port (minimum requirement is 2.4.0).
 * Get DOOM2.WAD from DOOM II game. Possibly FreeDOOM's one can be suitable; it was not tested though.
 * Get Untitled's Touhou Doom PK3 here: [https://forum.zdoom.org/viewtopic.php?f=19&t=57817](https://forum.zdoom.org/viewtopic.php?f=19&t=57817)
 * *(optional)* Get any launcher like ZDL ([https://zdoom.org/wiki/ZDL](https://zdoom.org/wiki/ZDL)) or use another one - whatever you like.

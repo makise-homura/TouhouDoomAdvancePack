@@ -38,37 +38,9 @@ OptionMenu "TouhouDoomOptions"
     Option "Level 13+ bosses drops", "touhou_bosses_drop_powerups", "DisableEnableValues"
 }
 
-// We might do like this:
-/*AddOptionMenu "OptionsMenu"
+// Note: AddOptionMenu is supported in GZDoom 2.4.0 and higher.
+AddOptionMenu "OptionsMenu"
 {
     StaticText ""
     Submenu "Touhou DOOM Options", "TouhouDoomOptions"
-}*/
-// But, for compatibility to older ZDoom, Zandronum, etc., we have
-// to redefine options menu completely:
-OptionMenu "OptionsMenu"
-{
-    Title       "OPTIONS"
-    Submenu     "Touhou DOOM Options",             "TouhouDoomOptions"
-    // Due to introduction of graze system, Zandronum is no more supported.
-    // Submenu  "Multiplayer Options [Zandronum]", "ZA_MultiplayerOptions" // Zandronum only
-    StaticText  ""
-    Submenu     "Customize Controls",              "CustomizeControls"
-    Submenu     "Mouse options",                   "MouseOptions"
-    Submenu     "Joystick options",                "JoystickOptions"
-    StaticText  ""
-    Submenu     "Player Setup",                    "PlayerMenu"
-    Submenu     "Gameplay Options",                "GameplayOptions"
-    Submenu     "Compatibility Options",           "CompatibilityOptions"
-    Submenu     "Automap Options",                 "AutomapOptions"
-    Submenu     "HUD Options",                     "HUDOptions"
-    Submenu     "Miscellaneous Options",           "MiscOptions"
-    Submenu     "Network Options",                 "NetworkOptions"        // ZDoom/GZDoom only
-    Submenu     "Sound Options",                   "SoundOptions"
-    Submenu     "Display Options",                 "VideoOptions"
-    Submenu     "Set video mode",                  "VideoModeMenu"
-    StaticText  ""
-    SafeCommand "Reset to defaults",               "reset2defaults"
-    SafeCommand "Reset to last saved",             "reset2saved"
-    Command     "Go to console",                   "menuconsole"
 }
